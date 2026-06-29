@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  background-color: #000000;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(to right, #60a5fa, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Signature drawing animation */
+@keyframes drawSignature {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.signature-animate path {
+  stroke-dasharray: 1000;
+  animation: drawSignature 2.5s ease-out forwards;
+}
+
+.signature-animate path:nth-child(1) { animation-delay: 0s; }
+.signature-animate path:nth-child(2) { animation-delay: 0.3s; }
+.signature-animate path:nth-child(3) { animation-delay: 0.6s; }
+.signature-animate path:nth-child(4) { animation-delay: 0.9s; }
+.signature-animate path:nth-child(5) { animation-delay: 1.2s; }
+
+/* Testimonials infinite scroll */
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.scroll-left {
+  animation: scroll-left 40s linear infinite;
+}
+
+.scroll-right {
+  animation: scroll-right 40s linear infinite;
+}
+
+.scroll-track:hover .scroll-left,
+.scroll-track:hover .scroll-right {
+  animation-play-state: paused;
+}
