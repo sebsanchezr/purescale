@@ -19,7 +19,10 @@ export function ApplyForm() {
 
   const handleBusinessChange = (value: string) => {
     setFormData(prev => ({ ...prev, business: value }))
-    setStep(2)
+  }
+
+  const handleBusinessContinue = () => {
+    if (formData.business.trim()) setStep(2)
   }
 
   const handleRevenueSelect = (value: string) => {
@@ -65,10 +68,12 @@ export function ApplyForm() {
     }
   }
 
+  const [hasBooked, setHasBooked] = useState(false)
+
   const handleBookCall = () => {
-    // Open Google Calendar booking
-    // Replace with your actual calendar link
+    // Replace with your actual Calendly or calendar booking link
     window.open('https://calendar.google.com/calendar/u/0/r', '_blank')
+    setHasBooked(true)
   }
 
   if (showCalendar) {
@@ -80,21 +85,30 @@ export function ApplyForm() {
           </div>
 
           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-10 text-center">
-            <h1 className="text-4xl font-bold text-white mb-6">
-              Perfect, <span className="font-poppins-italic">{formData.firstName}</span>
+            <h1 className="text-4xl font-bold text-white mb-4">
+              One last step, <span className="font-poppins-italic">{formData.firstName}</span>
             </h1>
             <p className="text-xl text-gray-300 mb-8">
-              Let&apos;s pick a time to talk. Click below to see my availability.
+              Pick a time that works for you. The call is 20 minutes.
             </p>
 
             <button
               onClick={handleBookCall}
-              className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-2xl shadow-blue-500/50 mb-6"
+              className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-2xl shadow-blue-500/50 mb-6 w-full"
             >
-              Book a time on my calendar
+              Book a time on my calendar →
             </button>
 
-            <p className="text-gray-500 text-sm">
+            {hasBooked && (
+              <a
+                href="/thankyou"
+                className="block w-full px-10 py-3 border border-white/20 text-white rounded-lg hover:bg-white/10 font-semibold text-base transition-all duration-200 mt-3"
+              >
+                I&apos;ve booked my call →
+              </a>
+            )}
+
+            <p className="text-gray-500 text-sm mt-6">
               We&apos;ll spend 20 minutes going through your account and mapping out exactly what we&apos;d do.
             </p>
           </div>
@@ -158,9 +172,16 @@ export function ApplyForm() {
               <textarea
                 value={formData.business}
                 onChange={(e) => handleBusinessChange(e.target.value)}
-                placeholder="e.g., We&apos;re a D2C fashion brand selling premium outdoor gear. We have $2M ARR and want to reach $5M in 18 months..."
+                placeholder="e.g., We're a D2C fashion brand selling premium outdoor gear. We have $2M ARR and want to reach $5M in 18 months..."
                 className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:border-blue-400 focus:outline-none focus:bg-white/15 transition-all duration-200 h-32"
               />
+              <button
+                onClick={handleBusinessContinue}
+                disabled={!formData.business.trim()}
+                className="w-full mt-4 px-10 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-lg hover:shadow-blue-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Continue →
+              </button>
             </div>
           )}
 

@@ -26,7 +26,7 @@ export function Guarantee() {
           
           <div className="pt-10 border-t border-white/10">
             <p className="text-gray-400 text-sm mb-6">Signed,</p>
-            <p className="text-4xl font-poppins-italic text-gray-200 mb-2">Sebastian Sanchez</p>
+            <p className="text-4xl font-great-vibes text-gray-200 mb-2">Sebastian Sanchez</p>
             <p className="font-semibold text-white text-sm">Founder, PureScale</p>
           </div>
         </div>
