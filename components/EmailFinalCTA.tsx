@@ -8,28 +8,26 @@ export function EmailFinalCTA() {
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <h2 className="text-5xl sm:text-6xl font-bold mb-6 text-white">
-          Stop reacting to <span className="font-poppins-italic">creative fatigue.</span> Get ahead of it.
+          Your CPA doesn&apos;t have to keep <span className="font-poppins-italic">climbing.</span>
         </h2>
 
-        <p className="text-xl text-gray-300 mb-6 max-w-2xl mx-auto">
-          Every week without fresh creative is a week your competitors are pulling ahead in the auction. You already know you need more. The brief has probably been sitting there for two weeks.
+        <p className="text-xl text-gray-300 mb-4 max-w-2xl mx-auto">
+          You&apos;re already spending the budget. The targeting is already dialled. The only variable you haven&apos;t systematised is creative production — and that&apos;s the one that compounds.
         </p>
 
         <p className="text-lg text-gray-400 mb-12 max-w-xl mx-auto italic">
-          We&apos;ll build the first batch for free. No brief to write, no agency to manage, no 2-week wait. You provide the content drive, we handle the rest.
+          Book the call. We&apos;ll audit your account, tell you exactly where creative fatigue is costing you, and build you a free batch to prove we know what we&apos;re doing.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-          <a
-            href="#book"
-            className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-2xl shadow-blue-500/50 hover:shadow-blue-400/70"
-          >
-            Get your free creative batch →
-          </a>
-        </div>
+        <a
+          href="#book"
+          className="inline-block px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-2xl shadow-blue-500/50 hover:shadow-blue-400/70 mb-6"
+        >
+          Book the free audit →
+        </a>
 
         <p className="text-gray-500 text-sm">
-          Takes 20 minutes on a call. Creatives delivered in 5-7 days. <span className="text-gray-300">No commitment required.</span>
+          We work with brands spending £20k+/month. If that&apos;s you, <span className="text-gray-300 font-semibold">we should talk.</span>
         </p>
       </div>
     </section>
