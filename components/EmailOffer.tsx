@@ -48,10 +48,9 @@ export function EmailOffer() {
           </h3>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              { icon: '📁', text: 'Access to your content drive — product shots, brand assets, any existing UGC' },
-              { icon: '🎯', text: 'Your current best-performing ad (we\'ll build to beat it)' },
-              { icon: '💬', text: '20 minutes on a call to understand your brand voice and customer' },
-              { icon: '✅', text: 'That\'s it. We handle briefs, production, revisions, and delivery.' },
+              { icon: '🎯', text: 'Your current best-performing ad — we\'ll build to beat it' },
+              { icon: '💬', text: '20 minutes on a call to understand your brand, your customer, and what\'s already working' },
+              { icon: '✅', text: 'That\'s it. We handle everything else — briefs, production, revisions, delivery.' },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <span className="text-xl flex-shrink-0 mt-0.5">{item.icon}</span>
