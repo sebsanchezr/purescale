@@ -1,3 +1,57 @@
+'use client'
+import { useState } from 'react'
+
+const VIDEO_IDS = [
+  'CKCToJUaFq8',
+  '6qP_eoVnRqk',
+  '6eeKTt817v0',
+  '3Kf19mVa9YM',
+  'LrSerjRtxE0',
+]
+
+function VideoCard({ videoId }: { videoId: string }) {
+  const [playing, setPlaying] = useState(false)
+
+  return (
+    <div className="flex-shrink-0 w-72 rounded-xl overflow-hidden border border-white/10 hover:border-blue-400/50 transition-all duration-300 bg-white/5">
+      {playing ? (
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          className="w-full aspect-video"
+          title="Client testimonial"
+        />
+      ) : (
+        <button
+          onClick={() => setPlaying(true)}
+          className="relative w-full aspect-video group block"
+          aria-label="Play testimonial video"
+        >
+          {/* Thumbnail — loaded via fast YouTube image CDN */}
+          <img
+            src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+            alt="Client testimonial"
+            className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-200" />
+          {/* Play button */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center group-hover:scale-110 transition-transform duration-200 shadow-xl">
+              <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </button>
+      )}
+    </div>
+  )
+}
+
 export function Testimonials() {
   const testimonials = [
     {
@@ -37,6 +91,9 @@ export function Testimonials() {
     },
   ]
 
+  const scrollTestimonials = [...testimonials, ...testimonials]
+  const scrollVideos = [...VIDEO_IDS, ...VIDEO_IDS]
+
   return (
     <section className="py-24 px-4 sm:px-6 bg-black relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -44,7 +101,7 @@ export function Testimonials() {
         <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-white mb-4">
             What <span className="font-poppins-italic">Clients Say</span>
@@ -52,24 +109,36 @@ export function Testimonials() {
           <p className="text-gray-400 text-lg">Real founders. Real results. Real impact.</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 hover:border-blue-400/50 transition-all duration-300"
-            >
-              <div className="flex items-start gap-4 mb-4">
-                <div className={`${t.color} w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
-                  {t.initials}
+        {/* Row 1 — Text testimonials scrolling left */}
+        <div className="mb-8 overflow-hidden scroll-track">
+          <div className="scroll-left flex gap-6 pb-4" style={{ width: 'fit-content' }}>
+            {scrollTestimonials.map((t, i) => (
+              <div
+                key={i}
+                className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 flex-shrink-0 w-80 hover:border-blue-400/50 transition-all duration-300"
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className={`${t.color} w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
+                    {t.initials}
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white text-sm">{t.name}</p>
+                    <p className="text-cyan-300 text-xs">{t.role}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-white text-sm">{t.name}</p>
-                  <p className="text-cyan-300 text-xs">{t.role}</p>
-                </div>
+                <p className="text-gray-100 italic text-sm leading-relaxed">&quot;{t.review}&quot;</p>
               </div>
-              <p className="text-gray-300 italic text-sm leading-relaxed">&quot;{t.review}&quot;</p>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2 — Video testimonials scrolling right */}
+        <div className="overflow-hidden scroll-track">
+          <div className="scroll-right flex gap-6" style={{ width: 'fit-content' }}>
+            {scrollVideos.map((id, i) => (
+              <VideoCard key={i} videoId={id} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
