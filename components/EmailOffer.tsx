@@ -25,7 +25,7 @@ export function EmailOffer() {
             {
               step: '02',
               title: 'We build your first batch',
-              body: 'We produce a set of creatives tailored to your brand — UGC, statics, or video — built to test against your current control ads. Delivered in 5-7 days, ready to launch.',
+              body: 'We produce a set of creatives tailored to your brand — UGC, statics, or video — built specifically to test against your current control ads and beat them.',
             },
             {
               step: '03',

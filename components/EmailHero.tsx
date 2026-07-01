@@ -38,7 +38,7 @@ export function EmailHero() {
           Get a free creative audit + batch →
         </a>
 
-        <p className="text-gray-500 text-sm">Takes 20 minutes. Creatives delivered in 5-7 days. Zero strings.</p>
+        <p className="text-gray-500 text-sm">Takes 20 minutes. Zero strings.</p>
       </div>
     </section>
   )

@@ -6,8 +6,8 @@ import { EmailOffer } from '@/components/EmailOffer'
 import { SocialProof } from '@/components/SocialProof'
 import { Testimonials } from '@/components/Testimonials'
 import { EmailService } from '@/components/EmailService'
-import { Guarantee } from '@/components/Guarantee'
-import { FAQ } from '@/components/FAQ'
+import { EmailGuarantee } from '@/components/EmailGuarantee'
+import { EmailFAQ } from '@/components/EmailFAQ'
 import { EmailFinalCTA } from '@/components/EmailFinalCTA'
 import { CalEmbed } from '@/components/CalEmbed'
 
@@ -33,8 +33,8 @@ export default function EmailPage() {
 
       {/* Transition: What this becomes long-term */}
       <EmailService />
-      <Guarantee />
-      <FAQ />
+      <EmailGuarantee />
+      <EmailFAQ />
 
       {/* Close */}
       <EmailFinalCTA />
