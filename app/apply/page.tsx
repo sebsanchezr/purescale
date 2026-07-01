@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Apply - PureScale',
-  description: 'Apply for PureScale\'s AI ad creative service. Better ROAS guaranteed in 45 days.',
+  description: 'Apply for PureScale\'s AI ad creative service. Better ROAS guaranteed in 60 days.',
 }
 
 export default function ApplyPage() {

@@ -1,11 +1,11 @@
 'use client'
 import { useState } from 'react'
 import { Logo } from './Logo'
+import { CalEmbed } from './CalEmbed'
 
 export function ApplyForm() {
   const [step, setStep] = useState(1)
-  const [submitted, setSubmitted] = useState(false)
-  const [showCalendar, setShowCalendar] = useState(false)
+  const [showCal, setShowCal] = useState(false)
   const [formData, setFormData] = useState({
     business: '',
     revenue: '',
@@ -46,91 +46,31 @@ export function ApplyForm() {
 
   const handleSubmitDetails = async () => {
     if (formData.firstName && formData.lastName && formData.email && formData.phone) {
-      try {
-        // Send form data to API
-        const response = await fetch('/api/apply', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        })
+      fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      }).catch(() => {})
 
-        if (response.ok) {
-          // Form data collected and sent - show calendar booking
-          setShowCalendar(true)
-        }
-      } catch (error) {
-        console.error('Form submission error:', error)
-        // Still show calendar booking even if email fails for now
-        setShowCalendar(true)
-      }
+      setShowCal(true)
     }
   }
 
-  const [hasBooked, setHasBooked] = useState(false)
 
-  const handleBookCall = () => {
-    // Replace with your actual Calendly or calendar booking link
-    window.open('https://calendar.google.com/calendar/u/0/r', '_blank')
-    setHasBooked(true)
-  }
-
-  if (showCalendar) {
+  if (showCal) {
     return (
       <div className="min-h-screen bg-black py-12 px-4">
-        <div className="max-w-2xl mx-auto">
-          <div className="mb-12 text-center">
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-10 text-center">
             <Logo />
           </div>
-
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-10 text-center">
-            <h1 className="text-4xl font-bold text-white mb-4">
-              One last step, <span className="font-poppins-italic">{formData.firstName}</span>
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-white mb-2">
+              Pick a time that works for <span className="font-poppins-italic text-cyan-300">you</span>
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              Pick a time that works for you. The call is 20 minutes.
-            </p>
-
-            <button
-              onClick={handleBookCall}
-              className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-2xl shadow-blue-500/50 mb-6 w-full"
-            >
-              Book a time on my calendar →
-            </button>
-
-            {hasBooked && (
-              <a
-                href="/thankyou"
-                className="block w-full px-10 py-3 border border-white/20 text-white rounded-lg hover:bg-white/10 font-semibold text-base transition-all duration-200 mt-3"
-              >
-                I&apos;ve booked my call →
-              </a>
-            )}
-
-            <p className="text-gray-500 text-sm mt-6">
-              We&apos;ll spend 20 minutes going through your account and mapping out exactly what we&apos;d do.
-            </p>
+            <p className="text-gray-400">20 minutes. We&apos;ll come prepared with a roadmap for your account.</p>
           </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (submitted) {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center px-4">
-        <div className="text-center max-w-2xl">
-          <div className="mb-12 text-center">
-            <Logo />
-          </div>
-          <h1 className="text-6xl font-bold text-white mb-6">✓</h1>
-          <h2 className="text-4xl font-bold text-white mb-4">
-            You&apos;re <span className="font-poppins-italic">booked in</span>
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            We&apos;ll review your account and get in touch within 24 hours. We&apos;re excited to see what we can do for your business.
-          </p>
+          <CalEmbed />
         </div>
       </div>
     )

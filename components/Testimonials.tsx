@@ -1,5 +1,3 @@
-'use client'
-
 export function Testimonials() {
   const testimonials = [
     {
@@ -39,9 +37,6 @@ export function Testimonials() {
     },
   ]
 
-  // Duplicate testimonials for seamless scroll
-  const scrollTestimonials = [...testimonials, ...testimonials]
-
   return (
     <section className="py-24 px-4 sm:px-6 bg-black relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -49,7 +44,7 @@ export function Testimonials() {
         <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-white mb-4">
             What <span className="font-poppins-italic">Clients Say</span>
@@ -57,50 +52,24 @@ export function Testimonials() {
           <p className="text-gray-400 text-lg">Real founders. Real results. Real impact.</p>
         </div>
 
-        {/* Row 1 - Scrolling Left */}
-        <div className="mb-8 overflow-hidden scroll-track">
-          <div className="scroll-left flex gap-6 pb-8" style={{ width: 'fit-content' }}>
-            {scrollTestimonials.map((t, i) => (
-              <div
-                key={i}
-                className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 flex-shrink-0 w-80 hover:border-blue-400/50 transition-all duration-300"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className={`${t.color} w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>
-                    {t.initials}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white text-sm">{t.name}</p>
-                    <p className="text-cyan-300 text-xs">{t.role}</p>
-                  </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimonials.map((t, i) => (
+            <div
+              key={i}
+              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 hover:border-blue-400/50 transition-all duration-300"
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className={`${t.color} w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
+                  {t.initials}
                 </div>
-                <p className="text-gray-100 italic text-sm leading-relaxed">&quot;{t.review}&quot;</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Row 2 - Scrolling Right (opposite direction) */}
-        <div className="overflow-hidden scroll-track">
-          <div className="scroll-right flex gap-6" style={{ width: 'fit-content' }}>
-            {scrollTestimonials.map((t, i) => (
-              <div
-                key={i}
-                className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 flex-shrink-0 w-80 hover:border-blue-400/50 transition-all duration-300"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className={`${t.color} w-14 h-14 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>
-                    {t.initials}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white text-sm">{t.name}</p>
-                    <p className="text-cyan-300 text-xs">{t.role}</p>
-                  </div>
+                <div>
+                  <p className="font-semibold text-white text-sm">{t.name}</p>
+                  <p className="text-cyan-300 text-xs">{t.role}</p>
                 </div>
-                <p className="text-gray-100 italic text-sm leading-relaxed">&quot;{t.review}&quot;</p>
               </div>
-            ))}
-          </div>
+              <p className="text-gray-300 italic text-sm leading-relaxed">&quot;{t.review}&quot;</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -9,7 +9,7 @@ export function Navbar() {
           href="/apply"
           className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-semibold text-sm transition-all duration-200 shadow-lg hover:shadow-blue-500/50"
         >
-          Apply for Partnership →
+          Book a Free Call →
         </a>
       </div>
     </nav>

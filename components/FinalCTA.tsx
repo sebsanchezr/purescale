@@ -20,13 +20,7 @@ export function FinalCTA() {
             href="/apply"
             className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-2xl shadow-blue-500/50 hover:shadow-blue-400/70"
           >
-            Apply for Partnership
-          </a>
-          <a
-            href="/apply"
-            className="px-10 py-4 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 font-semibold text-lg transition-all duration-200 backdrop-blur-md"
-          >
-            Schedule a Call
+            Book a Free Call →
           </a>
         </div>
 

@@ -7,6 +7,7 @@ import { SocialProof } from '@/components/SocialProof'
 import { Testimonials } from '@/components/Testimonials'
 import { FAQ } from '@/components/FAQ'
 import { FinalCTA } from '@/components/FinalCTA'
+import { CalFloatingButton } from '@/components/CalFloatingButton'
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <FinalCTA />
+      <CalFloatingButton />
     </main>
   )
 }
