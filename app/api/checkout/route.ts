@@ -22,7 +22,8 @@ const OFFER_PRICE_USD = 97
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { firstName, email, phone, fbp, fbc, eventId, sourceUrl } = body ?? {}
+    const { firstName, email, phone, fbp, fbc, eventId, sourceUrl, attribution } = body ?? {}
+    const utm: Record<string, string> = attribution ?? {}
 
     if (!email || !phone) {
       return NextResponse.json(
@@ -47,6 +48,13 @@ export async function POST(request: NextRequest) {
         firstName,
         tags: ['checkout_started'],
         source: 'PureScale $97 offer — checkout started',
+        // Written on the contact so a retainer closed months later can still be
+        // traced back to the ad that produced it.
+        customFields: {
+          utm_source: utm.utm_source ?? '',
+          utm_campaign: utm.utm_campaign ?? '',
+          utm_content: utm.utm_content ?? '',
+        },
       })
     } catch (err) {
       console.error('[checkout] GHL upsert failed', err)
@@ -84,6 +92,9 @@ export async function POST(request: NextRequest) {
         fbc: fbc ?? '',
         ghlContactId: contactId ?? '',
         sourceUrl: sourceUrl ?? '',
+        utm_source: utm.utm_source ?? '',
+        utm_campaign: utm.utm_campaign ?? '',
+        utm_content: utm.utm_content ?? '',
       },
       line_items: [
         process.env.STRIPE_PRICE_ID

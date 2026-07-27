@@ -31,6 +31,38 @@ function newEventId(prefix: string): string {
   return `${prefix}_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`
 }
 
+/**
+ * Read UTMs from the URL, remembering them for the session.
+ *
+ * This is what lets us answer "which ad produced the retainer?" — the only number
+ * that decides whether the whole $97 experiment worked. Session storage matters
+ * because people land from an ad, wander the page, sometimes reload, and the
+ * campaign params must survive that.
+ */
+function getAttribution(): Record<string, string> {
+  const KEY = 'ps_attribution'
+  if (typeof window === 'undefined') return {}
+
+  const params = new URLSearchParams(window.location.search)
+  const fields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']
+  const fresh: Record<string, string> = {}
+  for (const f of fields) {
+    const v = params.get(f)
+    if (v) fresh[f] = v
+  }
+
+  try {
+    if (Object.keys(fresh).length) {
+      sessionStorage.setItem(KEY, JSON.stringify(fresh))
+      return fresh
+    }
+    const stored = sessionStorage.getItem(KEY)
+    return stored ? JSON.parse(stored) : {}
+  } catch {
+    return fresh
+  }
+}
+
 export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
@@ -81,6 +113,7 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
           fbp: getCookie('_fbp'),
           fbc: getCookie('_fbc'),
           sourceUrl: window.location.href,
+          attribution: getAttribution(),
         }),
       })
 
