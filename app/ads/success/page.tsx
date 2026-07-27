@@ -21,6 +21,7 @@ export const metadata: Metadata = {
  */
 export default function AdsSuccessPage() {
   const intakeFormUrl = process.env.NEXT_PUBLIC_GHL_INTAKE_FORM_URL
+  const communityInviteUrl = process.env.NEXT_PUBLIC_COMMUNITY_INVITE_URL
 
   return (
     <div className="min-h-screen bg-black px-4 py-12">
@@ -65,6 +66,24 @@ export default function AdsSuccessPage() {
             </div>
           )}
         </div>
+
+        {communityInviteUrl && (
+          <div className="mt-8 rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.06] p-6 text-center">
+            <p className="font-semibold text-white">Your community access is ready</p>
+            <p className="mx-auto mt-2 max-w-lg text-sm text-gray-400">
+              Weekly live calls on using AI to scale — plus somewhere to ask us anything
+              between them. Included with your order.
+            </p>
+            <a
+              href={communityInviteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white/15"
+            >
+              Join the community →
+            </a>
+          </div>
+        )}
 
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
           {[

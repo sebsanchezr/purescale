@@ -19,6 +19,28 @@ import { sendCapiEvent } from '@/lib/meta-capi'
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
+/**
+ * Ping a Discord channel so a new order is visible within seconds.
+ *
+ * ⚠️ DISCORD_ORDER_WEBHOOK_URL must point at a PRIVATE staff-only channel. Buyers
+ * are members of the same server, and this message contains their email and spend —
+ * posting it to the members' main chat would leak one customer's details to all the
+ * others. Never reuse the community webhook here.
+ */
+async function notifyDiscord(content: string): Promise<void> {
+  const url = process.env.DISCORD_ORDER_WEBHOOK_URL
+  if (!url) return
+  try {
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content }),
+    })
+  } catch (err) {
+    console.error('[stripe-webhook] Discord notify failed', err)
+  }
+}
+
 export async function POST(request: NextRequest) {
   const secretKey = process.env.STRIPE_SECRET_KEY
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
@@ -103,6 +125,11 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     console.error('[stripe-webhook] GHL sync failed', err)
   }
+
+  await notifyDiscord(
+    `🟢 **New $97 order** — ${firstName ?? 'Unknown'} (${email ?? 'no email'})\n` +
+      `Waiting on their intake form. SLA starts when it lands.`
+  )
 
   return NextResponse.json({ received: true })
 }

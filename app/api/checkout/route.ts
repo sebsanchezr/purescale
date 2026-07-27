@@ -104,6 +104,9 @@ export async function POST(request: NextRequest) {
               price_data: {
                 currency: 'usd',
                 unit_amount: OFFER_PRICE_USD * 100,
+                // Exclusive = VAT is added on top of $97 rather than carved out of it.
+                // Required whenever automatic_tax is on.
+                tax_behavior: 'exclusive',
                 product_data: {
                   name: 'PureScale — 10 Ad Creatives in 24 Hours',
                   description:
@@ -112,6 +115,14 @@ export async function POST(request: NextRequest) {
               },
             },
       ],
+      // We are UK VAT registered, so a UK buyer must be charged 20% on top. Stripe Tax
+      // works this out from the buyer's address: UK gets VAT, US gets nothing, EU
+      // businesses that supply a VAT number reverse-charge themselves.
+      automatic_tax: { enabled: true },
+      // Stripe needs an address before it can decide the rate.
+      billing_address_collection: 'required',
+      // Lets business buyers enter a VAT number, which is what makes reverse charge work.
+      tax_id_collection: { enabled: true },
       success_url: `${origin}/ads/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/ads?checkout=cancelled`,
       allow_promotion_codes: false,
