@@ -57,8 +57,8 @@ export default function AdsSuccessPage() {
               </p>
               <p className="mt-3 text-sm text-gray-500">
                 Nothing within 5 minutes? Email{' '}
-                <a href="mailto:hello@purescale.ai" className="text-cyan-300 underline">
-                  hello@purescale.ai
+                <a href="mailto:hello@purescale.co" className="text-cyan-300 underline">
+                  hello@purescale.co
                 </a>{' '}
                 and we&apos;ll sort it immediately.
               </p>

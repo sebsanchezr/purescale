@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     }
 
     const origin =
-      process.env.NEXT_PUBLIC_SITE_URL ?? request.nextUrl.origin ?? 'https://purescale.ai'
+      process.env.NEXT_PUBLIC_SITE_URL ?? request.nextUrl.origin ?? 'https://purescale.co'
 
     const clientIp =
       request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? undefined
