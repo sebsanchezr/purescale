@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Stripe from 'stripe'
 import { Logo } from '@/components/Logo'
 
 export const metadata: Metadata = {
@@ -19,9 +20,55 @@ export const metadata: Metadata = {
  * No Purchase pixel fires here by design: the Stripe webhook sends it server-side,
  * so a refreshed tab or a shared link can never inflate the conversion count.
  */
-export default function AdsSuccessPage() {
-  const intakeFormUrl = process.env.NEXT_PUBLIC_GHL_INTAKE_FORM_URL
+
+/**
+ * Look up the buyer from the Stripe session so the intake form can be prefilled.
+ *
+ * This matters more than convenience. The GHL form matches submissions to contacts
+ * by email — without one, a submission creates a NEW anonymous contact, leaving the
+ * purchase tag, pipeline card and every workflow attached to a different record than
+ * the intake answers. Prefilling means the buyer can't accidentally type a different
+ * address than they paid with, which is the main way that split happens.
+ */
+async function getBuyer(sessionId?: string) {
+  const key = process.env.STRIPE_SECRET_KEY
+  if (!sessionId || !key) return null
+  try {
+    const stripe = new Stripe(key)
+    const session = await stripe.checkout.sessions.retrieve(sessionId)
+    const fullName = session.customer_details?.name ?? session.metadata?.firstName ?? ''
+    return {
+      email: session.customer_details?.email ?? session.customer_email ?? '',
+      firstName: session.metadata?.firstName || fullName.split(' ')[0] || '',
+      lastName: fullName.split(' ').slice(1).join(' '),
+      phone: session.metadata?.phone ?? session.customer_details?.phone ?? '',
+    }
+  } catch {
+    // A stale or shared link shouldn't break the page — just show a blank form.
+    return null
+  }
+}
+
+export default async function AdsSuccessPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ session_id?: string }>
+}) {
+  const { session_id: sessionId } = await searchParams
+  const buyer = await getBuyer(sessionId)
   const communityInviteUrl = process.env.NEXT_PUBLIC_COMMUNITY_INVITE_URL
+
+  let intakeFormUrl = process.env.NEXT_PUBLIC_GHL_INTAKE_FORM_URL
+  if (intakeFormUrl && buyer?.email) {
+    const params = new URLSearchParams({
+      email: buyer.email,
+      first_name: buyer.firstName,
+      last_name: buyer.lastName,
+      phone: buyer.phone,
+    })
+    for (const [k, v] of [...params]) if (!v) params.delete(k)
+    intakeFormUrl += (intakeFormUrl.includes('?') ? '&' : '?') + params.toString()
+  }
 
   return (
     <div className="min-h-screen bg-black px-4 py-12">
