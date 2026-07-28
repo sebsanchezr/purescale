@@ -16,7 +16,7 @@ export function EmailFinalCTA() {
         </p>
 
         <p className="text-lg text-gray-400 mb-12 max-w-xl mx-auto italic">
-          Book the call. We&apos;ll audit your account, tell you exactly where creative fatigue is costing you, and build you a free batch to prove we know what we&apos;re doing.
+          Book the call. We&apos;ll audit your account and build you a free sample creative in 24 hours, tested against your current ads. If it doesn&apos;t beat them, you don&apos;t pay.
         </p>
 
         <a

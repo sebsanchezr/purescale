@@ -56,6 +56,7 @@ export function CalEmbed() {
       Cal.ns["15min"]("on", {
         action: "bookingSuccessful",
         callback: function () {
+          if (window.fbq) { window.fbq('track', 'Schedule'); }
           window.location.href = "/thankyou";
         }
       });

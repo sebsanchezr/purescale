@@ -28,17 +28,17 @@ export function EmailHero() {
         </p>
 
         <p className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">
-          We&apos;ll audit your account and build you a free batch of creatives to prove it. Book a call, see how they perform, take them with you — no obligation whatsoever.
+          We&apos;ll build you a free sample creative in 24 hours and test it against your current ads. <span className="text-cyan-300 font-semibold">If ours don&apos;t beat what you&apos;re running, you don&apos;t pay.</span> Take it with you either way — no obligation whatsoever.
         </p>
 
         <a
           href="#book"
           className="inline-block px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-2xl shadow-blue-500/50 hover:shadow-blue-400/70 mb-4"
         >
-          Get a free creative audit + batch →
+          Get your free sample creative →
         </a>
 
-        <p className="text-gray-500 text-sm">Takes 20 minutes. Zero strings.</p>
+        <p className="text-gray-500 text-sm">24-hour turnaround. Zero strings.</p>
       </div>
     </section>
   )

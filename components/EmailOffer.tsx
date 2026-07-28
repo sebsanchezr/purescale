@@ -20,12 +20,12 @@ export function EmailOffer() {
             {
               step: '01',
               title: 'We audit your ad account',
-              body: 'On the call we go through your current creative, identify exactly where fatigue is costing you CPA, and map out what a proper testing architecture looks like for your brand.',
+              body: 'On the call we go through your current creative, identify exactly where fatigue is costing you CPA, and map out what a proper testing architecture looks like for your brand. Prefer it in writing? Grant read-only access and we send a full PDF audit within 24 hours — no call needed.',
             },
             {
               step: '02',
-              title: 'We build your first batch',
-              body: 'We produce a set of creatives tailored to your brand — UGC, statics, or video — built specifically to test against your current control ads and beat them.',
+              title: 'We build your sample in 24 hours',
+              body: 'We produce a creative tailored to your brand — UGC, static, or video — built specifically to test against your current control ad. If it doesn\'t beat what you\'re running, you don\'t pay a penny.',
             },
             {
               step: '03',
@@ -68,6 +68,13 @@ export function EmailOffer() {
             Book the audit call →
           </a>
           <p className="text-gray-500 text-sm mt-3">Free. 20 minutes. No commitment.</p>
+        </div>
+
+        {/* $97 downsell */}
+        <div className="mt-8 max-w-2xl mx-auto text-center bg-white/5 border border-white/10 rounded-xl p-6">
+          <p className="text-gray-300 text-sm">
+            Not ready for a call? <span className="text-white font-semibold">Get 10 ad creatives in 24 hours for $97</span> and put them straight to work — no strings, keep everything.
+          </p>
         </div>
       </div>
     </section>

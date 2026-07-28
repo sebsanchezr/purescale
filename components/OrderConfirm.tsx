@@ -1,0 +1,223 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { PRICE_VALUE } from '@/lib/offer'
+import { OrderTracker } from './OrderTracker'
+
+export function OrderConfirm() {
+  const router = useRouter()
+  const [busy, setBusy] = useState(false)
+  const [fallbackStart, setFallbackStart] = useState<number | null>(null)
+  const [form, setForm] = useState({
+    storeUrl: '',
+    bestAdUrl: '',
+    email: '',
+    notes: '',
+    auditRequested: false,
+    auditAccountId: '',
+    auditToken: '',
+  })
+  const [showGuide, setShowGuide] = useState(false)
+
+  // This page is only reached after a successful Stripe payment → fire Purchase.
+  useEffect(() => {
+    try {
+      window.fbq?.('track', 'Purchase', {
+        value: PRICE_VALUE,
+        currency: 'USD',
+        content_name: '10 Ad Creatives in 24h',
+      })
+    } catch {}
+  }, [])
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setBusy(true)
+    try {
+      const r = await fetch('/api/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const j = await r.json()
+      if (j?.id) {
+        router.push(`/order/${j.id}`) // dedicated live tracker page
+        return
+      }
+      setFallbackStart(Date.now()) // db not returning an id — show tracker inline
+    } catch {
+      setFallbackStart(Date.now())
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  const input =
+    'w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-gray-500 focus:border-cyan-400/50 focus:outline-none'
+
+  if (fallbackStart) return <OrderTracker startTs={fallbackStart} />
+
+  return (
+    <div className="mx-auto max-w-xl">
+      <form onSubmit={submit} className="space-y-4 text-left">
+        <p className="text-center text-gray-400">
+          One quick step and the 24-hour clock starts. Drop the two links below.
+        </p>
+        <div>
+          <label className="mb-1 block text-sm text-gray-300">Your store URL</label>
+          <input
+            type="url"
+            required
+            placeholder="https://yourstore.com"
+            className={input}
+            value={form.storeUrl}
+            onChange={(e) => setForm({ ...form, storeUrl: e.target.value })}
+          />
+        </div>
+        <div>
+          <label className="mb-1 block text-sm text-gray-300">Your current best-performing ad</label>
+          <input
+            type="text"
+            required
+            placeholder="Ad link, Ads Library URL, or a Google Drive / Dropbox link"
+            className={input}
+            value={form.bestAdUrl}
+            onChange={(e) => setForm({ ...form, bestAdUrl: e.target.value })}
+          />
+          <p className="mt-1 text-xs text-gray-500">
+            Paste a link to the ad, or drop the files in a Google Drive / Dropbox link.
+          </p>
+        </div>
+        <div>
+          <label className="mb-1 block text-sm text-gray-300">Email (same as your receipt)</label>
+          <input
+            type="email"
+            required
+            placeholder="you@brand.com"
+            className={input}
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+          />
+        </div>
+        <div>
+          <label className="mb-1 block text-sm text-gray-300">Anything we should know? (optional)</label>
+          <textarea
+            rows={3}
+            placeholder="Angles you want tested, offers, tone…"
+            className={input}
+            value={form.notes}
+            onChange={(e) => setForm({ ...form, notes: e.target.value })}
+          />
+        </div>
+        {/* ── FREE AD ACCOUNT AUDIT (optional bonus) ── */}
+        <div className="rounded-xl border border-cyan-400/30 bg-cyan-400/[0.06] p-5">
+          <div className="flex items-start gap-3">
+            <input
+              id="auditRequested"
+              type="checkbox"
+              className="mt-1 h-4 w-4 accent-cyan-400"
+              checked={form.auditRequested}
+              onChange={(e) => setForm({ ...form, auditRequested: e.target.checked })}
+            />
+            <label htmlFor="auditRequested" className="cursor-pointer">
+              <span className="mr-2 rounded bg-cyan-400/15 px-2 py-0.5 align-middle text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                Free · Included
+              </span>
+              <span className="font-semibold text-white">Run my free ad account audit</span>
+              <p className="mt-1 text-sm text-gray-400">
+                Grant us <strong className="text-white">read-only</strong> access to your Meta ad
+                account and we&apos;ll send a PDF teardown with prioritised fixes inside 24 hours —
+                alongside your creatives. Totally optional, and read-only means we can never spend,
+                edit, or post anything.
+              </p>
+            </label>
+          </div>
+
+          {form.auditRequested && (
+            <div className="mt-4 space-y-3 border-t border-cyan-400/15 pt-4">
+              <div>
+                <label className="mb-1 block text-sm text-gray-300">Meta Ad Account ID</label>
+                <input
+                  type="text"
+                  placeholder="act_1234567890"
+                  className={input}
+                  value={form.auditAccountId}
+                  onChange={(e) => setForm({ ...form, auditAccountId: e.target.value })}
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-sm text-gray-300">
+                  Read-only access token
+                </label>
+                <input
+                  type="password"
+                  autoComplete="off"
+                  placeholder="Paste your read-only token"
+                  className={input}
+                  value={form.auditToken}
+                  onChange={(e) => setForm({ ...form, auditToken: e.target.value })}
+                />
+                <p className="mt-1 text-xs text-gray-500">
+                  Encrypted the moment it reaches us. Never shown to anyone but the analyst running
+                  your audit. Delete it on your end once you have the PDF.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setShowGuide((v) => !v)}
+                className="text-sm font-semibold text-cyan-300 hover:underline"
+              >
+                {showGuide ? 'Hide' : 'How do I get a read-only token? (2 min)'}
+              </button>
+              {showGuide && (
+                <ol className="list-decimal space-y-2 rounded-lg border border-white/10 bg-black/40 px-6 py-4 text-sm text-gray-300">
+                  <li>
+                    Go to{' '}
+                    <a
+                      href="https://developers.facebook.com/tools/explorer/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-cyan-300 hover:underline"
+                    >
+                      Graph API Explorer
+                    </a>{' '}
+                    (developers.facebook.com/tools/explorer).
+                  </li>
+                  <li>
+                    Under <strong className="text-white">Permissions</strong>, add only{' '}
+                    <code className="text-cyan-300">ads_read</code> — nothing else. This is
+                    read-only: no spending, no editing.
+                  </li>
+                  <li>
+                    Click <strong className="text-white">Generate Access Token</strong> and approve
+                    the popup.
+                  </li>
+                  <li>Copy the token it shows and paste it in the box above.</li>
+                  <li>
+                    Find your <strong className="text-white">Ad Account ID</strong> in Ads Manager
+                    (top left, starts with <code className="text-cyan-300">act_</code>) and paste it
+                    too.
+                  </li>
+                  <li>
+                    Done. Once we deliver the audit you can revoke the token any time under Settings
+                    → Business Integrations.
+                  </li>
+                </ol>
+              )}
+            </div>
+          )}
+        </div>
+
+        <button
+          type="submit"
+          disabled={busy}
+          className="w-full rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-8 py-4 text-lg font-bold text-white transition-all hover:scale-[1.02] disabled:opacity-60"
+        >
+          {busy ? 'Starting…' : 'Start my 24-hour build →'}
+        </button>
+      </form>
+    </div>
+  )
+}

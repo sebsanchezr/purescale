@@ -48,7 +48,7 @@ export function SocialProof() {
         </div>
 
         {/* Our Own Analytics */}
-        <div className="mb-20">
+        <div className="mb-20 max-w-lg mx-auto">
           <div className="mb-6">
             <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
               <span>📊</span> Our Own Campaigns

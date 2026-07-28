@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { Analytics } from '@vercel/analytics/react'
+import { FacebookPixel } from '@/components/FacebookPixel'
 
 export const metadata: Metadata = {
   title: 'Better ROAS in 45 Days - PureScale',
@@ -30,7 +32,9 @@ export default function RootLayout({
         `}</style>
       </head>
       <body className="bg-black text-white antialiased overflow-x-hidden">
+        <FacebookPixel />
         {children}
+        <Analytics />
       </body>
     </html>
   )

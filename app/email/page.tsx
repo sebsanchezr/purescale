@@ -10,22 +10,33 @@ import { EmailGuarantee } from '@/components/EmailGuarantee'
 import { EmailFAQ } from '@/components/EmailFAQ'
 import { EmailFinalCTA } from '@/components/EmailFinalCTA'
 import { CalEmbed } from '@/components/CalEmbed'
+import { CreativeExamples } from '@/components/CreativeExamples'
+import { WistiaPlayer } from '@/components/WistiaPlayer'
 
 export const metadata: Metadata = {
   title: 'Free Ad Creative Audit - PureScale',
-  description: 'We\'ll audit your ad account and build you a free batch of creatives. Book a 20-minute call.',
+  description: 'Free sample creative in 24 hours, tested against your current ads. If it doesn\'t beat them, you don\'t pay.',
   robots: 'noindex',
 }
 
 export default function EmailPage() {
   return (
     <main className="bg-black">
-      <Navbar />
+      <Navbar ctaHref="#book" />
 
       {/* Top: Identify the pain, make the offer */}
       <EmailHero />
+
+      {/* VSL */}
+      <section className="px-4 pb-8 bg-black">
+        <div className="max-w-3xl mx-auto">
+          <WistiaPlayer mediaId="cotigqzwyv" />
+        </div>
+      </section>
+
       <EmailPainPoints />
       <EmailOffer />
+      <CreativeExamples />
 
       {/* Middle: Proof it works */}
       <SocialProof />

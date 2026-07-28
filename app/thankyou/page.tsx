@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ThankYouVSL } from '@/components/ThankYouVSL'
 
 export const metadata: Metadata = {
   title: 'You&apos;re booked in - PureScale',
@@ -27,6 +28,8 @@ export default function ThankYouPage() {
           </div>
         </div>
       </section>
+
+      <ThankYouVSL />
 
       {/* Pre-call homework — commitment device */}
       <section className="py-16 px-4 bg-gradient-to-b from-black to-blue-950/20">
@@ -152,17 +155,17 @@ export default function ThankYouPage() {
               <div>
                 <p className="font-bold text-white">Sebastian Sanchez</p>
                 <p className="text-cyan-300 text-sm">Founder, PureScale</p>
-                <p className="text-gray-400 text-xs mt-1">Managing $10M+ in annual client ad spend</p>
+                <p className="text-gray-400 text-xs mt-1">Managing £8m+ in annual client ad spend</p>
               </div>
             </div>
             <p className="text-gray-300 leading-relaxed text-sm">
-              I started PureScale because I kept seeing the same problem: great brands plateauing not because of weak products or bad targeting, but because creative production couldn&apos;t keep up with the testing velocity needed to scale. We built a systematic production model that solves it. We work exclusively with $1M+ D2C brands where margins actually matter.
+              I started PureScale because I kept seeing the same problem: great brands plateauing not because of weak products or bad targeting, but because creative production couldn&apos;t keep up with the testing velocity needed to scale. We built a systematic production model that solves it. We work exclusively with seven-figure D2C brands where margins actually matter.
             </p>
           </div>
 
           <div className="grid grid-cols-3 gap-4 text-center">
             {[
-              { stat: '$10M+', label: 'annual ad spend managed' },
+              { stat: '£8m+', label: 'annual ad spend managed' },
               { stat: '80+', label: 'D2C brands served' },
               { stat: '3.8x', label: 'average ROAS sustained' },
             ].map((s, i) => (
@@ -183,9 +186,9 @@ export default function ThankYouPage() {
           </h2>
           <div className="space-y-4 text-left max-w-lg mx-auto mb-10">
             {[
-              { step: '1', text: 'You\'ll receive a calendar confirmation email with the Zoom link.' },
+              { step: '1', text: 'You\'ll receive a calendar confirmation email with the call link.' },
               { step: '2', text: 'We\'ll send a reminder 24 hours before the call and again 1 hour before.' },
-              { step: '3', text: 'We review your application before the call so we already have context.' },
+              { step: '3', text: 'We review your ad account and brand before the call so we already have context.' },
               { step: '4', text: 'The call is 20 minutes. We\'ll be on time. Bring your numbers.' },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-4">
@@ -201,6 +204,26 @@ export default function ThankYouPage() {
             Questions before the call? Email us at{' '}
             <a href="mailto:seb@puresca1e.com" className="text-cyan-400 hover:underline">seb@puresca1e.com</a>
           </p>
+        </div>
+      </section>
+
+      {/* While you wait */}
+      <section className="py-16 px-4 bg-black border-t border-white/10">
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 text-center">
+            <h2 className="text-2xl font-bold text-white mb-3">
+              While you wait...
+            </h2>
+            <p className="text-gray-400 text-sm mb-6">
+              See exactly how we think about creative, scaling and margins before we speak.
+            </p>
+            <a
+              href="/"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 rounded-lg text-white text-sm font-semibold hover:border-blue-400/40 hover:bg-white/5 transition-all duration-200"
+            >
+              &#8592; Explore PureScale
+            </a>
+          </div>
         </div>
       </section>
 
