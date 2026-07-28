@@ -114,24 +114,22 @@ export function OrderTracker({
         })}
       </ol>
 
-      <div className="mt-8 grid gap-3 sm:grid-cols-2">
+      {/* One card, not two: both used to point at the same calendar, and the
+          second still described the group calls that no longer exist. */}
+      <div className="mt-8">
         <a
           href={CEO_CALL_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-xl border border-cyan-400/30 bg-cyan-400/5 px-5 py-4 text-center transition-all hover:bg-cyan-400/10"
+          className="block rounded-xl border border-cyan-400/30 bg-cyan-400/5 px-5 py-5 text-center transition-all hover:bg-cyan-400/10"
         >
-          <p className="font-semibold text-white">Book a call with the CEO</p>
-          <p className="mt-1 text-xs text-gray-400">15 min, while your creatives are built</p>
-        </a>
-        <a
-          href={CEO_CALL_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-center transition-all hover:border-cyan-400/30"
-        >
-          <p className="font-semibold text-white">Book your 1-to-1 calls</p>
-          <p className="mt-1 text-xs text-gray-400">Weekly AI-creative calls + Q&amp;A</p>
+          <p className="font-semibold text-white">
+            Book your {CEO_CALLS_INCLUDED} calls with the CEO
+          </p>
+          <p className="mt-1 text-xs text-gray-400">
+            Private and 1-to-1, on your actual account. Included with your order — most
+            people take the first while their creatives are being built.
+          </p>
         </a>
       </div>
     </div>

@@ -88,26 +88,49 @@ function Row({ slugs, reverse = false }: { slugs: string[]; reverse?: boolean })
   )
 }
 
+function Heading() {
+  return (
+    <>
+      <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+        This is the work
+      </p>
+      <h2 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl">
+        Ten of these.
+        <br />
+        On <span className="font-poppins-italic text-cyan-300">your</span> brand.
+        <br />
+        By tomorrow.
+      </h2>
+      <p className="mt-4 max-w-md text-gray-400">
+        Different products, different markets, different angles — every one built by the
+        same engine you&apos;re about to put to work for $97.
+      </p>
+    </>
+  )
+}
+
 export function CreativeExamples() {
   return (
     <section className="relative overflow-hidden border-t border-white/10 py-20">
-      <div className="mx-auto mb-12 max-w-4xl px-4 text-center">
-        <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
-          Receipts, not mockups
-        </p>
-        <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">
-          Some of our <span className="font-poppins-italic text-cyan-300">best performing</span> ads
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-gray-400">
-          Every one of these ran on real budget for a real brand. Different products, different
-          markets, different angles — built by the same engine that will build yours.
-        </p>
+      {/* Mobile: heading sits above the rows, since there is no room beside them. */}
+      <div className="mx-auto mb-10 max-w-2xl px-4 text-center lg:hidden">
+        <Heading />
       </div>
 
-      {/* Edge fade so the rows dissolve into the page rather than being cut off. */}
       <div className="creative-marquee space-y-4">
         <Row slugs={ROW_ONE} />
         <Row slugs={ROW_TWO} reverse />
+      </div>
+
+      {/* Desktop: the rows run full-bleed behind a blurred panel on the left, so the
+          copy sits *in* the work rather than above it. Pointer-events are off over
+          the gradient so the marquee still pauses on hover behind it. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 left-0 hidden w-[52%] bg-gradient-to-r from-black from-45% via-black/85 to-transparent backdrop-blur-[2px] lg:block"
+      />
+      <div className="absolute inset-y-0 left-0 hidden w-[46%] flex-col justify-center px-10 xl:px-16 lg:flex">
+        <Heading />
       </div>
     </section>
   )
