@@ -19,32 +19,40 @@ import Image from 'next/image'
  * than two. Pure CSS: no JavaScript, pauses on hover.
  */
 
+// Rows are interleaved by category rather than grouped, so neither row reads as
+// "the jewellery row" — the point of the wall is range.
 const ROW_ONE = [
   '0811-poshmia-collage',
+  'kuick-s1-gt3-hero',
   '0815-a-b-arabicnamebracelet_v2',
-  '0815-a-b-verticalarabicname_v1',
-  '100-0401-azelefa_5star-v1',
   '100-0623-disantistudio-v3',
-  '100-0623-disantistudio-v6',
+  'kuick-s3-maybach-executive',
   '100-0911-cablepro_v5',
   '100-1008-caba-chapter1_v3',
-  '100-1008-caba-chapter2_v1',
   '101-0213-revice-v2',
-  '101-0213-revice-v4',
+  'kuick-s5-gcc-cullinan-ar',
+  '103-0114-jessicak-collage_v1',
+  'activewear-price-hero-30.06.26',
+  '107-1222-lalingi-winter_v2',
+  '100-0401-azelefa_5star-v1',
+  '109-0505-lilly-s-snake',
 ]
 
 const ROW_TWO = [
   '102-1002-blackfriday_v3',
-  '103-0114-jessicak-collage_v1',
-  '103-0123-jessicak_v5',
+  'kuick-s2-g63-weekend',
   '103-0223-posh-gigidress_v1',
+  '100-1008-caba-chapter2_v1',
+  'kuick-s4-cullinan-arrival',
   '103-0424-thematchagirl-v1',
-  '107-1222-lalingi-winter_v2',
+  '101-0213-revice-v4',
   '108-0113-l-alingi-aw25_v4',
-  '108-statics-0211-lilly-s-3for2_v5',
-  '109-0505-lilly-s-snake',
-  'activewear-price-hero-30.06.26',
+  'kuick-s6-gcc-beforeland-ar',
+  '103-0123-jessicak_v5',
   'haircare-box-infographic-30.06.26',
+  '100-0623-disantistudio-v6',
+  '0815-a-b-verticalarabicname_v1',
+  '108-statics-0211-lilly-s-3for2_v5',
 ]
 
 function Row({ slugs, reverse = false }: { slugs: string[]; reverse?: boolean }) {
