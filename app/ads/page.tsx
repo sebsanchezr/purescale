@@ -187,6 +187,10 @@ export default function AdsPage() {
       {/* ── MECHANISM ── earns the mid-page CTA instead of just placing one */}
       <ScalingNow />
 
+
+      {/* ── VIDEO / TEXT TESTIMONIALS (reused) ── */}
+      <Testimonials />
+
       {/* ── PROOF ── */}
       <section className="relative overflow-hidden border-t border-white/10 px-4 py-20">
         <Orbs />
@@ -222,9 +226,6 @@ export default function AdsPage() {
           </p>
         </div>
       </section>
-
-      {/* ── VIDEO / TEXT TESTIMONIALS (reused) ── */}
-      <Testimonials />
 
       {/* ── RISK REVERSAL ── */}
       <section className="relative border-t border-white/10 px-4 py-20">

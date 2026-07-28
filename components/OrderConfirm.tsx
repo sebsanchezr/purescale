@@ -19,6 +19,42 @@ export function OrderConfirm() {
     auditToken: '',
   })
   const [showGuide, setShowGuide] = useState(false)
+  const [dragging, setDragging] = useState(false)
+  const [uploading, setUploading] = useState(false)
+  const [uploads, setUploads] = useState<string[]>([])
+  const [uploadError, setUploadError] = useState<string | null>(null)
+
+  /**
+   * Upload dropped files and fold their URLs into bestAdUrl.
+   *
+   * Appending to the same field rather than adding a new one keeps the payload,
+   * the Discord alert and the fulfilment worker unchanged: they all already read
+   * bestAdUrl, so nothing downstream needs to know uploads exist.
+   */
+  const upload = async (fileList: FileList | null) => {
+    if (!fileList?.length) return
+    setUploading(true)
+    setUploadError(null)
+    try {
+      const body = new FormData()
+      Array.from(fileList).forEach((f) => body.append('files', f))
+      const r = await fetch('/api/upload', { method: 'POST', body })
+      const j = await r.json()
+      if (j?.success && Array.isArray(j.urls)) {
+        const next = [...uploads, ...j.urls]
+        setUploads(next)
+        setForm((prev) => ({
+          ...prev,
+          bestAdUrl: [prev.bestAdUrl.trim(), ...j.urls].filter(Boolean).join('\n'),
+        }))
+      } else {
+        setUploadError(j?.error ?? 'Upload failed. Paste a link instead?')
+      }
+    } catch {
+      setUploadError('Upload failed. Paste a link instead?')
+    }
+    setUploading(false)
+  }
 
   // This page is only reached after a successful Stripe payment → fire Purchase.
   //
@@ -110,8 +146,50 @@ export function OrderConfirm() {
             onChange={(e) => setForm({ ...form, bestAdUrl: e.target.value })}
           />
           <p className="mt-1 text-xs text-gray-500">
-            Paste a link to the ad, or drop the files in a Google Drive / Dropbox link.
+            Paste a link, or drop the files straight in below.
           </p>
+
+          <label
+            onDragOver={(e) => {
+              e.preventDefault()
+              setDragging(true)
+            }}
+            onDragLeave={() => setDragging(false)}
+            onDrop={(e) => {
+              e.preventDefault()
+              setDragging(false)
+              upload(e.dataTransfer.files)
+            }}
+            className={`mt-3 flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed px-4 py-6 text-center transition-colors ${
+              dragging
+                ? 'border-cyan-400 bg-cyan-400/10'
+                : 'border-white/20 bg-white/[0.03] hover:border-cyan-400/40'
+            }`}
+          >
+            <input
+              type="file"
+              multiple
+              accept="image/*,video/*"
+              className="hidden"
+              onChange={(e) => upload(e.target.files)}
+            />
+            <span className="text-sm text-gray-300">
+              {uploading ? 'Uploading…' : 'Drop your ad files here, or click to browse'}
+            </span>
+            <span className="mt-1 text-xs text-gray-500">Images or video, up to 25MB each</span>
+          </label>
+
+          {uploads.length > 0 && (
+            <ul className="mt-3 space-y-1">
+              {uploads.map((u, i) => (
+                <li key={u} className="flex items-center gap-2 text-xs text-cyan-300">
+                  <span>✓</span>
+                  <span className="truncate">File {i + 1} uploaded</span>
+                </li>
+              ))}
+            </ul>
+          )}
+          {uploadError && <p className="mt-2 text-xs text-red-400">{uploadError}</p>}
         </div>
         <div>
           <label className="mb-1 block text-sm text-gray-300">Email (same as your receipt)</label>
