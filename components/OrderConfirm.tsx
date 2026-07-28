@@ -45,7 +45,7 @@ export function OrderConfirm() {
         router.push(`/order/${j.id}`) // dedicated live tracker page
         return
       }
-      setFallbackStart(Date.now()) // db not returning an id — show tracker inline
+      setFallbackStart(Date.now()) // db not returning an id, show tracker inline
     } catch {
       setFallbackStart(Date.now())
     } finally {
@@ -127,7 +127,7 @@ export function OrderConfirm() {
               <span className="font-semibold text-white">Run my free ad account audit</span>
               <p className="mt-1 text-sm text-gray-400">
                 Grant us <strong className="text-white">read-only</strong> access to your Meta ad
-                account and we&apos;ll send a PDF teardown with prioritised fixes inside 24 hours —
+                account and we&apos;ll send a PDF teardown with prioritised fixes inside 24 hours , 
                 alongside your creatives. Totally optional, and read-only means we can never spend,
                 edit, or post anything.
               </p>
@@ -187,7 +187,7 @@ export function OrderConfirm() {
                   </li>
                   <li>
                     Under <strong className="text-white">Permissions</strong>, add only{' '}
-                    <code className="text-cyan-300">ads_read</code> — nothing else. This is
+                    <code className="text-cyan-300">ads_read</code>, nothing else. This is
                     read-only: no spending, no editing.
                   </li>
                   <li>

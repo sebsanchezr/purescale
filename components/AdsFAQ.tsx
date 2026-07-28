@@ -9,15 +9,15 @@ const FAQS = [
   },
   {
     q: "What's the catch?",
-    a: "There isn't one on the deliverable — you get 10 creatives and you own them outright. The honest framing: $97 doesn't cover our cost to make these. It's a way to prove the quality to brands who'd never take a call cold. If it works for you, the retainer is where we both win.",
+    a: "There isn't one on the deliverable, you get 10 creatives and you own them outright. The honest framing: $97 doesn't cover our cost to make these. It's a way to prove the quality to brands who'd never take a call cold. If it works for you, the retainer is where we both win.",
   },
   {
     q: 'What exactly do I get for $97?',
-    a: '10 ad creatives built for your brand using your products — a mix of UGC-style, statics, and scroll-stopping hooks, each engineered to test a different angle. Delivered in 24 hours, ready to upload. You also get two private 1-to-1 AI creative calls with our CEO — we go through your actual account, your angles and what to test next. Not a group call, not a replay.',
+    a: '10 ad creatives built for your brand using your products, a mix of UGC-style, statics, and scroll-stopping hooks, each engineered to test a different angle. Delivered in 24 hours, ready to upload. You also get two private 1-to-1 AI creative calls with our CEO, we go through your actual account, your angles and what to test next. Not a group call, not a replay.',
   },
   {
     q: 'How fast is delivery?',
-    a: '24 hours from when you send your store link and current best-performing ad. That best ad is your control — everything we build is designed to beat it.',
+    a: '24 hours from when you send your store link and current best-performing ad. That best ad is your control, everything we build is designed to beat it.',
   },
   {
     q: 'Do I own the creatives?',
@@ -33,11 +33,11 @@ const FAQS = [
   },
   {
     q: 'What is the free ad account audit?',
-    a: "It's an optional bonus included with your $97. If you grant us read-only access to your Meta ad account, we send back a PDF teardown — where your spend is leaking, which creatives are fatigued, what to fix first — inside the same 24 hours as your creatives. Read-only means we can only look: we can never spend, edit, pause, or post anything. It's genuinely optional; skip it and you still get all 10 creatives. After we deliver, you revoke access in one click.",
+    a: "It's an optional bonus included with your $97. If you grant us read-only access to your Meta ad account, we send back a PDF teardown, where your spend is leaking, which creatives are fatigued, what to fix first, inside the same 24 hours as your creatives. Read-only means we can only look: we can never spend, edit, pause, or post anything. It's genuinely optional; skip it and you still get all 10 creatives. After we deliver, you revoke access in one click.",
   },
   {
     q: 'What happens after?',
-    a: 'If the batch performs and you want fresh winners every week plus full creative management, we\'ll show you the retainer. Same engine that\'s driven $600M+ for DTC brands. Totally optional — the 10 creatives are yours either way.',
+    a: 'If the batch performs and you want fresh winners every week plus full creative management, we\'ll show you the retainer. Same engine that\'s driven $600M+ for DTC brands. Totally optional, the 10 creatives are yours either way.',
   },
 ]
 

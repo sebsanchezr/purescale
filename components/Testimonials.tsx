@@ -28,7 +28,7 @@ function VideoCard({ videoId }: { videoId: string }) {
           className="relative w-full aspect-video group block"
           aria-label="Play testimonial video"
         >
-          {/* Thumbnail — loaded via fast YouTube image CDN */}
+          {/* Thumbnail, loaded via fast YouTube image CDN */}
           <img
             src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
             alt="Client testimonial"
@@ -109,7 +109,7 @@ export function Testimonials() {
           <p className="text-gray-400 text-lg">Real founders. Real results. Real impact.</p>
         </div>
 
-        {/* Row 1 — Text testimonials scrolling left */}
+        {/* Row 1. Text testimonials scrolling left */}
         <div className="mb-8 overflow-hidden scroll-track">
           <div className="scroll-left flex gap-6 pb-4" style={{ width: 'fit-content' }}>
             {scrollTestimonials.map((t, i) => (
@@ -132,7 +132,7 @@ export function Testimonials() {
           </div>
         </div>
 
-        {/* Row 2 — Video testimonials scrolling right */}
+        {/* Row 2. Video testimonials scrolling right */}
         <div className="overflow-hidden scroll-track">
           <div className="scroll-right flex gap-6" style={{ width: 'fit-content' }}>
             {scrollVideos.map((id, i) => (

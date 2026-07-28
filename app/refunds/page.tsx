@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 /**
  * Refund window is tied to DELIVERY, not to a fixed clock: we start building the
  * moment the intake form lands and deliver within one business day, so the honest
- * framing is "any time before we deliver — usually just under 24 hours".
+ * framing is "any time before we deliver, usually just under 24 hours".
  *
  * Stating a flat "24 hours" would be a promise we break every time we deliver in
  * four hours, which is exactly the kind of small dishonesty that produces chargebacks.
@@ -40,16 +40,16 @@ export default function RefundsPage() {
 
       <LegalH2>If we cannot deliver</LegalH2>
       <p>
-        If we are unable to build your creatives — your store is unreachable, the brand
+        If we are unable to build your creatives, your store is unreachable, the brand
         falls into a category we cannot advertise safely, or we simply run out of capacity
-        — we refund you in full and tell you why. You keep nothing and pay nothing.
+       , we refund you in full and tell you why. You keep nothing and pay nothing.
       </p>
 
       <LegalH2>If you are not happy with what we deliver</LegalH2>
       <p>
         Tell us. We will rebuild the creatives you are unhappy with, once, at no cost. We
         would rather fix the work than argue about it. What we will not do is refund
-        delivered creatives, because you keep them and can run them indefinitely — that is
+        delivered creatives, because you keep them and can run them indefinitely, that is
         the trade at this price.
       </p>
 

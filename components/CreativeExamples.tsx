@@ -5,7 +5,7 @@ import Image from 'next/image'
  * creative is fatigued" section.
  *
  * The argument on this page is that we ship volume and variety. Saying it is
- * weaker than showing it, so this is deliberately a *wall* — two rows drifting
+ * weaker than showing it, so this is deliberately a *wall*, two rows drifting
  * in opposite directions, no captions, no client names. The impression to leave
  * is "these people make a lot of very different ads", which is exactly the thing
  * the $97 buys.
@@ -20,7 +20,7 @@ import Image from 'next/image'
  */
 
 // Rows are interleaved by category rather than grouped, so neither row reads as
-// "the jewellery row" — the point of the wall is range.
+// "the jewellery row", the point of the wall is range.
 const ROW_ONE = [
   '0811-poshmia-collage',
   'kuick-s1-gt3-hero',
@@ -57,7 +57,7 @@ const ROW_TWO = [
 
 function Row({ slugs, reverse = false }: { slugs: string[]; reverse?: boolean }) {
   // The track is rendered twice and translated by exactly -50%, which is what
-  // makes the loop seamless — the second copy is in position when the first ends.
+  // makes the loop seamless, the second copy is in position when the first ends.
   const doubled = [...slugs, ...slugs]
 
   return (
@@ -78,7 +78,7 @@ function Row({ slugs, reverse = false }: { slugs: string[]; reverse?: boolean })
               fill
               sizes="190px"
               className="object-cover"
-              // Below the fold on every viewport — never block the hero on these.
+              // Below the fold on every viewport, never block the hero on these.
               loading="lazy"
             />
           </div>
@@ -102,7 +102,7 @@ function Heading() {
         By tomorrow.
       </h2>
       <p className="mt-4 max-w-md text-gray-400">
-        Different products, different markets, different angles — every one built by the
+        Different products, different markets, different angles, every one built by the
         same engine you&apos;re about to put to work for $97.
       </p>
     </>

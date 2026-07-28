@@ -1,5 +1,5 @@
 /**
- * Stripe webhook — the single source of truth for "a sale happened".
+ * Stripe webhook, the single source of truth for "a sale happened".
  *
  * On checkout.session.completed:
  *   1. Meta CAPI Purchase (event_id = session id, so a retry can never double-count)
@@ -23,7 +23,7 @@ export const dynamic = 'force-dynamic'
  * Ping a Discord channel so a new order is visible within seconds.
  *
  * ⚠️ DISCORD_ORDER_WEBHOOK_URL must point at a PRIVATE staff-only channel. Buyers
- * are members of the same server, and this message contains their email and spend —
+ * are members of the same server, and this message contains their email and spend , 
  * posting it to the members' main chat would leak one customer's details to all the
  * others. Never reuse the community webhook here.
  */
@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
         phone,
         firstName,
         tags: ['purchase_97'],
-        source: 'PureScale $97 offer — purchase',
+        source: 'PureScale $97 offer, purchase',
       })
     } else if (contactId) {
       await addTags(contactId, ['purchase_97'])
@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
     if (contactId) {
       await createOpportunity({
         contactId,
-        name: `$97 Creative Pack — ${firstName ?? email ?? 'New buyer'}`,
+        name: `$97 Creative Pack. ${firstName ?? email ?? 'New buyer'}`,
         monetaryValue: value,
       })
     }
@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
   }
 
   await notifyDiscord(
-    `🟢 **New $97 order** — ${firstName ?? 'Unknown'} (${email ?? 'no email'})\n` +
+    `🟢 **New $97 order**. ${firstName ?? 'Unknown'} (${email ?? 'no email'})\n` +
       `Waiting on their intake form. SLA starts when it lands.`
   )
 

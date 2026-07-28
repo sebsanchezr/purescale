@@ -4,7 +4,7 @@ import { Logo } from '@/components/Logo'
 import { CEO_CALL_URL, CEO_CALLS_INCLUDED } from '@/lib/offer'
 
 export const metadata: Metadata = {
-  title: "You're in — tell us what to build | PureScale",
+  title: "You're in, tell us what to build | PureScale",
   description: 'Payment confirmed. Two minutes of detail and your 10 creatives are underway.',
   robots: { index: false, follow: false },
 }
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
  *
  * The intake form is embedded here rather than only emailed, because the moment
  * straight after payment is the highest-intent moment we will ever get with this
- * buyer — every hour of delay between paying and telling us their store URL is an
+ * buyer, every hour of delay between paying and telling us their store URL is an
  * hour the 24h SLA cannot start. The emailed copy (workflow W1) is the safety net,
  * not the primary path.
  *
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
  * Look up the buyer from the Stripe session so the intake form can be prefilled.
  *
  * This matters more than convenience. The GHL form matches submissions to contacts
- * by email — without one, a submission creates a NEW anonymous contact, leaving the
+ * by email, without one, a submission creates a NEW anonymous contact, leaving the
  * purchase tag, pipeline card and every workflow attached to a different record than
  * the intake answers. Prefilling means the buyer can't accidentally type a different
  * address than they paid with, which is the main way that split happens.
@@ -45,7 +45,7 @@ async function getBuyer(sessionId?: string) {
       phone: session.metadata?.phone ?? session.customer_details?.phone ?? '',
     }
   } catch {
-    // A stale or shared link shouldn't break the page — just show a blank form.
+    // A stale or shared link shouldn't break the page, just show a blank form.
     return null
   }
 }
@@ -85,7 +85,7 @@ export default async function AdsSuccessPage({
             Payment confirmed. Now the <span className="font-poppins-italic text-cyan-300">two-minute</span> part.
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-gray-400">
-            Fill this in and your build starts immediately — your 10 creatives land within one
+            Fill this in and your build starts immediately, your 10 creatives land within one
             business day of this form, not of your payment. Check your inbox too: we&apos;ve emailed
             you the same link and your receipt.
           </p>
@@ -119,7 +119,7 @@ export default async function AdsSuccessPage({
             Your {CEO_CALLS_INCLUDED} calls with our CEO are included
           </p>
           <p className="mx-auto mt-2 max-w-lg text-sm text-gray-400">
-            Private, 1-to-1, on your actual account — what to test next and why. Book the
+            Private, 1-to-1, on your actual account, what to test next and why. Book the
             first one now; most people save the second for after they&apos;ve run the ten.
           </p>
           <a

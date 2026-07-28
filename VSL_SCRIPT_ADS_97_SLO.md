@@ -1,9 +1,9 @@
-# PureScale VSL Script — /ads Landing (Cold Paid, $97 SLO)
+# PureScale VSL Script, /ads Landing (Cold Paid, $97 SLO)
 
 **Target runtime:** 2.5-3.5 min (cold paid + low-ticket impulse = short and direct, per vsl-architect skill)
 **Demographic:** cold ecom operators/founders, interrupted on the feed, zero prior intent
 **Offer:** $97 for 10 ad creatives in 24 hours (self-liquidating front end; retainer is the back end)
-**Style:** Talking head (Seb), heavily edited — captions, jump cuts, fast pace, proof screenshots, sample-creative b-roll
+**Style:** Talking head (Seb), heavily edited, captions, jump cuts, fast pace, proof screenshots, sample-creative b-roll
 **Placement:** /ads landing, above the checkout/buy button. Show button + play bar. Isolate page to headline + VSL + buy.
 **Congruency:** the ad hook, the page headline, and this VSL open must all say the SAME thing (10 creatives, 24hrs, $97).
 
@@ -13,7 +13,7 @@ Note on cold paid: they did not search for you. The first 5 seconds carry the wh
 
 ---
 
-## CHAPTER 1 — Summary / pattern interrupt (0:00-0:45)
+## CHAPTER 1. Summary / pattern interrupt (0:00-0:45)
 *Cold traffic. Say the entire offer in the first 45 seconds. They decide fast.*
 
 **Spoken:**
@@ -29,7 +29,7 @@ I'll show you what you get and why it's this cheap. Or just hit the button and l
 
 ---
 
-## CHAPTER 2 — Why creative is the whole game (0:45-1:20)
+## CHAPTER 2. Why creative is the whole game (0:45-1:20)
 *Agitate the pain fast. It's not budget or targeting, it's creative.*
 
 **Spoken:**
@@ -37,19 +37,19 @@ I'll show you what you get and why it's this cheap. Or just hit the button and l
 
 You run the same three or four ads for weeks, they fatigue, your cost per purchase quietly climbs, and you feel it too late.
 
-The brands winning right now aren't outspending you. They're out-testing you — feeding the algorithm fresh creative faster than it can burn out. That's the entire game now."
+The brands winning right now aren't outspending you. They're out-testing you, feeding the algorithm fresh creative faster than it can burn out. That's the entire game now."
 
 **On-screen:** one tired ad vs a grid of fresh ones. Caption: "You're not outspent. You're out-tested." CAC line drifting up.
 
 ---
 
-## CHAPTER 3 — What you get for $97 (1:20-2:05)
+## CHAPTER 3. What you get for $97 (1:20-2:05)
 *The deliverable. Concrete. Remove risk.*
 
 **Spoken:**
 "So here's exactly what ninety-seven dollars gets you.
 
-Ten ad creatives, made for your brand, using your products — not generic templates. A mix of UGC-style, statics, and hooks, each built to test a different angle.
+Ten ad creatives, made for your brand, using your products, not generic templates. A mix of UGC-style, statics, and hooks, each built to test a different angle.
 
 Delivered in twenty-four hours, ready to upload straight into your ad account. You own them outright, run them wherever you want.
 
@@ -59,7 +59,7 @@ All we need from you is a link to your store and your current best ad. That's it
 
 ---
 
-## CHAPTER 4 — Proof (2:05-2:35)
+## CHAPTER 4. Proof (2:05-2:35)
 *Fast proof. One line each.*
 
 **Spoken:**
@@ -73,7 +73,7 @@ Same creative engine. Now you can run a batch of it for ninety-seven dollars."
 
 ---
 
-## CHAPTER 5 — Close + CTA (2:35-3:00)
+## CHAPTER 5. Close + CTA (2:35-3:00)
 *Direct. Low-friction. Urgency without gimmick.*
 
 **Spoken:**
@@ -83,7 +83,7 @@ Worst case, you spent ninety-seven bucks and got ten fresh assets to test. Best 
 
 Hit the button below, send us your store, and we'll have your ten creatives back to you tomorrow. Let's go."
 
-**On-screen:** arrow to buy button. Caption: "Get 10 creatives in 24hrs — $97." Trust line: "Own everything. Delivered in 24 hours."
+**On-screen:** arrow to buy button. Caption: "Get 10 creatives in 24hrs. $97." Trust line: "Own everything. Delivered in 24 hours."
 
 ---
 

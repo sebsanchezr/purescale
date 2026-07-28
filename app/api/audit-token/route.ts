@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { decryptSecret } from '@/lib/crypto'
 
 // Reveals a customer's decrypted read-only Meta token. Key-gated (ADMIN_KEY).
-// Only the analyst running the audit hits this — the token is never in the
+// Only the analyst running the audit hits this, the token is never in the
 // order list, Discord, or logs. Revoke after use.
 export async function POST(request: NextRequest) {
   try {
@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     if (!enc) return NextResponse.json({ error: 'no token on file' }, { status: 404 })
     const token = decryptSecret(enc)
     if (!token) {
-      return NextResponse.json({ error: 'decrypt failed — AUDIT_ENC_KEY mismatch?' }, { status: 500 })
+      return NextResponse.json({ error: 'decrypt failed. AUDIT_ENC_KEY mismatch?' }, { status: 500 })
     }
     return NextResponse.json({
       token,

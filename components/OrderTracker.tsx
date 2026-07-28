@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react'
 import { CEO_CALL_URL, CEO_CALLS_INCLUDED } from '@/lib/offer'
 
 // Stages auto-advance on a 24h timeline. "In production" is the long stage
-// (~12h, roughly 2x the others). Only "Delivered" is real — it flips when the
+// (~12h, roughly 2x the others). Only "Delivered" is real, it flips when the
 // order's status is set to 'delivered' (polled from the API).
 const STAGES = [
   { key: 'confirmed', label: 'Payment confirmed', desc: 'You\'re in. Order received.', at: 0 },
   { key: 'brief', label: 'Brief received', desc: 'Your store + best ad are with the team.', at: 1 },
-  { key: 'production', label: 'In production', desc: 'Building your 10 creatives — UGC, static & hooks.', at: 6 },
+  { key: 'production', label: 'In production', desc: 'Building your 10 creatives. UGC, static & hooks.', at: 6 },
   { key: 'review', label: 'Final review & QA', desc: 'Polishing and checking every creative.', at: 18 },
   { key: 'delivered', label: 'Delivered to your inbox', desc: 'All 10 creatives, ready to upload.', at: 24, real: true },
 ]
@@ -127,7 +127,7 @@ export function OrderTracker({
             Book your {CEO_CALLS_INCLUDED} calls with the CEO
           </p>
           <p className="mt-1 text-xs text-gray-400">
-            Private and 1-to-1, on your actual account. Included with your order — most
+            Private and 1-to-1, on your actual account. Included with your order, most
             people take the first while their creatives are being built.
           </p>
         </a>

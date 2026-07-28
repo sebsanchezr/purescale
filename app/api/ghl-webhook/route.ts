@@ -1,11 +1,11 @@
 /**
  * Inbound webhook from GoHighLevel. One endpoint, two jobs, switched on `type`:
  *
- *   type: "intake"         — buyer submitted the intake form (store URL + best ad).
+ *   type: "intake"        , buyer submitted the intake form (store URL + best ad).
  *                            Queues an `offer_orders` row that the Mac fulfilment
  *                            worker claims. This is where the 24h SLA clock starts.
  *
- *   type: "qualified_call" — buyer booked a strategy call AND passed the qualifying
+ *   type: "qualified_call", buyer booked a strategy call AND passed the qualifying
  *                            questions. Fires a QualifiedCall CAPI event so Meta
  *                            optimises toward buyers who become retainer prospects,
  *                            not just anyone who books. Unqualified bookings are
@@ -21,13 +21,13 @@ import { sendCapiEvent } from '@/lib/meta-capi'
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
-/** Insert a row via the Supabase REST API — avoids pulling in the JS SDK. */
+/** Insert a row via the Supabase REST API, avoids pulling in the JS SDK. */
 async function insertOfferOrder(row: Record<string, unknown>): Promise<boolean> {
   const url = process.env.SUPABASE_URL
   const key = process.env.SUPABASE_SERVICE_KEY
 
   if (!url || !key) {
-    console.error('[ghl-webhook] Supabase env not set — order NOT queued', row)
+    console.error('[ghl-webhook] Supabase env not set, order NOT queued', row)
     return false
   }
 

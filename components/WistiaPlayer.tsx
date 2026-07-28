@@ -13,7 +13,7 @@ declare global {
 
 // Native Wistia embed. Scripts load async after mount (non-blocking), and
 // Wistia shows a blurred swatch poster until the player defines + the video
-// only streams on play — so this adds ~0 to initial page load.
+// only streams on play, so this adds ~0 to initial page load.
 export function WistiaPlayer({
   mediaId,
   aspect = '1.7777777777777777',

@@ -37,7 +37,7 @@ function headers() {
 
 /**
  * Create or update a contact by email. Returns the GHL contact id.
- * Tags are additive in GHL — upserting never removes existing tags.
+ * Tags are additive in GHL, upserting never removes existing tags.
  */
 export async function upsertContact(input: GhlContactInput): Promise<string | null> {
   const locationId = process.env.GHL_LOCATION_ID
@@ -101,7 +101,7 @@ export async function removeTags(contactId: string, tags: string[]): Promise<voi
 
 /**
  * Drop an opportunity into the PureScale Offer pipeline at the "New Order" stage.
- * Safe to skip if the pipeline env vars are not configured yet — the tag-driven
+ * Safe to skip if the pipeline env vars are not configured yet, the tag-driven
  * workflows still run, this only affects the visual pipeline board.
  */
 export async function createOpportunity(params: {
@@ -114,7 +114,7 @@ export async function createOpportunity(params: {
   const stageId = process.env.GHL_STAGE_NEW_ORDER_ID
 
   if (!pipelineId || !stageId) {
-    console.warn('[ghl] pipeline env vars missing — skipping opportunity creation')
+    console.warn('[ghl] pipeline env vars missing, skipping opportunity creation')
     return null
   }
 

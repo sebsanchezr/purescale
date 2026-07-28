@@ -3,7 +3,7 @@ import { Logo } from '@/components/Logo'
 import { OrderConfirm } from '@/components/OrderConfirm'
 
 export const metadata: Metadata = {
-  title: 'Order confirmed — PureScale',
+  title: 'Order confirmed. PureScale',
   description: 'Your 10 ad creatives are in production.',
   robots: 'noindex',
 }
@@ -27,7 +27,7 @@ export default function AdsThankYouPage() {
             </span>
           </h1>
           <p className="mx-auto mt-5 max-w-lg text-lg text-gray-300">
-            Your 10 scroll-stopping ad creatives are on the way — delivered within 24 hours, built to
+            Your 10 scroll-stopping ad creatives are on the way, delivered within 24 hours, built to
             beat what you&apos;re running now.
           </p>
         </div>

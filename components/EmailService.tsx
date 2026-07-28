@@ -3,12 +3,12 @@ export function EmailService() {
     {
       metric: 'Lower CPA',
       headline: 'More creative variations = more data = cheaper conversions',
-      body: 'When you\'re testing 20-30 creatives a week, you find the 2-3 that convert at half the CPA of everything else. That\'s not luck — it\'s volume. Brands we work with long-term consistently drop CPA 20-40% in the first 90 days because they\'re finally testing at the velocity the auction rewards.',
+      body: 'When you\'re testing 20-30 creatives a week, you find the 2-3 that convert at half the CPA of everything else. That\'s not luck, it\'s volume. Brands we work with long-term consistently drop CPA 20-40% in the first 90 days because they\'re finally testing at the velocity the auction rewards.',
     },
     {
       metric: 'Protected margins',
       headline: 'Scaling revenue without scaling your cost base',
-      body: 'Most agencies push spend until ROAS looks good on paper and margins quietly collapse. We work backwards from your contribution margin — every creative brief, every test, every scale decision is made with profitability as the filter. Higher revenue on the same margin is a business. Higher revenue on shrinking margins is a debt.',
+      body: 'Most agencies push spend until ROAS looks good on paper and margins quietly collapse. We work backwards from your contribution margin, every creative brief, every test, every scale decision is made with profitability as the filter. Higher revenue on the same margin is a business. Higher revenue on shrinking margins is a debt.',
     },
     {
       metric: 'No creative drought',
@@ -67,7 +67,7 @@ export function EmailService() {
             We work with brands spending <span className="font-poppins-italic text-cyan-300">£20k+/month on ads</span>
           </p>
           <p className="text-gray-400 max-w-xl mx-auto mb-6">
-            At that spend level, creative velocity isn&apos;t a nice-to-have — it&apos;s the difference between a brand that compounds and one that plateaus. The free batch is how you find out which side of that line you&apos;re currently on.
+            At that spend level, creative velocity isn&apos;t a nice-to-have, it&apos;s the difference between a brand that compounds and one that plateaus. The free batch is how you find out which side of that line you&apos;re currently on.
           </p>
           <a
             href="#book"

@@ -3,7 +3,7 @@ import { Logo } from '@/components/Logo'
 import { OrderTracker } from '@/components/OrderTracker'
 
 export const metadata: Metadata = {
-  title: 'Your order — PureScale',
+  title: 'Your order. PureScale',
   robots: 'noindex',
 }
 
@@ -50,7 +50,7 @@ export default async function OrderPage({ params }: { params: { id: string } }) 
             </span>
           </h1>
           <p className="mx-auto mt-4 max-w-lg text-gray-300">
-            Bookmark this page — it updates live as your 10 creatives move through production.
+            Bookmark this page, it updates live as your 10 creatives move through production.
           </p>
         </div>
 

@@ -29,9 +29,9 @@ export default function AdsPage() {
       <Suspense fallback={null}>
         <PurchasePixel />
       </Suspense>
-      <Navbar ctaHref="#buy" ctaLabel="Get 10 Creatives — $97 →" />
+      <Navbar ctaHref="#buy" ctaLabel="Get 10 Creatives. $97 →" />
 
-      {/* ── HERO — impulse zone ── */}
+      {/* ── HERO, impulse zone ── */}
       <section className="relative overflow-hidden px-4 pb-16 pt-32">
         <Orbs />
         <div className="relative mx-auto max-w-4xl text-center">
@@ -56,7 +56,7 @@ export default function AdsPage() {
 
           <div className="mt-10">
             <BuyButton
-              label="Get My 10 Creatives — $97"
+              label="Get My 10 Creatives. $97"
               sub="Delivered in 24 hours · You own everything · No subscription"
             />
           </div>
@@ -130,7 +130,7 @@ export default function AdsPage() {
             <span className="font-poppins-italic text-cyan-300">Your creative is fatigued.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
-            The brands beating you aren&apos;t outspending you. They&apos;re out-testing you — feeding
+            The brands beating you aren&apos;t outspending you. They&apos;re out-testing you, feeding
             the algorithm fresh creative faster than it can burn out. That&apos;s the whole game now.
           </p>
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -138,7 +138,7 @@ export default function AdsPage() {
               { n: '4 ads', l: 'what you\'ve run for the last six weeks straight' },
               { n: '40+', l: 'what the brands beating you tested this month' },
               { n: '↑ CAC', l: 'climbs quietly weeks before your results visibly drop' },
-              { n: '$0', l: 'extra budget needed — it was never the spend' },
+              { n: '$0', l: 'extra budget needed, it was never the spend' },
             ].map((s, i) => (
               <div
                 key={i}
@@ -166,8 +166,8 @@ export default function AdsPage() {
           </h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {[
-              { k: '01', t: 'You send', d: 'Your store link and your current best-performing ad. That best ad is the control — everything we build is made to beat it. Takes two minutes.' },
-              { k: '02', t: 'We build', d: '10 creatives in 24 hours — UGC-style, statics and hooks, on your brand and products, each testing a different angle. We handle briefs, production, revisions.' },
+              { k: '01', t: 'You send', d: 'Your store link and your current best-performing ad. That best ad is the control, everything we build is made to beat it. Takes two minutes.' },
+              { k: '02', t: 'We build', d: '10 creatives in 24 hours. UGC-style, statics and hooks, on your brand and products, each testing a different angle. We handle briefs, production, revisions.' },
               { k: '03', t: 'You run', d: 'Upload straight into your ad account and measure against what you were running. You own all 10 outright, forever.' },
             ].map((s) => (
               <div key={s.k} className="rounded-2xl border border-white/10 bg-white/5 p-7">
@@ -214,7 +214,7 @@ export default function AdsPage() {
             ))}
           </div>
           <p className="mt-8 text-center text-gray-400">
-            Our own store: <strong className="text-white">$26.7M gross sales, 15.4M sessions, 1.44% conversion rate</strong> in a single year. We run this engine on ourselves.
+            One client account we run: <strong className="text-white">$26.7M gross sales, 15.4M sessions, 1.44% conversion rate</strong> in a single year, off the same creative engine that builds your ten.
           </p>
         </div>
       </section>
@@ -233,7 +233,7 @@ export default function AdsPage() {
               <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">Worst case</p>
               <p className="mt-3 text-lg text-gray-200">
                 You&apos;re out <strong className="text-white">$97</strong> and up{' '}
-                <strong className="text-white">10 fresh assets</strong> to test — creative you were
+                <strong className="text-white">10 fresh assets</strong> to test, creative you were
                 going to have to make anyway.
               </p>
             </div>
@@ -272,7 +272,7 @@ export default function AdsPage() {
           </p>
           <div className="mt-10">
             <BuyButton
-              label="Get My 10 Creatives — $97"
+              label="Get My 10 Creatives. $97"
               sub="One time · Keep everything · Delivered in 24 hours"
             />
           </div>

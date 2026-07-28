@@ -20,12 +20,12 @@ export function EmailOffer() {
             {
               step: '01',
               title: 'We audit your ad account',
-              body: 'On the call we go through your current creative, identify exactly where fatigue is costing you CPA, and map out what a proper testing architecture looks like for your brand. Prefer it in writing? Grant read-only access and we send a full PDF audit within 24 hours — no call needed.',
+              body: 'On the call we go through your current creative, identify exactly where fatigue is costing you CPA, and map out what a proper testing architecture looks like for your brand. Prefer it in writing? Grant read-only access and we send a full PDF audit within 24 hours, no call needed.',
             },
             {
               step: '02',
               title: 'We build your sample in 24 hours',
-              body: 'We produce a creative tailored to your brand — UGC, static, or video — built specifically to test against your current control ad. If it doesn\'t beat what you\'re running, you don\'t pay a penny.',
+              body: 'We produce a creative tailored to your brand. UGC, static, or video, built specifically to test against your current control ad. If it doesn\'t beat what you\'re running, you don\'t pay a penny.',
             },
             {
               step: '03',
@@ -44,13 +44,13 @@ export function EmailOffer() {
         {/* What we need */}
         <div className="bg-gradient-to-br from-white/5 to-blue-950/20 border border-blue-400/20 rounded-2xl p-8">
           <h3 className="text-2xl font-bold text-white mb-6">
-            What we need from you — <span className="font-poppins-italic text-cyan-300">almost nothing</span>
+            What we need from you, <span className="font-poppins-italic text-cyan-300">almost nothing</span>
           </h3>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              { icon: '🎯', text: 'Your current best-performing ad — we\'ll build to beat it' },
+              { icon: '🎯', text: 'Your current best-performing ad, we\'ll build to beat it' },
               { icon: '💬', text: '20 minutes on a call to understand your brand, your customer, and what\'s already working' },
-              { icon: '✅', text: 'That\'s it. We handle everything else — briefs, production, revisions, delivery.' },
+              { icon: '✅', text: 'That\'s it. We handle everything else, briefs, production, revisions, delivery.' },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <span className="text-xl flex-shrink-0 mt-0.5">{item.icon}</span>
@@ -73,7 +73,7 @@ export function EmailOffer() {
         {/* $97 downsell */}
         <div className="mt-8 max-w-2xl mx-auto text-center bg-white/5 border border-white/10 rounded-xl p-6">
           <p className="text-gray-300 text-sm">
-            Not ready for a call? <span className="text-white font-semibold">Get 10 ad creatives in 24 hours for $97</span> and put them straight to work — no strings, keep everything.
+            Not ready for a call? <span className="text-white font-semibold">Get 10 ad creatives in 24 hours for $97</span> and put them straight to work, no strings, keep everything.
           </p>
         </div>
       </div>

@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
       request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? undefined
     const userAgent = request.headers.get('user-agent') ?? undefined
 
-    // 1. CRM first — a lead we can follow up on is worth more than a clean redirect.
+    // 1. CRM first, a lead we can follow up on is worth more than a clean redirect.
     let contactId: string | null = null
     try {
       contactId = await upsertContact({
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
         phone,
         firstName,
         tags: ['checkout_started'],
-        source: 'PureScale $97 offer — checkout started',
+        source: 'PureScale $97 offer, checkout started',
         // Written on the contact so a retainer closed months later can still be
         // traced back to the ad that produced it.
         customFields: {
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // No apiVersion pin — the SDK default matches the version the account is on.
+    // No apiVersion pin, the SDK default matches the version the account is on.
     const stripe = new Stripe(secretKey)
 
     const session = await stripe.checkout.sessions.create({
@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
                 // Required whenever automatic_tax is on.
                 tax_behavior: 'exclusive',
                 product_data: {
-                  name: 'PureScale — 10 Ad Creatives in 24 Hours',
+                  name: 'PureScale. 10 Ad Creatives in 24 Hours',
                   description:
                     '10 custom ad creatives built on your brand and products. Yours to keep, forever.',
                 },

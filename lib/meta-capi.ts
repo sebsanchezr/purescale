@@ -2,7 +2,7 @@
  * Meta Conversions API (server-side events).
  *
  * Every event sent here is deduplicated against the browser pixel by sharing an
- * `eventId` — the browser fires fbq('track', name, {}, {eventID}) with the same
+ * `eventId`, the browser fires fbq('track', name, {}, {eventID}) with the same
  * value. Without that, Meta counts conversions twice and the CPA we optimise on
  * is wrong.
  *
@@ -35,9 +35,9 @@ export interface CapiUserData {
   phone?: string
   firstName?: string
   lastName?: string
-  /** _fbp cookie — materially improves match quality, pass it through. */
+  /** _fbp cookie, materially improves match quality, pass it through. */
   fbp?: string
-  /** _fbc cookie (click id) — the strongest match signal we have. */
+  /** _fbc cookie (click id), the strongest match signal we have. */
   fbc?: string
   clientIp?: string
   userAgent?: string
@@ -52,7 +52,7 @@ export interface CapiEvent {
 }
 
 /**
- * Send a single event. Never throws — a tracking failure must not break checkout,
+ * Send a single event. Never throws, a tracking failure must not break checkout,
  * so callers can fire-and-forget. Returns true when Meta accepted the event.
  */
 export async function sendCapiEvent(event: CapiEvent): Promise<boolean> {
@@ -60,7 +60,7 @@ export async function sendCapiEvent(event: CapiEvent): Promise<boolean> {
   const token = process.env.META_CAPI_TOKEN
 
   if (!pixelId || !token) {
-    console.warn('[capi] META_PIXEL_ID / META_CAPI_TOKEN not set — event skipped')
+    console.warn('[capi] META_PIXEL_ID / META_CAPI_TOKEN not set, event skipped')
     return false
   }
 

@@ -6,7 +6,7 @@
  * Two implementations existed after the branches met: a straight redirect to a
  * Stripe Payment Link, and a two-step modal that captures details first. This
  * keeps the modal, because the Payment Link version cannot capture an email
- * before payment — and most people who reach a checkout never finish it. Without
+ * before payment, and most people who reach a checkout never finish it. Without
  * their address those people are simply gone, which is the most expensive gap a
  * $97 funnel can have. The modal also lets Stripe Checkout apply UK VAT, which a
  * Payment Link would not.
@@ -20,7 +20,7 @@ import { CheckoutModal } from './CheckoutModal'
 import { PRICE_VALUE } from '@/lib/offer'
 
 export function BuyButton({
-  label = 'Get My 10 Creatives — $97',
+  label = 'Get My 10 Creatives. $97',
   className = '',
   sub,
 }: {

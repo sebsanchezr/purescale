@@ -1,8 +1,8 @@
-# PureScale VSL Script — /email Landing Page (Free Sample Offer)
+# PureScale VSL Script, /email Landing Page (Free Sample Offer)
 
 **Target runtime:** 3.5-4 min (affluent buyer = short + direct, per vsl-architect skill)
 **Demographic:** D2C / ecom operators spending £20k+/month on ads
-**Style:** Talking head (Seb), edited — captions, jump cuts, light visual edits, proof screenshots on screen
+**Style:** Talking head (Seb), edited, captions, jump cuts, light visual edits, proof screenshots on screen
 **Placement:** /email landing page, above the booking embed. Show button + play bar. Isolate page to headline + VSL + booking.
 **Congruency:** same pain, same offer, same numbers as the cold email that sent them.
 
@@ -10,7 +10,7 @@ Player: Wistia or Vidalytics. Add chapter markers as labelled below.
 
 ---
 
-## CHAPTER 1 — Summary section (0:00-1:15)
+## CHAPTER 1. Summary section (0:00-1:15)
 *Everything the whole VSL covers, compressed. They can decide right here.*
 
 **Spoken:**
@@ -30,7 +30,7 @@ Stick around and I'll show you why creative is the thing capping your scale, and
 
 ---
 
-## CHAPTER 2 — The real bottleneck (1:15-2:00)
+## CHAPTER 2. The real bottleneck (1:15-2:00)
 *Elaborate point 1: it's not targeting or budget, it's creative fatigue.*
 
 **Spoken:**
@@ -42,11 +42,11 @@ When your winners age, your acquisition cost climbs quietly, before results visi
 
 Creative volume and testing velocity is the one lever most brands never systematise. It's the whole game now."
 
-**On-screen:** Simple animation — one tired ad vs a grid of 40. Caption: "Same 4 ads for 6 weeks. Competitors test 40." Show a CAC line drifting up.
+**On-screen:** Simple animation, one tired ad vs a grid of 40. Caption: "Same 4 ads for 6 weeks. Competitors test 40." Show a CAC line drifting up.
 
 ---
 
-## CHAPTER 3 — How the free sample works (2:00-2:50)
+## CHAPTER 3. How the free sample works (2:00-2:50)
 *Elaborate point 2: the offer mechanics + what we need from them.*
 
 **Spoken:**
@@ -66,7 +66,7 @@ That's the entire ask. One ad from you, twenty minutes, and you get a free winne
 
 ---
 
-## CHAPTER 4 — Proof (2:50-3:20)
+## CHAPTER 4. Proof (2:50-3:20)
 *One line of proof per brand, fast.*
 
 **Spoken:**
@@ -84,7 +84,7 @@ Same approach. Data decides what scales, we just feed it winners faster than fat
 
 ---
 
-## CHAPTER 5 — Close + CTA (3:20-3:50)
+## CHAPTER 5. Close + CTA (3:20-3:50)
 *Direct ask. Name the downsell so nobody leaves empty.*
 
 **Spoken:**
@@ -106,7 +106,7 @@ Either way you walk away with creative in hand. Book the call, and let's beat yo
 - [ ] Runtime lands 3.5-4 min. If it drifts past 5, cut, don't slow.
 - [ ] First 60-90s fully stands alone (offer + guarantee + proof + CTA all named).
 - [ ] Player = Wistia/Vidalytics with the 5 chapter markers above.
-- [ ] Thumbnail demonstrates the payoff: "Free ad creative in 24hrs — beat your ads or don't pay." Test video-clip thumbnail vs static image (page speed).
+- [ ] Thumbnail demonstrates the payoff: "Free ad creative in 24hrs, beat your ads or don't pay." Test video-clip thumbnail vs static image (page speed).
 - [ ] Captions on. Jump cuts. Light visual edits + proof screenshots. No dead air.
 - [ ] Page isolated: headline + VSL + booking embed only. Nothing else competing.
 - [ ] Numbers on screen match the landing page and cold email exactly. HOLD until Seb signs off every figure.

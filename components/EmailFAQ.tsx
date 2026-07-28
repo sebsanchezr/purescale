@@ -11,23 +11,23 @@ export function EmailFAQ() {
     },
     {
       q: 'What\'s the catch?',
-      a: 'There isn\'t one. We\'re selective about who we offer this to — we work with brands spending £20k+/month on ads, because below that threshold there isn\'t enough testing velocity to show meaningful results quickly. If you\'re at that level, the free batch is a genuine no-risk way to see what we do.',
+      a: 'There isn\'t one. We\'re selective about who we offer this to, we work with brands spending £20k+/month on ads, because below that threshold there isn\'t enough testing velocity to show meaningful results quickly. If you\'re at that level, the free batch is a genuine no-risk way to see what we do.',
     },
     {
       q: 'What happens after the free batch?',
-      a: 'Nothing automatically. We\'ll follow up to see how the creatives performed. If the results speak for themselves and you want us to keep producing at scale — 100+ creatives a week, full testing infrastructure, paid management — we\'ll talk about what that looks like. No pressure before then.',
+      a: 'Nothing automatically. We\'ll follow up to see how the creatives performed. If the results speak for themselves and you want us to keep producing at scale. 100+ creatives a week, full testing infrastructure, paid management, we\'ll talk about what that looks like. No pressure before then.',
     },
     {
       q: 'How is this different from what my current agency does?',
-      a: 'Most agencies produce 3-5 creatives a month and call it a testing strategy. We run systematic production — 20, 50, 100+ assets per week depending on your budget — with a clear framework for identifying winners, scaling them, and killing underperformers fast. The volume gap is why CPA stays flat or drops instead of climbing.',
+      a: 'Most agencies produce 3-5 creatives a month and call it a testing strategy. We run systematic production. 20, 50, 100+ assets per week depending on your budget, with a clear framework for identifying winners, scaling them, and killing underperformers fast. The volume gap is why CPA stays flat or drops instead of climbing.',
     },
     {
       q: 'Do I need to fire my current media buyer or agency?',
-      a: 'No. We slot in as the creative production arm. Your current buyer — or ours — runs the account. We just make sure the creative pipeline never runs dry. Most brands keep their existing setup and just add our production layer on top.',
+      a: 'No. We slot in as the creative production arm. Your current buyer, or ours, runs the account. We just make sure the creative pipeline never runs dry. Most brands keep their existing setup and just add our production layer on top.',
     },
     {
       q: 'What does the paid service cost?',
-      a: 'We work with brands doing £100k+/month in revenue. The investment covers both our fee and ad spend — we\'ll map out the specifics on the call based on your current numbers. The short answer: if you\'re reinvesting 20% of revenue back into marketing, our model fits within that budget and protects margins.',
+      a: 'We work with brands doing £100k+/month in revenue. The investment covers both our fee and ad spend, we\'ll map out the specifics on the call based on your current numbers. The short answer: if you\'re reinvesting 20% of revenue back into marketing, our model fits within that budget and protects margins.',
     },
   ]
 

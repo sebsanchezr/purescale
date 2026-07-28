@@ -31,12 +31,12 @@ export default function ThankYouPage() {
 
       <ThankYouVSL />
 
-      {/* Pre-call homework — commitment device */}
+      {/* Pre-call homework, commitment device */}
       <section className="py-16 px-4 bg-gradient-to-b from-black to-blue-950/20">
         <div className="max-w-2xl mx-auto">
           <div className="bg-white/5 backdrop-blur-md border border-blue-400/30 rounded-2xl p-8 mb-6">
             <h2 className="text-2xl font-bold text-white mb-2">
-              Before the call — <span className="font-poppins-italic text-cyan-300">5 minutes of prep</span>
+              Before the call, <span className="font-poppins-italic text-cyan-300">5 minutes of prep</span>
             </h2>
             <p className="text-gray-400 mb-6 text-sm">
               Founders who come prepared get 3x more value from the call. Here&apos;s what to have ready:
@@ -46,7 +46,7 @@ export default function ThankYouPage() {
                 { icon: '📊', text: 'Your last 90 days of Meta/TikTok ad spend and ROAS', sub: 'Screenshot from Ads Manager is fine' },
                 { icon: '📉', text: 'Your current creative refresh cadence', sub: 'How often are you rotating new creatives?' },
                 { icon: '🎯', text: 'Your target ROAS and current blended ROAS', sub: 'We\'ll identify the gap and show you how to close it' },
-                { icon: '💰', text: 'Rough monthly revenue and gross margin', sub: 'Ballpark is fine — this shapes the creative strategy' },
+                { icon: '💰', text: 'Rough monthly revenue and gross margin', sub: 'Ballpark is fine, this shapes the creative strategy' },
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-4">
                   <span className="text-2xl flex-shrink-0 mt-0.5">{item.icon}</span>
@@ -76,7 +76,7 @@ export default function ThankYouPage() {
           <div className="space-y-4">
             {[
               { time: 'Min 0-5', title: 'Diagnose your creative situation', desc: 'We look at your current ad fatigue signals, creative cadence, and where ROAS is leaking.' },
-              { time: 'Min 5-12', title: 'Build your production roadmap', desc: 'We map out exactly what a 90-day systematic creative programme looks like for your brand — volumes, formats, testing structure.' },
+              { time: 'Min 5-12', title: 'Build your production roadmap', desc: 'We map out exactly what a 90-day systematic creative programme looks like for your brand, volumes, formats, testing structure.' },
               { time: 'Min 12-18', title: 'ROAS and margin projection', desc: 'Based on your current numbers, we show you what realistic improvement looks like and the unit economics behind it.' },
               { time: 'Min 18-20', title: 'Decision', desc: 'If it makes sense to work together, we talk about next steps. No pressure, no pitch deck.' },
             ].map((item, i) => (
@@ -94,7 +94,7 @@ export default function ThankYouPage() {
         </div>
       </section>
 
-      {/* Social proof — relevant case studies */}
+      {/* Social proof, relevant case studies */}
       <section className="py-16 px-4 bg-gradient-to-b from-black to-blue-950/20">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-3xl font-bold text-white mb-2 text-center">
@@ -107,7 +107,7 @@ export default function ThankYouPage() {
               {
                 brand: 'Revice Denim',
                 result: '$9M → $42M revenue',
-                detail: 'Scaled ad spend from $10k to $250k/month. ROAS held consistent throughout. Creative fatigue was the ceiling — systematic production broke it.',
+                detail: 'Scaled ad spend from $10k to $250k/month. ROAS held consistent throughout. Creative fatigue was the ceiling, systematic production broke it.',
                 duration: '2.5 year partnership',
               },
               {

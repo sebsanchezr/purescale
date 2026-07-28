@@ -40,7 +40,7 @@ export default async function AdminOrdersPage({
     return (
       <main className="flex min-h-screen items-center justify-center bg-black px-4 text-center">
         <div>
-          <p className="text-lg font-semibold text-white">Paid orders — locked</p>
+          <p className="text-lg font-semibold text-white">Paid orders, locked</p>
           <p className="mt-2 text-sm text-gray-500">
             Open with <code className="text-cyan-300">/admin/orders?key=YOUR_ADMIN_KEY</code>
           </p>
@@ -91,7 +91,7 @@ export default async function AdminOrdersPage({
                     {o.audit_requested ? (
                       <AuditReveal id={o.id} adminKey={key} accountId={o.audit_account_id} />
                     ) : (
-                      <span className="text-gray-600">—</span>
+                      <span className="text-gray-600">, </span>
                     )}
                   </td>
                   <td className="px-4 py-3">

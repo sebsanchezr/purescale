@@ -15,12 +15,12 @@ async function notifyDiscord(o: {
   const url = process.env.DISCORD_ORDER_WEBHOOK
   if (!url) return
   const tracker = o.id ? `${SITE_URL}/order/${o.id}` : SITE_URL
-  // NOTE: the read-only token is NEVER included here — only whether it was stored.
+  // NOTE: the read-only token is NEVER included here, only whether it was stored.
   const auditLine = o.auditRequested
     ? `🔍 Requested · ${o.auditAccountId || 'no account id'} · ${
-        o.auditTokenStored ? 'read-only token stored ✅' : 'no token — ask client to send'
+        o.auditTokenStored ? 'read-only token stored ✅' : 'no token, ask client to send'
       }`
-    : '—'
+    : ', '
   try {
     await fetch(url, {
       method: 'POST',
@@ -29,14 +29,14 @@ async function notifyDiscord(o: {
         username: 'PureScale Orders',
         embeds: [
           {
-            title: '🟢 New $97 order — 24h clock started',
+            title: '🟢 New $97 order. 24h clock started',
             url: tracker,
             color: 0x22d3ee,
             fields: [
               { name: 'Store', value: o.storeUrl || '-' },
               { name: 'Best ad', value: o.bestAdUrl || '-' },
               { name: 'Email', value: o.email || '-', inline: true },
-              { name: 'Notes', value: o.notes || '—', inline: true },
+              { name: 'Notes', value: o.notes || ', ', inline: true },
               { name: 'Ad account audit', value: auditLine },
               { name: 'Live tracker', value: tracker },
             ],
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
         auditTokenEnc = encryptSecret(String(auditToken))
         auditTokenStored = !!auditTokenEnc
       } else {
-        console.error('AUDIT_ENC_KEY not set — refusing to store audit token in plaintext')
+        console.error('AUDIT_ENC_KEY not set, refusing to store audit token in plaintext')
       }
     }
 

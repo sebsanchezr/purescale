@@ -1,4 +1,4 @@
-# $97 Offer Funnel — integration notes
+# $97 Offer Funnel, integration notes
 
 What was added, what still needs wiring, and how to test it. Companion to
 `plans/purescale_funnel_build_plan.md` in the AM Agency Workspace.
@@ -7,7 +7,7 @@ What was added, what still needs wiring, and how to test it. Companion to
 
 | File | Purpose |
 |---|---|
-| `lib/ghl.ts` | GoHighLevel v2 client — upsert contact, add/remove tags, create opportunity |
+| `lib/ghl.ts` | GoHighLevel v2 client, upsert contact, add/remove tags, create opportunity |
 | `lib/meta-capi.ts` | Meta Conversions API sender with SHA-256 PII hashing + event dedup |
 | `app/api/checkout/route.ts` | Captures the lead into GHL (`checkout_started`), fires CAPI `Lead`, creates the Stripe session |
 | `app/api/stripe-webhook/route.ts` | On payment: CAPI `Purchase`, tag `purchase_97`, drop `checkout_started`, create pipeline card |
@@ -18,34 +18,34 @@ What was added, what still needs wiring, and how to test it. Companion to
 
 ## ⚠️ Required change on the `/ads` page
 
-**The live `/ads` page is not in this repo** — it was deployed from another machine
+**The live `/ads` page is not in this repo**, it was deployed from another machine
 and never committed. Once that source is pushed, make this one change:
 
 ```tsx
 // Add to the top of the /ads page component file
 import { BuyButton } from '@/components/BuyButton'
 
-// Then replace every CTA. Before — scrolls the page, cannot take money:
-<a href="#buy" className="...">Get My 10 Creatives — $97 →</a>
+// Then replace every CTA. Before, scrolls the page, cannot take money:
+<a href="#buy" className="...">Get My 10 Creatives. $97 →</a>
 
-// After — opens the checkout modal:
-<BuyButton className="...">Get My 10 Creatives — $97 →</BuyButton>
+// After, opens the checkout modal:
+<BuyButton className="...">Get My 10 Creatives. $97 →</BuyButton>
 ```
 
-There are CTAs in the hero, the `#buy` value-stack section and the final call —
+There are CTAs in the hero, the `#buy` value-stack section and the final call , 
 all of them must be swapped. The `#buy` **section** stays exactly where it is; only
 the links pointing at it change.
 
 While that file is open, two copy fixes are also outstanding:
 1. The value stack sells "Weekly live AI-creative calls + private community" ($1,200).
-   That does not exist yet — build it in GHL Communities before launch or remove the row.
+   That does not exist yet, build it in GHL Communities before launch or remove the row.
 2. FAQ/microcopy: change "24 hours" to "one business day **from your intake form**",
    which is what the automation and the success page now promise.
 
 ## Deploy safety
 
 Production currently serves a build that is **ahead of `main`**. Do not merge this
-branch to `main` and deploy until the `/ads` source is committed — deploying `main`
+branch to `main` and deploy until the `/ads` source is committed, deploying `main`
 as it stands would ship a site with no `/ads` page at all.
 
 ## Test sequence (do in order)

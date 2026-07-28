@@ -12,7 +12,7 @@ export function EmailFinalCTA() {
         </h2>
 
         <p className="text-xl text-gray-300 mb-4 max-w-2xl mx-auto">
-          You&apos;re already spending the budget. The targeting is already dialled. The only variable you haven&apos;t systematised is creative production — and that&apos;s the one that compounds.
+          You&apos;re already spending the budget. The targeting is already dialled. The only variable you haven&apos;t systematised is creative production, and that&apos;s the one that compounds.
         </p>
 
         <p className="text-lg text-gray-400 mb-12 max-w-xl mx-auto italic">

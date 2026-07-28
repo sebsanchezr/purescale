@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 /**
  * Footer for the /ads page. Meta's ad review looks for reachable terms, privacy and
- * refund links plus a real trading entity on landing pages that take payment — a
+ * refund links plus a real trading entity on landing pages that take payment, a
  * missing footer is a common cause of "unacceptable business practices" rejections.
  */
 export function LegalFooter() {

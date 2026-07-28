@@ -4,7 +4,7 @@
  * Two-step checkout for the $97 offer.
  *
  * Step 1 captures name/email/phone into GHL before Stripe ever loads. That single
- * decision is what makes abandoned-checkout recovery possible — a one-click jump
+ * decision is what makes abandoned-checkout recovery possible, a one-click jump
  * straight to Stripe would convert marginally better on the day and lose every
  * person who hesitates.
  *
@@ -29,7 +29,7 @@ function newEventId(prefix: string): string {
 /**
  * Read UTMs from the URL, remembering them for the session.
  *
- * This is what lets us answer "which ad produced the retainer?" — the only number
+ * This is what lets us answer "which ad produced the retainer?", the only number
  * that decides whether the whole $97 experiment worked. Session storage matters
  * because people land from an ad, wander the page, sometimes reload, and the
  * campaign params must survive that.
@@ -74,7 +74,7 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
     })
   }, [open])
 
-  // Close on Escape — a trapped modal on a paid landing page is a refund request.
+  // Close on Escape, a trapped modal on a paid landing page is a refund request.
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
@@ -149,7 +149,7 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
           Where should we send your <span className="font-poppins-italic text-cyan-300">10 creatives</span>?
         </h2>
         <p className="mt-2 text-sm text-gray-400">
-          Next step is payment — $97 once, then a 2-minute form so we know what to build.
+          Next step is payment. $97 once, then a 2-minute form so we know what to build.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -187,7 +187,7 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
             disabled={!valid || submitting}
             className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 px-10 py-4 text-lg font-bold text-white shadow-lg transition-all duration-200 hover:from-blue-500 hover:to-cyan-400 hover:shadow-blue-500/50 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {submitting ? 'Taking you to checkout…' : 'Continue to payment — $97 →'}
+            {submitting ? 'Taking you to checkout…' : 'Continue to payment. $97 →'}
           </button>
         </form>
 

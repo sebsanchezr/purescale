@@ -7,7 +7,7 @@
  * unlawful and against Meta's own business tools terms. This uses Meta's consent
  * mode: the pixel still loads, but holds events until consent is granted.
  *
- * IMPORTANT — pair this with one line in the pixel snippet in app/layout.tsx, placed
+ * IMPORTANT, pair this with one line in the pixel snippet in app/layout.tsx, placed
  * immediately after fbq('init', ...) and BEFORE the first fbq('track','PageView'):
  *
  *     fbq('consent', 'revoke');
@@ -29,7 +29,7 @@ export function ConsentBanner() {
     try {
       stored = localStorage.getItem(STORAGE_KEY)
     } catch {
-      // Private browsing with storage disabled — treat as undecided, ask again.
+      // Private browsing with storage disabled, treat as undecided, ask again.
     }
 
     if (stored === 'granted') {

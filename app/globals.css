@@ -92,7 +92,7 @@ button {
   animation-play-state: paused;
 }
 
-/* Creative wall on /ads — fades both edges so the rows dissolve into the page
+/* Creative wall on /ads, fades both edges so the rows dissolve into the page
    instead of being visibly clipped by the viewport. */
 .creative-marquee {
   -webkit-mask-image: linear-gradient(
@@ -105,7 +105,7 @@ button {
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
-/* Respect the OS setting — a wall of moving images is exactly what this is for. */
+/* Respect the OS setting, a wall of moving images is exactly what this is for. */
 @media (prefers-reduced-motion: reduce) {
   .scroll-left,
   .scroll-right {

@@ -52,7 +52,7 @@ export function CalEmbed() {
         layout: "month_view"
       });
 
-      // Redirect to thank you page on booking confirmed — workaround for paid redirect feature
+      // Redirect to thank you page on booking confirmed, workaround for paid redirect feature
       Cal.ns["15min"]("on", {
         action: "bookingSuccessful",
         callback: function () {

@@ -3,17 +3,17 @@ export function EmailPainPoints() {
     {
       stat: '6 weeks',
       headline: 'How long most brands run the same creative before touching it',
-      body: 'The algorithm has already moved on. Your CPA has been climbing for weeks. You know something is off but the brief still isn\'t written, the UGC creator still hasn\'t delivered, and the agency is "working on it." This is creative starvation — and it\'s the single biggest reason scaling brands plateau.',
+      body: 'The algorithm has already moved on. Your CPA has been climbing for weeks. You know something is off but the brief still isn\'t written, the UGC creator still hasn\'t delivered, and the agency is "working on it." This is creative starvation, and it\'s the single biggest reason scaling brands plateau.',
     },
     {
       stat: '3-5',
       headline: 'Active creatives the average £100k/month brand is running',
-      body: 'High-performing brands at your revenue level are running 30-50. The gap isn\'t budget — it\'s production. Every creative you\'re not testing is a CPA reduction you\'re not capturing. You can\'t A/B test your way to scale when you only have 4 assets to test with.',
+      body: 'High-performing brands at your revenue level are running 30-50. The gap isn\'t budget, it\'s production. Every creative you\'re not testing is a CPA reduction you\'re not capturing. You can\'t A/B test your way to scale when you only have 4 assets to test with.',
     },
     {
       stat: '2 weeks',
-      headline: 'Average agency turnaround — by which point the insight is already outdated',
-      body: 'By the time the revisions land and the creative goes live, you\'ve already lost two weeks of testing data. The Meta auction doesn\'t wait. Brands winning at scale aren\'t briefing for next month — they\'re launching new creative every single week, iterating on live performance data in real time.',
+      headline: 'Average agency turnaround, by which point the insight is already outdated',
+      body: 'By the time the revisions land and the creative goes live, you\'ve already lost two weeks of testing data. The Meta auction doesn\'t wait. Brands winning at scale aren\'t briefing for next month, they\'re launching new creative every single week, iterating on live performance data in real time.',
     },
     {
       stat: '80%',

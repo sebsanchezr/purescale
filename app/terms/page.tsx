@@ -31,7 +31,7 @@ export default function TermsPage() {
       <p>
         After payment you complete an intake form giving us your store URL, your
         best-performing current ad and what you want featured. We cannot start without it.
-        Delivery is within one business day of that form being submitted — not of your
+        Delivery is within one business day of that form being submitted, not of your
         payment.
       </p>
       <p>
@@ -60,7 +60,7 @@ export default function TermsPage() {
       <LegalH2>5. Categories we will not build for</LegalH2>
       <p>
         We decline work for brands in categories that cannot be advertised safely or
-        lawfully on paid social — including adult content, weapons, illegal substances, and
+        lawfully on paid social, including adult content, weapons, illegal substances, and
         products making unsubstantiated health or financial claims. If we decline after you
         have paid, you receive a full refund.
       </p>

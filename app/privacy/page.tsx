@@ -17,24 +17,24 @@ export default function PrivacyPage() {
       <LegalH2>What we collect</LegalH2>
       <ul className="list-disc space-y-2 pl-5">
         <li>
-          <strong>Contact details</strong> — name, email address and phone number, given by
+          <strong>Contact details</strong>, name, email address and phone number, given by
           you at checkout, so we can deliver your order and support you.
         </li>
         <li>
-          <strong>Order and business details</strong> — your store URL, your current best
+          <strong>Order and business details</strong>, your store URL, your current best
           ad, what you sell and your approximate monthly ad spend, given on the intake form,
           so we can build creatives that fit your brand.
         </li>
         <li>
-          <strong>Payment details</strong> — handled entirely by Stripe. We never see or
+          <strong>Payment details</strong>, handled entirely by Stripe. We never see or
           store your card number.
         </li>
         <li>
-          <strong>Usage data</strong> — pages viewed and actions taken on this site, via
+          <strong>Usage data</strong>, pages viewed and actions taken on this site, via
           cookies and the Meta pixel, and only where you have consented.
         </li>
         <li>
-          <strong>Advertising account data (optional)</strong> — if you choose to share
+          <strong>Advertising account data (optional)</strong>, if you choose to share
           access to your ad account, the performance data we read from it.
         </li>
       </ul>
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
         same either way. Where you do share it:
       </p>
       <ul className="list-disc space-y-2 pl-5">
-        <li>We use it to read performance data only — never to spend, change or post.</li>
+        <li>We use it to read performance data only, never to spend, change or post.</li>
         <li>
           We use it to inform your creatives and to produce the audit we send back to you.
         </li>
@@ -95,7 +95,7 @@ export default function PrivacyPage() {
 
       <LegalH2>Cookies</LegalH2>
       <p>
-        We use essential cookies to make the site work, and — only if you accept them —
+        We use essential cookies to make the site work, and, only if you accept them , 
         Meta advertising cookies that let us measure which ads lead to purchases. You can
         change your choice at any time by clearing this site&rsquo;s cookies and reloading
         the page. Declining does not affect anything you buy from us.
