@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { ThankYouVSL } from '@/components/ThankYouVSL'
+import { LegalFooter } from '@/components/LegalFooter'
 
 export const metadata: Metadata = {
   title: 'You&apos;re booked in - PureScale',
@@ -226,6 +227,8 @@ export default function ThankYouPage() {
           </div>
         </div>
       </section>
+
+      <LegalFooter />
 
     </main>
   )

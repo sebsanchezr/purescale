@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Logo } from '@/components/Logo'
 import { OrderTracker } from '@/components/OrderTracker'
+import { LegalFooter } from '@/components/LegalFooter'
 
 export const metadata: Metadata = {
   title: 'Your order. PureScale',
@@ -62,6 +63,7 @@ export default async function OrderPage({ params }: { params: { id: string } }) 
           Questions? Reply to your receipt email and we&apos;ll jump on it.
         </p>
       </div>
+      <LegalFooter />
     </main>
   )
 }

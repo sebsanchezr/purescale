@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Logo } from '@/components/Logo'
 import { OrderConfirm } from '@/components/OrderConfirm'
+import { CreativeExamples } from '@/components/CreativeExamples'
+import { LegalFooter } from '@/components/LegalFooter'
+import { CEO_CALL_URL, CEO_CALLS_INCLUDED } from '@/lib/offer'
 
 export const metadata: Metadata = {
   title: 'Order confirmed. PureScale',
@@ -85,10 +88,41 @@ export default function AdsThankYouPage() {
           </div>
         </div>
 
+        {/* The calls are part of what they just paid for, so surface them here
+            rather than relying on an email. No duration stated: the length is
+            whatever the calendar says, and hard-coding it here guarantees the
+            two disagree the moment one changes. */}
+        <div className="mt-10 rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.06] p-6">
+          <p className="font-semibold text-white">
+            Your {CEO_CALLS_INCLUDED} calls with the CEO are included
+          </p>
+          <p className="mx-auto mt-2 max-w-lg text-sm text-gray-400">
+            Private and 1-to-1, on your actual account. Most people take the first while
+            their creatives are being built, and save the second for after they&apos;ve run
+            them.
+          </p>
+          <a
+            href={CEO_CALL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-white/15"
+          >
+            Book my first call →
+          </a>
+        </div>
+
         <p className="mt-10 text-sm text-gray-500">
           Questions? Reply to your receipt email and we&apos;ll jump on it.
         </p>
       </div>
+
+      {/* Same wall as the landing page: reassurance right after paying is worth
+          more than it was before paying. */}
+      <div className="mt-16">
+        <CreativeExamples />
+      </div>
+
+      <LegalFooter />
     </main>
   )
 }

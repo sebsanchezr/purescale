@@ -99,6 +99,23 @@ export async function POST(request: NextRequest) {
         if (error) console.error('Supabase insert error:', error)
         id = (data as { id?: string } | null)?.id
         createdAt = (data as { created_at?: string } | null)?.created_at
+
+        // Mirror into offer_orders, which is what the Mac fulfilment worker reads
+        // and what tracks the 24h SLA. ce_website_forms stays the record the admin
+        // screen and the buyer's tracker page read, so neither breaks.
+        // Failures here must never fail the order: the customer has already paid.
+        try {
+          await supabase.from('offer_orders').insert({
+            brand_name: storeUrl || email || 'Unknown brand',
+            contact_email: email || null,
+            store_url: storeUrl || null,
+            best_ad_url: bestAdUrl || null,
+            notes: notes || null,
+            status: 'pending',
+          })
+        } catch (e) {
+          console.error('offer_orders mirror failed:', e)
+        }
       } catch (e) {
         console.error('Supabase client error:', e)
       }

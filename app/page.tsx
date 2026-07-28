@@ -8,6 +8,7 @@ import { Testimonials } from '@/components/Testimonials'
 import { FAQ } from '@/components/FAQ'
 import { FinalCTA } from '@/components/FinalCTA'
 import { CalFloatingButton } from '@/components/CalFloatingButton'
+import { LegalFooter } from '@/components/LegalFooter'
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <FAQ />
       <FinalCTA />
       <CalFloatingButton />
+      <LegalFooter />
     </main>
   )
 }

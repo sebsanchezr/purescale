@@ -21,15 +21,27 @@ export function OrderConfirm() {
   const [showGuide, setShowGuide] = useState(false)
 
   // This page is only reached after a successful Stripe payment → fire Purchase.
+  //
+  // The eventID MUST be the Stripe checkout session id, because the Stripe webhook
+  // sends the same Purchase server-side using that id. Without it Meta counts one
+  // sale twice, and every CPA we optimise against would be half what it really is.
   useEffect(() => {
     try {
-      window.fbq?.('track', 'Purchase', {
-        value: PRICE_VALUE,
-        currency: 'USD',
-        content_name: '10 Ad Creatives in 24h',
-      })
+      const sessionId = new URLSearchParams(window.location.search).get('session_id')
+      window.fbq?.(
+        'track',
+        'Purchase',
+        { value: PRICE_VALUE, currency: 'USD', content_name: '10 Ad Creatives in 24h' },
+        sessionId ? { eventID: sessionId } : undefined
+      )
     } catch {}
   }, [])
+
+  // Tiny completion meter. The form is short, but after paying people want to know
+  // how much is left before they can close the tab.
+  const REQUIRED = ['storeUrl', 'bestAdUrl', 'email'] as const
+  const done = REQUIRED.filter((k) => String(form[k]).trim().length > 0).length
+  const pct = Math.round((done / REQUIRED.length) * 100)
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -64,6 +76,18 @@ export function OrderConfirm() {
         <p className="text-center text-gray-400">
           One quick step and the 24-hour clock starts. Drop the two links below.
         </p>
+
+        <div className="flex items-center gap-3">
+          <div className="h-1 flex-1 overflow-hidden rounded-full bg-white/10">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 transition-all duration-300"
+              style={{ width: `${pct}%` }}
+            />
+          </div>
+          <span className="shrink-0 font-mono text-[11px] text-gray-500">
+            {done}/{REQUIRED.length}
+          </span>
+        </div>
         <div>
           <label className="mb-1 block text-sm text-gray-300">Your store URL</label>
           <input

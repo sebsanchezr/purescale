@@ -13,6 +13,7 @@
  */
 
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 
 /** Read a first-party cookie (used for _fbp / _fbc match quality). */
@@ -115,7 +116,15 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
     return () => window.removeEventListener('keydown', onKey)
   }, [open, onClose])
 
-  if (!open) return null
+  // Rendered into <body> rather than in place. The navbar sets backdrop-blur,
+  // which makes it a containing block for fixed-position descendants, so the
+  // modal opened *inside the header strip* instead of over the page. A portal is
+  // the only reliable fix: any ancestor with a filter, transform or backdrop
+  // filter would trap it the same way.
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
+  if (!open || !mounted) return null
 
   const valid = email.includes('@') && phone.replace(/\D/g, '').length >= 7
 
@@ -162,9 +171,9 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
     setSubmitting(false)
   }
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4 py-8 overflow-y-auto"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4 py-8 overflow-y-auto"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -248,6 +257,7 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
           Secure payment via Stripe. One time. No subscription.
         </p>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

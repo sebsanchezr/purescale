@@ -12,6 +12,7 @@ import { EmailFinalCTA } from '@/components/EmailFinalCTA'
 import { CalEmbed } from '@/components/CalEmbed'
 import { CreativeExamples } from '@/components/CreativeExamples'
 import { WistiaPlayer } from '@/components/WistiaPlayer'
+import { LegalFooter } from '@/components/LegalFooter'
 
 export const metadata: Metadata = {
   title: 'Free Ad Creative Audit - PureScale',
@@ -62,6 +63,7 @@ export default function EmailPage() {
           <CalEmbed />
         </div>
       </section>
+      <LegalFooter />
     </main>
   )
 }

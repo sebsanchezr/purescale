@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Stripe from 'stripe'
 import { Logo } from '@/components/Logo'
 import { CEO_CALL_URL, CEO_CALLS_INCLUDED } from '@/lib/offer'
+import { LegalFooter } from '@/components/LegalFooter'
 
 export const metadata: Metadata = {
   title: "You're in, tell us what to build | PureScale",
@@ -146,6 +147,7 @@ export default async function AdsSuccessPage({
           ))}
         </div>
       </div>
+      <LegalFooter />
     </div>
   )
 }

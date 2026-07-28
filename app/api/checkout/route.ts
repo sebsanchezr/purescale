@@ -123,7 +123,11 @@ export async function POST(request: NextRequest) {
       billing_address_collection: 'required',
       // Lets business buyers enter a VAT number, which is what makes reverse charge work.
       tax_id_collection: { enabled: true },
-      success_url: `${origin}/ads/success?session_id={CHECKOUT_SESSION_ID}`,
+      // /ads/thankyou, not /ads/success. thankyou carries the working native
+      // intake form (store URL + best ad) that actually starts fulfilment.
+      // /ads/success only embeds a GHL form that was never built, so buyers
+      // landed on a page telling them to check an email nothing was sending.
+      success_url: `${origin}/ads/thankyou?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/ads?checkout=cancelled`,
       allow_promotion_codes: false,
     })
