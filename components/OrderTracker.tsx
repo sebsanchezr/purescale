@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { CEO_CALL_URL, COMMUNITY_URL } from '@/lib/offer'
+import { CEO_CALL_URL, CEO_CALLS_INCLUDED } from '@/lib/offer'
 
 // Stages auto-advance on a 24h timeline. "In production" is the long stage
 // (~12h, roughly 2x the others). Only "Delivered" is real — it flips when the
@@ -125,12 +125,12 @@ export function OrderTracker({
           <p className="mt-1 text-xs text-gray-400">15 min, while your creatives are built</p>
         </a>
         <a
-          href={COMMUNITY_URL}
+          href={CEO_CALL_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-center transition-all hover:border-cyan-400/30"
         >
-          <p className="font-semibold text-white">Join the community</p>
+          <p className="font-semibold text-white">Book your 1-to-1 calls</p>
           <p className="mt-1 text-xs text-gray-400">Weekly AI-creative calls + Q&amp;A</p>
         </a>
       </div>

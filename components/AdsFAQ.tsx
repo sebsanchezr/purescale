@@ -13,7 +13,7 @@ const FAQS = [
   },
   {
     q: 'What exactly do I get for $97?',
-    a: '10 ad creatives built for your brand using your products — a mix of UGC-style, statics, and scroll-stopping hooks, each engineered to test a different angle. Delivered in 24 hours, ready to upload. You also get into our weekly live AI-creative calls and private community, where we break down what\'s working right now, build ad strategies together, and you can ask us anything to make your own creatives better.',
+    a: '10 ad creatives built for your brand using your products — a mix of UGC-style, statics, and scroll-stopping hooks, each engineered to test a different angle. Delivered in 24 hours, ready to upload. You also get two private 1-to-1 AI creative calls with our CEO — we go through your actual account, your angles and what to test next. Not a group call, not a replay.',
   },
   {
     q: 'How fast is delivery?',

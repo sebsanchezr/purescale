@@ -3,11 +3,6 @@
 import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
-declare global {
-  interface Window {
-    fbq: (...args: any[]) => void
-  }
-}
 
 const PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID
 
