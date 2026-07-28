@@ -5,6 +5,7 @@ import { AdsVSL } from '@/components/AdsVSL'
 import { BuyButton } from '@/components/BuyButton'
 import { AdsFAQ } from '@/components/AdsFAQ'
 import { CreativeExamples } from '@/components/CreativeExamples'
+import { ScalingNow } from '@/components/ScalingNow'
 import { PurchasePixel } from '@/components/PurchasePixel'
 import { Testimonials } from '@/components/Testimonials'
 import { VALUE_STACK, TOTAL_VALUE, PRICE } from '@/lib/offer'
@@ -29,7 +30,7 @@ export default function AdsPage() {
       <Suspense fallback={null}>
         <PurchasePixel />
       </Suspense>
-      <Navbar ctaHref="#buy" ctaLabel="Get 10 Creatives. $97 →" />
+      <Navbar ctaBuy ctaLabel="Get 10 Creatives. $97" />
 
       {/* ── HERO, impulse zone ── */}
       <section className="relative overflow-hidden px-4 pb-16 pt-32">
@@ -183,6 +184,9 @@ export default function AdsPage() {
         </div>
       </section>
 
+      {/* ── MECHANISM ── earns the mid-page CTA instead of just placing one */}
+      <ScalingNow />
+
       {/* ── PROOF ── */}
       <section className="relative overflow-hidden border-t border-white/10 px-4 py-20">
         <Orbs />
@@ -280,7 +284,7 @@ export default function AdsPage() {
       </section>
 
       <footer className="border-t border-white/10 px-4 py-10 text-center text-sm text-gray-600">
-        © {new Date().getFullYear()} PureScale. We work with DTC brands actively spending on paid ads.
+        © {new Date().getFullYear()} PureScale. We build creative for anyone buying paid traffic: ecommerce, local service businesses, SaaS and info. If you run ads, we can make yours.
       </footer>
     </main>
   )

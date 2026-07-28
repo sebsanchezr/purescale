@@ -19,14 +19,20 @@ import { useState } from 'react'
 import { CheckoutModal } from './CheckoutModal'
 import { PRICE_VALUE } from '@/lib/offer'
 
+const DEFAULT_BUTTON =
+  'group relative inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-9 py-4 text-lg font-bold text-white shadow-lg shadow-cyan-500/20 transition-all hover:scale-[1.03] hover:shadow-cyan-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300'
+
 export function BuyButton({
   label = 'Get My 10 Creatives. $97',
   className = '',
   sub,
+  /** Override the button styling, e.g. the smaller square nav variant. */
+  buttonClassName,
 }: {
   label?: string
   className?: string
   sub?: string
+  buttonClassName?: string
 }) {
   const [open, setOpen] = useState(false)
 
@@ -45,12 +51,11 @@ export function BuyButton({
 
   return (
     <div className={`flex flex-col items-center ${className}`}>
-      <button
-        onClick={start}
-        className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-9 py-4 text-lg font-bold text-white shadow-lg shadow-cyan-500/20 transition-all hover:scale-[1.03] hover:shadow-cyan-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-      >
+      <button onClick={start} className={buttonClassName ?? DEFAULT_BUTTON}>
         {label}
-        <span className="transition-transform group-hover:translate-x-1">→</span>
+        {!buttonClassName && (
+          <span className="transition-transform group-hover:translate-x-1">→</span>
+        )}
       </button>
       {sub && <p className="mt-3 text-sm text-gray-400">{sub}</p>}
       <CheckoutModal open={open} onClose={() => setOpen(false)} />

@@ -29,7 +29,7 @@ const FAQS = [
   },
   {
     q: 'Who is this for?',
-    a: 'DTC and ecom brands actively spending on paid ads whose cost per acquisition is creeping up because their creative has gone stale. If you\'re testing the same 3–4 ads for weeks, this is built for you.',
+    a: 'Anyone actively spending on paid ads whose cost per acquisition is creeping up because the creative has gone stale. Most of our work is ecommerce, but the same engine builds for local service businesses, SaaS and info offers. If you\'re running the same 3 or 4 ads week after week, this is built for you.',
   },
   {
     q: 'What is the free ad account audit?',
