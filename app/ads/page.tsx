@@ -4,6 +4,7 @@ import { Navbar } from '@/components/Navbar'
 import { AdsVSL } from '@/components/AdsVSL'
 import { BuyButton } from '@/components/BuyButton'
 import { AdsFAQ } from '@/components/AdsFAQ'
+import { CreativeExamples } from '@/components/CreativeExamples'
 import { PurchasePixel } from '@/components/PurchasePixel'
 import { Testimonials } from '@/components/Testimonials'
 import { VALUE_STACK, TOTAL_VALUE, PRICE } from '@/lib/offer'
@@ -152,6 +153,9 @@ export default function AdsPage() {
           </div>
         </div>
       </section>
+
+      {/* ── PROOF WALL ── answers the "fatigued creative" claim visually */}
+      <CreativeExamples />
 
       {/* ── HOW IT WORKS ── */}
       <section className="relative border-t border-white/10 px-4 py-20">
