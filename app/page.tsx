@@ -25,8 +25,8 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="bg-stone-950">
-      <Navbar ctaHref="#book" />
+    <main className="bg-stone-900">
+      <Navbar ctaHref="#book" ctaLabel="Book Your Free Audit Call →" />
 
       {/* Top: Identify the pain, make the offer */}
       <EmailHero />
@@ -34,7 +34,7 @@ export default function Home() {
       <AugustMarketingTrust />
 
       {/* VSL */}
-      <section className="px-4 pb-8 bg-stone-950">
+      <section className="px-4 pb-8 bg-stone-900">
         <div className="max-w-3xl mx-auto">
           <WistiaPlayer mediaId="cotigqzwyv" />
         </div>
@@ -57,7 +57,7 @@ export default function Home() {
       <EmailFinalCTA />
 
       {/* Cal embed */}
-      <section id="book" className="py-20 px-4 bg-stone-950 border-t border-white/10">
+      <section id="book" className="py-20 px-4 bg-stone-900 border-t border-white/10">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-4xl font-bold text-white mb-3">

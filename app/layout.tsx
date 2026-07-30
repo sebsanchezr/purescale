@@ -38,7 +38,7 @@ export default function RootLayout({
           }
         `}</style>
       </head>
-      <body className="bg-stone-950 text-white antialiased overflow-x-hidden">
+      <body className="bg-stone-900 text-white antialiased overflow-x-hidden">
         <FacebookPixel />
         {children}
         <Analytics />

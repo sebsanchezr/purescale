@@ -1,6 +1,6 @@
 export function EmailFinalCTA() {
   return (
-    <section className="py-24 px-4 sm:px-6 bg-gradient-to-b from-stone-950 via-blue-950/30 to-stone-950 relative overflow-hidden">
+    <section className="py-24 px-4 sm:px-6 bg-gradient-to-b from-stone-900 via-blue-950/30 to-stone-900 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl transform -translate-y-1/2"></div>
         <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-cyan-600/15 rounded-full blur-3xl transform -translate-y-1/2"></div>
@@ -23,7 +23,7 @@ export function EmailFinalCTA() {
           href="#book"
           className="inline-block px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-2xl shadow-blue-500/50 hover:shadow-blue-400/70 mb-6"
         >
-          Book the free audit →
+          Book Your Free Audit Call →
         </a>
 
         <p className="text-gray-500 text-sm">

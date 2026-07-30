@@ -1,6 +1,6 @@
 export function EmailHero() {
   return (
-    <section className="pt-40 pb-20 px-4 sm:px-6 bg-gradient-to-b from-stone-950 via-blue-950/30 to-stone-950 relative overflow-hidden">
+    <section className="pt-40 pb-20 px-4 sm:px-6 bg-gradient-to-b from-stone-900 via-blue-950/30 to-stone-900 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl"></div>
@@ -35,7 +35,7 @@ export function EmailHero() {
           href="#book"
           className="inline-block px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-2xl shadow-blue-500/50 hover:shadow-blue-400/70 mb-4"
         >
-          Get your free sample creative →
+          Book Your Free Audit Call →
         </a>
 
         <p className="text-gray-500 text-sm">24-hour turnaround. Zero strings.</p>

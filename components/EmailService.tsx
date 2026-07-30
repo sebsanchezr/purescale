@@ -23,7 +23,7 @@ export function EmailService() {
   ]
 
   return (
-    <section className="py-24 px-4 sm:px-6 bg-stone-950 relative overflow-hidden">
+    <section className="py-24 px-4 sm:px-6 bg-stone-900 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 -right-64 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
         <div className="absolute top-0 -left-64 w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl"></div>
@@ -73,7 +73,7 @@ export function EmailService() {
             href="#book"
             className="inline-block px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-xl shadow-blue-500/50"
           >
-            Start with the free audit →
+            Book Your Free Audit Call →
           </a>
         </div>
       </div>
