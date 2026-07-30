@@ -16,7 +16,7 @@
 export function WistiaPlayer({ mediaId }: { mediaId: string; aspect?: string }) {
   return (
     <div className="relative mx-auto w-full max-w-3xl">
-      <div className="overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl shadow-cyan-500/10">
+      <div className="overflow-hidden rounded-2xl border border-white/10 bg-stone-950 shadow-2xl shadow-cyan-500/10">
         {/* padding-top 56.25% reserves the 16:9 box so the page never jumps. */}
         <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
           <iframe

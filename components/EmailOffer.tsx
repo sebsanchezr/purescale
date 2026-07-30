@@ -1,6 +1,6 @@
 export function EmailOffer() {
   return (
-    <section className="py-24 px-4 sm:px-6 bg-gradient-to-b from-black to-blue-950/20 relative overflow-hidden">
+    <section className="py-24 px-4 sm:px-6 bg-gradient-to-b from-stone-950 to-blue-950/20 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-1/4 w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl"></div>
       </div>

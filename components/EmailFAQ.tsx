@@ -32,7 +32,7 @@ export function EmailFAQ() {
   ]
 
   return (
-    <section className="py-24 px-4 sm:px-6 bg-black relative overflow-hidden">
+    <section className="py-24 px-4 sm:px-6 bg-stone-950 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
       </div>

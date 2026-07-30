@@ -26,7 +26,7 @@ const Orbs = () => (
 
 export default function AdsPage() {
   return (
-    <main className="bg-black">
+    <main className="bg-stone-950">
       <Suspense fallback={null}>
         <PurchasePixel />
       </Suspense>

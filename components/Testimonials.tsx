@@ -37,7 +37,7 @@ function VideoCard({ videoId }: { videoId: string }) {
             decoding="async"
           />
           {/* Dark overlay */}
-          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-200" />
+          <div className="absolute inset-0 bg-stone-950/40 group-hover:bg-stone-950/20 transition-all duration-200" />
           {/* Play button */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center group-hover:scale-110 transition-transform duration-200 shadow-xl">
@@ -95,7 +95,7 @@ export function Testimonials() {
   const scrollVideos = [...VIDEO_IDS, ...VIDEO_IDS]
 
   return (
-    <section className="py-24 px-4 sm:px-6 bg-black relative overflow-hidden">
+    <section className="py-24 px-4 sm:px-6 bg-stone-950 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/3 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl"></div>

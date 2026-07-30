@@ -1,6 +1,6 @@
 export function EmailFinalCTA() {
   return (
-    <section className="py-24 px-4 sm:px-6 bg-gradient-to-b from-black via-blue-950/30 to-black relative overflow-hidden">
+    <section className="py-24 px-4 sm:px-6 bg-gradient-to-b from-stone-950 via-blue-950/30 to-stone-950 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl transform -translate-y-1/2"></div>
         <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-cyan-600/15 rounded-full blur-3xl transform -translate-y-1/2"></div>

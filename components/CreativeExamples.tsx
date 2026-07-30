@@ -127,7 +127,7 @@ export function CreativeExamples() {
           the gradient so the marquee still pauses on hover behind it. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-0 hidden w-[52%] bg-gradient-to-r from-black from-45% via-black/85 to-transparent backdrop-blur-[2px] lg:block"
+        className="pointer-events-none absolute inset-y-0 left-0 hidden w-[52%] bg-gradient-to-r from-stone-950 from-45% via-stone-950/85 to-transparent backdrop-blur-[2px] lg:block"
       />
       <div className="absolute inset-y-0 left-0 hidden w-[46%] flex-col justify-center px-10 xl:px-16 lg:flex">
         <Heading />

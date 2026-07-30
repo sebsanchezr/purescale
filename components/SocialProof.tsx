@@ -33,7 +33,7 @@ export function SocialProof() {
   ]
 
   return (
-    <section className="py-24 px-4 sm:px-6 bg-gradient-to-b from-black via-blue-950/10 to-black relative overflow-hidden">
+    <section className="py-24 px-4 sm:px-6 bg-gradient-to-b from-stone-950 via-blue-950/10 to-stone-950 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/3 -right-64 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/3 -left-64 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
@@ -57,7 +57,7 @@ export function SocialProof() {
           </div>
           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden hover:border-blue-400/50 hover:bg-blue-950/30 transition-all duration-300">
             <Image src="/analytics.png" alt="PureScale analytics dashboard showing growth" width={1200} height={600} className="w-full h-auto" quality={75} />
-            <div className="p-6 bg-black/40 backdrop-blur-sm">
+            <div className="p-6 bg-stone-950/40 backdrop-blur-sm">
               <p className="text-gray-300 text-sm">Live analytics from our own ad accounts. $26.7M gross sales, 15.4M sessions, 1.44% conversion rate - Jan 1 - Dec 31, 2024.</p>
             </div>
           </div>
@@ -85,7 +85,7 @@ export function SocialProof() {
                   quality={75}
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-stone-950/80"></div>
               </div>
 
               {/* Content */}

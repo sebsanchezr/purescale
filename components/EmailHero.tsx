@@ -1,6 +1,6 @@
 export function EmailHero() {
   return (
-    <section className="pt-40 pb-20 px-4 sm:px-6 bg-gradient-to-b from-black via-blue-950/30 to-black relative overflow-hidden">
+    <section className="pt-40 pb-20 px-4 sm:px-6 bg-gradient-to-b from-stone-950 via-blue-950/30 to-stone-950 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl"></div>
