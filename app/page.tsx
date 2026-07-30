@@ -12,6 +12,7 @@ import { EmailFinalCTA } from '@/components/EmailFinalCTA'
 import { CalEmbed } from '@/components/CalEmbed'
 import { CreativeExamples } from '@/components/CreativeExamples'
 import { WistiaPlayer } from '@/components/WistiaPlayer'
+import { AugustMarketingTrust } from '@/components/AugustMarketingTrust'
 import { LegalFooter } from '@/components/LegalFooter'
 
 // Promoted to the homepage 30 Jul 2026 (was /email). Old homepage archived at
@@ -29,6 +30,8 @@ export default function Home() {
 
       {/* Top: Identify the pain, make the offer */}
       <EmailHero />
+
+      <AugustMarketingTrust />
 
       {/* VSL */}
       <section className="px-4 pb-8 bg-black">
