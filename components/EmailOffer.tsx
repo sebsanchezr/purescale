@@ -72,9 +72,15 @@ export function EmailOffer() {
 
         {/* $97 downsell */}
         <div className="mt-8 max-w-2xl mx-auto text-center bg-white/5 border border-white/10 rounded-xl p-6">
-          <p className="text-gray-300 text-sm">
+          <p className="text-gray-300 text-sm mb-4">
             Not ready for a call? <span className="text-white font-semibold">Get 10 ad creatives in 24 hours for $97</span> and put them straight to work, no strings, keep everything.
           </p>
+          <a
+            href="/ads"
+            className="inline-block px-8 py-3 bg-gradient-to-r from-emerald-600 to-green-500 text-white rounded-lg hover:from-emerald-500 hover:to-green-400 font-bold text-sm transition-all duration-200 shadow-xl shadow-emerald-500/30"
+          >
+            Get My 10 Creatives. $97 →
+          </a>
         </div>
       </div>
     </section>
