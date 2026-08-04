@@ -14,6 +14,14 @@ export const PRICE_VALUE = 97
 
 export const SITE_URL = 'https://purescale.vercel.app'
 
+// ── Checkout destination ────────────────────────────────────────────
+// The order form is moving from the in-page Stripe modal to a GHL funnel.
+// Set NEXT_PUBLIC_GHL_CHECKOUT_URL once that funnel is published and every
+// BuyButton switches to it automatically, no further code change needed.
+// Leave unset and the existing CheckoutModal (name + email -> Stripe) keeps
+// running exactly as it does today.
+export const GHL_CHECKOUT_URL = process.env.NEXT_PUBLIC_GHL_CHECKOUT_URL || ''
+
 // Post-purchase links
 export const CEO_CALL_URL = 'https://cal.com/august-marketing-ceo/purescale-creative-strategy-call'
 
@@ -26,6 +34,8 @@ export const CEO_CALL_URL = 'https://cal.com/august-marketing-ceo/purescale-crea
 export const CEO_CALLS_INCLUDED = 2
 
 // Value stack, anchors the $97 against real production value.
+// The audit lives in Pro only, one product should not double as both a $97
+// freebie and a $297 headline feature, that undersells the upgrade.
 export const VALUE_STACK = [
   { item: '10 custom ad creatives (UGC, static & hook angles)', value: '$1,500' },
   { item: 'Built on your brand, your products, never templates', value: '$300' },
@@ -38,19 +48,43 @@ export const VALUE_STACK = [
     value: '$1,200',
     bonus: true,
   },
-  {
-    item:
-      'Free ad account audit, a full teardown of your Meta account with prioritised fixes, delivered in 24h (optional, Analyst access only, no tokens, no passwords)',
-    value: '$500',
-    bonus: true,
-  },
 ] as const
 
-export const TOTAL_VALUE = '$4,100'
+export const TOTAL_VALUE = '$3,600'
 
-// ── Free ad account audit (optional bonus) ────────────────────────────
-// Customer can grant READ-ONLY Meta access after purchase so we build a
-// PDF audit + suggestions doc within 24h. Access is optional, the offer
-// stands with or without it. Tokens are encrypted at rest (AUDIT_ENC_KEY)
-// and never shown in the order list, Discord, or logs.
+// ── Pro tier ────────────────────────────────────────────────────────
+export const PRO_PRICE = '$297'
+export const PRO_PRICE_VALUE = 297
+
+export const PRO_VALUE_STACK = [
+  { item: '10 custom ad creatives, statics AND video' },
+  { item: 'Rendered native for Meta, TikTok and Google, not one size stretched to fit' },
+  { item: 'A hook variant pack, 3 alternate hooks on your 3 strongest creatives' },
+  { item: 'A written testing plan: campaign structure, budget split, what to kill and when' },
+  {
+    item:
+      '2 private 1-to-1 AI creative calls with our CEO, your account, your angles, live. Not a group call, not a replay.',
+  },
+  {
+    item:
+      'A live ad account audit over Google Meet, where your spend is leaking and what to fix first, alongside a recording you keep',
+    bonus: true,
+  },
+  { item: 'A Loom walkthrough of the batch, why each angle was built, what to test first', bonus: true },
+] as const
+
+export const PRO_TOTAL_VALUE = '$5,400'
+
+// ── Order bump ──────────────────────────────────────────────────────
+export const BUMP_PRICE = '$77'
+export const BUMP_PRICE_VALUE = 77
+export const BUMP_LABEL = '12-hour rush delivery'
+export const BUMP_COPY =
+  'Jump the queue. Your batch lands in 12 hours instead of 24.'
+
+// ── Free ad account audit (Pro only) ───────────────────────────────────
+// Customer adds PureScale as a Partner on their Meta Business Manager with
+// Analyst (read-only) access, no tokens, no passwords, nothing pasted into
+// a form. Analyst can view but never spend, edit, pause or post. Revocable
+// by them in one click once the audit is delivered.
 export const AUDIT_VALUE = '$500'

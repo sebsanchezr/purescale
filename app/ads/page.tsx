@@ -9,7 +9,17 @@ import { ScalingNow } from '@/components/ScalingNow'
 import { PurchasePixel } from '@/components/PurchasePixel'
 import { Testimonials } from '@/components/Testimonials'
 import { AugustMarketingTrust } from '@/components/AugustMarketingTrust'
-import { VALUE_STACK, TOTAL_VALUE, PRICE } from '@/lib/offer'
+import {
+  VALUE_STACK,
+  TOTAL_VALUE,
+  PRICE,
+  PRO_VALUE_STACK,
+  PRO_TOTAL_VALUE,
+  PRO_PRICE,
+  BUMP_LABEL,
+  BUMP_PRICE,
+  BUMP_COPY,
+} from '@/lib/offer'
 
 export const metadata: Metadata = {
   title: '10 Ad Creatives in 24 Hours for $97 - PureScale',
@@ -80,49 +90,86 @@ export default function AdsPage() {
         </div>
       </section>
 
-      {/* ── VALUE STACK ── */}
+      {/* ── TIER COMPARISON ── */}
       <section id="buy" className="relative border-t border-white/10 px-4 py-20">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-5xl">
           <h2 className="text-center text-3xl font-bold text-white sm:text-4xl">
-            Here&apos;s exactly what your <span className="font-poppins-italic text-cyan-300">$97</span> gets you
+            Pick your batch
           </h2>
-          <div className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-            {VALUE_STACK.map((row, i) => {
-              const isBonus = 'bonus' in row && row.bonus
-              return (
-                <div
-                  key={i}
-                  className={`flex items-center justify-between gap-4 border-b border-white/10 px-6 py-5 last:border-b-0 ${isBonus ? 'bg-cyan-400/[0.07]' : ''}`}
-                >
-                  <div className="flex items-start gap-3">
-                    <span className="mt-0.5 text-cyan-300">{isBonus ? '★' : '✓'}</span>
-                    <span className="text-gray-200">
-                      {isBonus && (
-                        <span className="mr-2 rounded bg-cyan-400/15 px-2 py-0.5 align-middle text-[10px] font-bold uppercase tracking-wider text-cyan-300">
-                          Included
-                        </span>
-                      )}
-                      {row.item}
-                    </span>
+          <p className="mx-auto mt-3 max-w-xl text-center text-gray-400">
+            Both ship in 24 hours. Both include two private calls with our CEO. Pro adds video,
+            native platform cuts, and a live audit of your ad account.
+          </p>
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            {/* ── STARTER ── */}
+            <div className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-8">
+              <p className="text-sm font-semibold uppercase tracking-wider text-gray-400">Starter</p>
+              <p className="font-poppins-italic mt-1 text-4xl font-extrabold text-white">{PRICE}</p>
+              <p className="mt-1 text-sm text-gray-500">10 creatives, statics only</p>
+
+              <div className="mt-6 flex-1 space-y-3">
+                {VALUE_STACK.map((row, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="mt-0.5 text-cyan-300">✓</span>
+                    <span className="text-sm text-gray-300">{row.item}</span>
                   </div>
-                  <span className="shrink-0 text-sm text-gray-500 line-through">{row.value}</span>
-                </div>
-              )
-            })}
-            <div className="flex items-center justify-between gap-4 bg-white/5 px-6 py-5">
-              <span className="font-semibold text-white">Total value</span>
-              <span className="text-lg font-bold text-gray-400 line-through">{TOTAL_VALUE}</span>
+                ))}
+              </div>
+              <p className="mt-6 text-xs text-gray-500 line-through">Total value {TOTAL_VALUE}</p>
+
+              <div className="mt-6">
+                <BuyButton
+                  tier="starter"
+                  label="Get Starter. $97"
+                  buttonClassName="w-full justify-center rounded-full border border-white/20 bg-white/5 px-9 py-4 text-lg font-bold text-white transition-all hover:bg-white/10"
+                />
+              </div>
+            </div>
+
+            {/* ── PRO ── */}
+            <div className="relative flex flex-col rounded-2xl border border-cyan-400/40 bg-cyan-400/5 p-8">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-1 text-xs font-bold uppercase tracking-wider text-white">
+                Most brands pick this
+              </span>
+              <p className="text-sm font-semibold uppercase tracking-wider text-cyan-300">Pro</p>
+              <p className="font-poppins-italic mt-1 text-4xl font-extrabold text-white">{PRO_PRICE}</p>
+              <p className="mt-1 text-sm text-gray-400">10 creatives, statics + video, native cuts</p>
+
+              <div className="mt-6 flex-1 space-y-3">
+                {PRO_VALUE_STACK.map((row, i) => {
+                  const isBonus = 'bonus' in row && row.bonus
+                  return (
+                    <div key={i} className="flex items-start gap-3">
+                      <span className="mt-0.5 text-cyan-300">{isBonus ? '★' : '✓'}</span>
+                      <span className="text-sm text-gray-200">
+                        {isBonus && (
+                          <span className="mr-2 rounded bg-cyan-400/15 px-2 py-0.5 align-middle text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+                            Included
+                          </span>
+                        )}
+                        {row.item}
+                      </span>
+                    </div>
+                  )
+                })}
+              </div>
+              <p className="mt-6 text-xs text-gray-500 line-through">Total value {PRO_TOTAL_VALUE}</p>
+
+              <div className="mt-6">
+                <BuyButton
+                  tier="pro"
+                  label="Get Pro. $297"
+                  sub="One time. No subscription. Keep everything."
+                />
+              </div>
             </div>
           </div>
-          <div className="mt-8 text-center">
-            <p className="text-gray-400">Today, all of it for</p>
-            <p className="font-poppins-italic bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-5xl font-extrabold text-transparent">
-              {PRICE}
-            </p>
-            <div className="mt-6">
-              <BuyButton sub="One time. No subscription. Keep everything." />
-            </div>
-          </div>
+
+          <p className="mx-auto mt-8 max-w-md text-center text-sm text-gray-500">
+            At checkout: add <strong className="text-white">{BUMP_LABEL}</strong> for {BUMP_PRICE}.{' '}
+            {BUMP_COPY}
+          </p>
         </div>
       </section>
 
