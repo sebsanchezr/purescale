@@ -8,6 +8,7 @@ import { CreativeExamples } from '@/components/CreativeExamples'
 import { ScalingNow } from '@/components/ScalingNow'
 import { PurchasePixel } from '@/components/PurchasePixel'
 import { Testimonials } from '@/components/Testimonials'
+import { AugustMarketingTrust } from '@/components/AugustMarketingTrust'
 import { VALUE_STACK, TOTAL_VALUE, PRICE } from '@/lib/offer'
 
 export const metadata: Metadata = {
@@ -52,6 +53,10 @@ export default function AdsPage() {
           </p>
 
           <div className="mt-10">
+            <AugustMarketingTrust />
+          </div>
+
+          <div className="mt-6">
             <AdsVSL />
           </div>
 
