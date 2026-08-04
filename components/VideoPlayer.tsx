@@ -43,12 +43,17 @@ export function VideoPlayer({
           className="block w-full"
           src={src}
           poster={poster}
+          width={1280}
+          height={720}
           autoPlay
           muted
           loop={!unmuted}
           playsInline
           controls={unmuted}
-          preload="auto"
+          // "metadata", not "auto": "auto" pulled the whole file down on load,
+          // competing with the page render on mobile. The poster carries the
+          // first paint and the file streams from there.
+          preload="metadata"
         />
         {!unmuted && (
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/20 opacity-70 transition-opacity duration-200 group-hover:opacity-100">
