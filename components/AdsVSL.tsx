@@ -1,6 +1,6 @@
-import { WistiaPlayer } from './WistiaPlayer'
+import { VideoPlayer } from './VideoPlayer'
 
-// Paid $97 VSL. Wistia media slow79xiax
+// Paid $97 VSL — self-hosted, public/vsl-97.mp4
 export function AdsVSL() {
-  return <WistiaPlayer mediaId="slow79xiax" />
+  return <VideoPlayer src="/vsl-97.mp4" poster="/vsl-97-poster.jpg" />
 }
