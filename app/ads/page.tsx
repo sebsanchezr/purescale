@@ -38,7 +38,7 @@ export default function AdsPage() {
         <Orbs />
         <div className="relative mx-auto max-w-4xl text-center">
           <span className="inline-block rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-300">
-            For DTC brands running paid ads
+            For businesses spending over $20k a month on paid ads
           </span>
           <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-extrabold leading-tight text-white sm:text-5xl md:text-6xl">
             10 scroll-stopping ad creatives.{' '}
