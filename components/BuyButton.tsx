@@ -17,7 +17,7 @@
 
 import { useState } from 'react'
 import { CheckoutModal } from './CheckoutModal'
-import { PRICE_VALUE } from '@/lib/offer'
+
 
 const DEFAULT_BUTTON =
   'group relative inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-9 py-4 text-lg font-bold text-white shadow-lg shadow-cyan-500/20 transition-all hover:scale-[1.03] hover:shadow-cyan-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300'
@@ -36,18 +36,9 @@ export function BuyButton({
 }) {
   const [open, setOpen] = useState(false)
 
-  const start = () => {
-    // InitiateCheckout fires on intent, before the modal renders, so it counts
-    // the same moment the old Payment Link version counted.
-    try {
-      window.fbq?.('track', 'InitiateCheckout', {
-        value: PRICE_VALUE,
-        currency: 'USD',
-        content_name: '10 Ad Creatives in 24h',
-      })
-    } catch {}
-    setOpen(true)
-  }
+  // No pixel event here. CheckoutModal fires InitiateCheckout when it opens, and
+  // firing a second copy from this click handler double-counted every one.
+  const start = () => setOpen(true)
 
   return (
     <div className={`flex flex-col items-center ${className}`}>

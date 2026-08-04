@@ -59,46 +59,15 @@ function getAttribution(): Record<string, string> {
   }
 }
 
-/**
- * Dial codes, with our two target markets pinned to the top.
- *
- * The number is stored with its country code so it reaches GHL in international
- * format. Without it a bare "07…" or "555…" is ambiguous, SMS silently fails to
- * route, and we cannot tell a UK lead from a US one at a glance.
- */
-const DIAL_CODES = [
-  { c: 'US', d: '+1', flag: '🇺🇸' },
-  { c: 'GB', d: '+44', flag: '🇬🇧' },
-  { c: 'CA', d: '+1', flag: '🇨🇦' },
-  { c: 'AU', d: '+61', flag: '🇦🇺' },
-  { c: 'IE', d: '+353', flag: '🇮🇪' },
-  { c: 'NZ', d: '+64', flag: '🇳🇿' },
-  { c: 'AE', d: '+971', flag: '🇦🇪' },
-  { c: 'SA', d: '+966', flag: '🇸🇦' },
-  { c: 'DE', d: '+49', flag: '🇩🇪' },
-  { c: 'FR', d: '+33', flag: '🇫🇷' },
-  { c: 'NL', d: '+31', flag: '🇳🇱' },
-  { c: 'ES', d: '+34', flag: '🇪🇸' },
-  { c: 'IT', d: '+39', flag: '🇮🇹' },
-  { c: 'SE', d: '+46', flag: '🇸🇪' },
-  { c: 'DK', d: '+45', flag: '🇩🇰' },
-  { c: 'NO', d: '+47', flag: '🇳🇴' },
-  { c: 'CH', d: '+41', flag: '🇨🇭' },
-  { c: 'PT', d: '+351', flag: '🇵🇹' },
-  { c: 'PL', d: '+48', flag: '🇵🇱' },
-  { c: 'ZA', d: '+27', flag: '🇿🇦' },
-  { c: 'SG', d: '+65', flag: '🇸🇬' },
-  { c: 'IN', d: '+91', flag: '🇮🇳' },
-]
-
 export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
-  const [dialIndex, setDialIndex] = useState(0)
-  const [phone, setPhone] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+  // InitiateCheckout fires here and ONLY here. BuyButton used to fire its own
+  // copy on click, which meant Meta counted two InitiateCheckouts for a single
+  // action and every downstream cost-per-IC read half what it really was.
   useEffect(() => {
     if (!open) return
     window.fbq?.('track', 'InitiateCheckout', {
@@ -126,10 +95,7 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
 
   if (!open || !mounted) return null
 
-  const valid = email.includes('@') && phone.replace(/\D/g, '').length >= 7
-
-  // Strip a leading trunk zero: a UK mobile typed as 07700… is +447700…, not +44 07700…
-  const fullPhone = `${DIAL_CODES[dialIndex].d}${phone.replace(/\D/g, '').replace(/^0+/, '')}`
+  const valid = email.includes('@')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -148,8 +114,6 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
         body: JSON.stringify({
           firstName,
           email,
-          phone: fullPhone,
-          country: DIAL_CODES[dialIndex].c,
           eventId,
           fbp: getCookie('_fbp'),
           fbc: getCookie('_fbc'),
@@ -216,32 +180,6 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
             autoComplete="email"
             className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-gray-500 transition-all focus:border-cyan-400 focus:bg-white/15 focus:outline-none"
           />
-          <div className="flex gap-2">
-            <select
-              value={dialIndex}
-              onChange={(e) => setDialIndex(Number(e.target.value))}
-              aria-label="Country dialling code"
-              className="shrink-0 rounded-lg border border-white/20 bg-white/10 px-3 py-3 text-white transition-all focus:border-cyan-400 focus:bg-white/15 focus:outline-none"
-            >
-              {DIAL_CODES.map((c, i) => (
-                // Dark option background: on Windows the browser default is white
-                // text on white, which makes the list unreadable.
-                <option key={`${c.c}-${c.d}`} value={i} className="bg-[#0b0b0d] text-white">
-                  {c.flag} {c.c} {c.d}
-                </option>
-              ))}
-            </select>
-            <input
-              type="tel"
-              required
-              placeholder="Phone number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              autoComplete="tel"
-              className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-gray-500 transition-all focus:border-cyan-400 focus:bg-white/15 focus:outline-none"
-            />
-          </div>
-
           {error && <p className="text-sm text-red-400">{error}</p>}
 
           <button

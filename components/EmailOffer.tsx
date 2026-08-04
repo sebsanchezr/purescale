@@ -20,7 +20,7 @@ export function EmailOffer() {
             {
               step: '01',
               title: 'We audit your ad account',
-              body: 'On the call we go through your current creative, identify exactly where fatigue is costing you CPA, and map out what a proper testing architecture looks like for your brand. Prefer it in writing? Grant read-only access and we send a full PDF audit within 24 hours, no call needed.',
+              body: 'On the call we go through your current creative, identify exactly where fatigue is costing you CPA, and map out what a proper testing architecture looks like for your brand. Prefer it in writing? Add us as an Analyst on your ad account and we send a full audit within 24 hours, no call needed.',
             },
             {
               step: '02',

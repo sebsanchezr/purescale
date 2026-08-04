@@ -40,7 +40,7 @@ export const VALUE_STACK = [
   },
   {
     item:
-      'Free ad account audit, a PDF teardown of your Meta account with prioritised fixes, delivered in 24h (optional, read-only access)',
+      'Free ad account audit, a full teardown of your Meta account with prioritised fixes, delivered in 24h (optional, Analyst access only, no tokens, no passwords)',
     value: '$500',
     bonus: true,
   },

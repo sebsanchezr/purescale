@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: 'What is the free ad account audit?',
-    a: "It's an optional bonus included with your $97. If you grant us read-only access to your Meta ad account, we send back a PDF teardown, where your spend is leaking, which creatives are fatigued, what to fix first, inside the same 24 hours as your creatives. Read-only means we can only look: we can never spend, edit, pause, or post anything. It's genuinely optional; skip it and you still get all 10 creatives. After we deliver, you revoke access in one click.",
+    a: "It's an optional bonus. You add us as a partner on your Meta ad account with Analyst access, the standard read-only role, and we send back a teardown: where your spend is leaking, which creatives are fatigued, what to fix first. No tokens, no passwords, no logins, and it takes about a minute in Business Settings. Analyst means we can only look, never spend, edit, pause or post. It's genuinely optional; skip it and you still get all 10 creatives. You revoke access in one click once we deliver.",
   },
   {
     q: 'What happens after?',

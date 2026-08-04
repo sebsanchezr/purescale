@@ -25,9 +25,12 @@ export async function POST(request: NextRequest) {
     const { firstName, email, phone, fbp, fbc, eventId, sourceUrl, attribution } = body ?? {}
     const utm: Record<string, string> = attribution ?? {}
 
-    if (!email || !phone) {
+    // Phone is no longer collected on the modal: the extra field cost more
+    // conversions than the SMS channel was worth. It stays in the payload
+    // contract so contacts created before the change keep their number.
+    if (!email) {
       return NextResponse.json(
-        { success: false, error: 'Email and phone are required' },
+        { success: false, error: 'Email is required' },
         { status: 400 }
       )
     }
