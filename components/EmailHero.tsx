@@ -28,7 +28,7 @@ export function EmailHero() {
         </p>
 
         <p className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto">
-          We&apos;ll build you a free sample creative in 24 hours and test it against your current ads. <span className="text-cyan-300 font-semibold">If ours don&apos;t beat what you&apos;re running, you don&apos;t pay.</span> Take it with you either way, no obligation whatsoever.
+          We&apos;ll build you a free sample creative in 24 hours, made to beat what you&apos;re already running. <span className="text-cyan-300 font-semibold">It&apos;s yours to keep either way</span>, no cost, no obligation whatsoever.
         </p>
 
         <a

@@ -25,7 +25,7 @@ export function EmailOffer() {
             {
               step: '02',
               title: 'We build your sample in 24 hours',
-              body: 'We produce a creative tailored to your brand. UGC, static, or video, built specifically to test against your current control ad. If it doesn\'t beat what you\'re running, you don\'t pay a penny.',
+              body: 'We produce a creative tailored to your brand. UGC, static, or video, built specifically to test against your current control ad. Yours to keep and run immediately, at no cost.',
             },
             {
               step: '03',

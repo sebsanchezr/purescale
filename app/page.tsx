@@ -20,7 +20,7 @@ import { LegalFooter } from '@/components/LegalFooter'
 // had; the old homepage's VSL was a decorative placeholder with no real video.
 export const metadata: Metadata = {
   title: 'Free Ad Creative Audit - PureScale',
-  description: 'Free sample creative in 24 hours, tested against your current ads. If it doesn\'t beat them, you don\'t pay.',
+  description: 'Free sample creative in 24 hours, tested against your current ads. Yours to keep either way, no cost.',
 }
 
 export default function Home() {

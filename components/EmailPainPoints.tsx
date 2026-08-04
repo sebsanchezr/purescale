@@ -43,7 +43,7 @@ export function EmailPainPoints() {
           {pains.map((pain, i) => (
             <div key={i} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-8 hover:border-blue-400/30 transition-all duration-300 flex gap-8 items-start">
               <div className="flex-shrink-0 text-center w-24">
-                <div className="whitespace-nowrap pr-1 text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent leading-normal">{pain.stat}</div>
+                <div className="whitespace-nowrap pr-1 text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent leading-normal">{pain.stat}</div>
               </div>
               <div>
                 <h3 className="text-white font-bold text-lg mb-3">{pain.headline}</h3>
