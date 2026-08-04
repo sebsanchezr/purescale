@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import { FacebookPixel } from '@/components/FacebookPixel'
+import { ConsentBanner } from '@/components/ConsentBanner'
 
 export const metadata: Metadata = {
   title: 'Better ROAS in 45 Days - PureScale',
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body className="bg-stone-900 text-white antialiased overflow-x-hidden">
         <FacebookPixel />
         {children}
+        <ConsentBanner />
         <Analytics />
       </body>
     </html>
