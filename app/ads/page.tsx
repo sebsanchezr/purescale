@@ -105,7 +105,12 @@ export default function AdsPage() {
             {/* ── STARTER ── */}
             <div className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-8">
               <p className="text-sm font-semibold uppercase tracking-wider text-gray-400">Starter</p>
-              <p className="font-poppins-italic mt-1 text-4xl font-extrabold text-white">{PRICE}</p>
+              <div className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <p className="font-poppins-italic text-4xl font-extrabold text-white">{PRICE}</p>
+                <p className="text-lg font-semibold text-gray-400 line-through decoration-gray-400/60 decoration-2">
+                  {TOTAL_VALUE}
+                </p>
+              </div>
               <p className="mt-1 text-sm text-gray-500">10 creatives, statics only</p>
 
               <div className="mt-6 flex-1 space-y-3">
@@ -116,12 +121,12 @@ export default function AdsPage() {
                   </div>
                 ))}
               </div>
-              <p className="mt-6 text-xs text-gray-500 line-through">Total value {TOTAL_VALUE}</p>
 
-              <div className="mt-6">
+              <div className="mt-8">
                 <BuyButton
                   tier="starter"
                   label="Get Starter. $97"
+                  sub="One time. No subscription. Keep everything."
                   buttonClassName="w-full justify-center rounded-full border border-white/20 bg-white/5 px-9 py-4 text-lg font-bold text-white transition-all hover:bg-white/10"
                 />
               </div>
@@ -133,7 +138,12 @@ export default function AdsPage() {
                 Most brands pick this
               </span>
               <p className="text-sm font-semibold uppercase tracking-wider text-cyan-300">Pro</p>
-              <p className="font-poppins-italic mt-1 text-4xl font-extrabold text-white">{PRO_PRICE}</p>
+              <div className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <p className="font-poppins-italic text-4xl font-extrabold text-white">{PRO_PRICE}</p>
+                <p className="text-lg font-semibold text-gray-400 line-through decoration-gray-400/60 decoration-2">
+                  {PRO_TOTAL_VALUE}
+                </p>
+              </div>
               <p className="mt-1 text-sm text-gray-400">10 creatives, statics + video, native cuts</p>
 
               <div className="mt-6 flex-1 space-y-3">
@@ -154,13 +164,12 @@ export default function AdsPage() {
                   )
                 })}
               </div>
-              <p className="mt-6 text-xs text-gray-500 line-through">Total value {PRO_TOTAL_VALUE}</p>
-
-              <div className="mt-6">
+              <div className="mt-8">
                 <BuyButton
                   tier="pro"
                   label="Get Pro. $297"
                   sub="One time. No subscription. Keep everything."
+                  buttonClassName="group w-full justify-center inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-9 py-4 text-lg font-bold text-white shadow-lg shadow-cyan-500/20 transition-all hover:shadow-cyan-500/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
                 />
               </div>
             </div>
