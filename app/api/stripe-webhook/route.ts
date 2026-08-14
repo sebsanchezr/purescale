@@ -1,5 +1,6 @@
 /**
- * Stripe webhook, the single source of truth for "a sale happened".
+ * Stripe webhook for the legacy $97 Stripe path (still live until
+ * NEXT_PUBLIC_GHL_CHECKOUT_URL flips buy buttons to the GHL checkout).
  *
  * On checkout.session.completed:
  *   1. Meta CAPI Purchase (event_id = session id, so a retry can never double-count)
@@ -9,6 +10,10 @@
  * The purchase_97 tag is what fires GHL workflow W1 (receipt + intake request), so
  * this route is the hinge between payment and fulfilment. It must stay idempotent:
  * Stripe retries on any non-2xx, and we always return 200 once the signature is valid.
+ *
+ * On charge.refunded: tag `refunded`, the stop condition W2-W9 read to quit
+ * selling to someone who's been given their money back. Requires "charge.refunded"
+ * enabled on this endpoint in the Stripe dashboard webhook config.
  */
 
 import { NextRequest, NextResponse } from 'next/server'
@@ -62,6 +67,29 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     console.error('[stripe-webhook] signature verification failed', err)
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
+  }
+
+  if (event.type === 'charge.refunded') {
+    const charge = event.data.object as Stripe.Charge
+    const email = charge.billing_details?.email ?? charge.receipt_email ?? undefined
+
+    if (email) {
+      try {
+        const contactId = await upsertContact({
+          email,
+          tags: ['refunded'],
+          source: 'PureScale offer, refunded',
+        })
+        console.log('[stripe-webhook] refunded tag applied', { email, contactId })
+      } catch (err) {
+        console.error('[stripe-webhook] refunded tag failed', err)
+      }
+      await notifyDiscord(`🔴 **Refund processed**. ${email}\nAll sequences should stop.`)
+    } else {
+      console.error('[stripe-webhook] charge.refunded had no email, refunded tag not applied', charge.id)
+    }
+
+    return NextResponse.json({ received: true })
   }
 
   if (event.type !== 'checkout.session.completed') {
