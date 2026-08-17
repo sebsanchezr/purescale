@@ -2,29 +2,27 @@
  * Inbound webhook from Cal.com, feeds GHL workflow W8 (books CEO call 1, then
  * call 2 once call 1 is done).
  *
- * The two included CEO calls (lib/offer.ts CEO_CALLS_INCLUDED) need to be two
- * SEPARATE Cal.com event types, not one link used twice, that's the only way
- * this route (or GHL) can tell which call state a contact is in. Setup owed
- * on the Cal.com side, not code:
+ * Both included CEO calls (lib/offer.ts CEO_CALLS_INCLUDED) share ONE Cal.com
+ * event type ("august-marketing-ceo/purescale-creative-strategy-call"), buyers
+ * book the same link twice. So call state is derived from the contact's
+ * existing tags, not the event type: no `call_1_booked` yet -> this booking is
+ * call 1, `call_1_booked` already present -> this booking is call 2. A second
+ * event type is NOT needed.
  *
- *   1. Create a second event type next to the existing
- *      "august-marketing-ceo/purescale-creative-strategy-call" (call 1), e.g.
- *      "purescale-creative-strategy-call-2" (call 2).
- *   2. Cal.com dashboard -> both event types -> Webhooks -> add endpoint:
- *        URL:      https://purescale.co/api/cal-webhook
- *        Secret:   set CAL_WEBHOOK_SECRET (any random string) and paste the
- *                  same value into Cal.com's webhook secret field
- *        Events:   Booking Created, Booking Cancelled
- *   3. Set env vars with each event type's numeric id (Cal.com shows it in the
- *      event type's URL/settings): CAL_EVENT_TYPE_ID_CALL_1, CAL_EVENT_TYPE_ID_CALL_2
+ * Cal.com setup (dashboard, not code):
+ *   Event type -> Webhooks -> add endpoint:
+ *     URL:      https://purescale.co/api/cal-webhook
+ *     Secret:   set CAL_WEBHOOK_SECRET in Vercel to the same value entered here
+ *     Events:   Booking Created, Booking Cancelled
  *
- * Until those exist this route 200s and no-ops, it can't tag anything it
- * can't identify.
+ * On cancellation we can't reliably tell which of the two calls was cancelled
+ * from the payload alone (no local booking-state store), so cancellations are
+ * only logged to Discord, not auto-untagged. Sort those manually if it comes up.
  */
 
 import { NextRequest, NextResponse } from 'next/server'
 import { createHmac, timingSafeEqual } from 'node:crypto'
-import { addTags, removeTags, upsertContact } from '@/lib/ghl'
+import { addTags, findContactByEmail, upsertContact } from '@/lib/ghl'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -59,8 +57,6 @@ interface CalAttendee {
 interface CalWebhookBody {
   triggerEvent?: string
   payload?: {
-    eventTypeId?: number | string
-    eventType?: { id?: number | string }
     attendees?: CalAttendee[]
     responses?: { email?: { value?: string }; name?: { value?: string } }
   }
@@ -91,22 +87,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ received: true })
   }
 
-  const eventTypeId = String(body.payload?.eventTypeId ?? body.payload?.eventType?.id ?? '')
-  const call1Id = process.env.CAL_EVENT_TYPE_ID_CALL_1
-  const call2Id = process.env.CAL_EVENT_TYPE_ID_CALL_2
-
-  const callTag =
-    call1Id && eventTypeId === call1Id
-      ? 'call_1_booked'
-      : call2Id && eventTypeId === call2Id
-        ? 'call_2_booked'
-        : null
-
-  if (!callTag) {
-    console.error('[cal-webhook] unrecognized eventTypeId, check CAL_EVENT_TYPE_ID_CALL_1/2', eventTypeId)
-    return NextResponse.json({ received: true })
-  }
-
   const attendee = body.payload?.attendees?.[0]
   const email = attendee?.email ?? body.payload?.responses?.email?.value
   const name = attendee?.name ?? body.payload?.responses?.name?.value
@@ -116,21 +96,26 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ received: true })
   }
 
+  if (triggerEvent === 'BOOKING_CANCELLED') {
+    await notifyDiscord(`⚠️ **CEO call cancelled**. ${email}\nCheck manually which call (1 or 2) this was.`)
+    return NextResponse.json({ received: true })
+  }
+
   try {
-    if (triggerEvent === 'BOOKING_CREATED') {
-      const contactId = await upsertContact({
+    const existing = await findContactByEmail(email)
+    const callTag = existing?.tags.includes('call_1_booked') ? 'call_2_booked' : 'call_1_booked'
+
+    const contactId =
+      existing?.id ??
+      (await upsertContact({
         email,
         firstName: name?.split(' ')[0],
         tags: [callTag],
         source: `PureScale CEO ${callTag === 'call_1_booked' ? 'call 1' : 'call 2'} booked`,
-      })
-      if (contactId) await addTags(contactId, [callTag])
-      await notifyDiscord(`📅 **${callTag.replace('_', ' ')}**. ${email}`)
-    } else {
-      const contactId = await upsertContact({ email, tags: [], source: 'PureScale CEO call cancelled' })
-      if (contactId) await removeTags(contactId, [callTag])
-      await notifyDiscord(`⚠️ **${callTag.replace('_', ' ')} cancelled**. ${email}`)
-    }
+      }))
+
+    if (contactId) await addTags(contactId, [callTag])
+    await notifyDiscord(`📅 **${callTag.replace('_', ' ')}**. ${email}`)
   } catch (err) {
     console.error('[cal-webhook] GHL sync failed', err)
   }

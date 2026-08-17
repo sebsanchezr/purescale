@@ -76,6 +76,27 @@ export async function upsertContact(input: GhlContactInput): Promise<string | nu
   return json?.contact?.id ?? null
 }
 
+/** Look up a contact by email. Returns null if no contact exists yet. */
+export async function findContactByEmail(
+  email: string
+): Promise<{ id: string; tags: string[] } | null> {
+  const locationId = process.env.GHL_LOCATION_ID
+  if (!locationId) throw new Error('GHL_LOCATION_ID is not set')
+
+  const res = await fetch(
+    `${GHL_BASE}/contacts/?locationId=${locationId}&query=${encodeURIComponent(email)}&limit=1`,
+    { headers: headers() }
+  )
+  if (!res.ok) {
+    console.error('[ghl] findContactByEmail failed', res.status, await res.text())
+    return null
+  }
+  const json = await res.json()
+  const contact = json?.contacts?.[0]
+  if (!contact || contact.email?.toLowerCase() !== email.toLowerCase()) return null
+  return { id: contact.id, tags: contact.tags ?? [] }
+}
+
 /** Add tags to an existing contact (used post-purchase). */
 export async function addTags(contactId: string, tags: string[]): Promise<void> {
   const res = await fetch(`${GHL_BASE}/contacts/${contactId}/tags`, {
