@@ -9,6 +9,7 @@ import { ScalingNow } from '@/components/ScalingNow'
 import { PurchasePixel } from '@/components/PurchasePixel'
 import { Testimonials } from '@/components/Testimonials'
 import { AugustMarketingTrust } from '@/components/AugustMarketingTrust'
+import { AdsCallCta } from '@/components/AdsCallCta'
 import {
   VALUE_STACK,
   TOTAL_VALUE,
@@ -344,6 +345,8 @@ export default function AdsPage() {
           </div>
         </div>
       </section>
+
+      <AdsCallCta />
 
       <footer className="border-t border-white/10 px-4 py-10 text-center text-sm text-gray-600">
         © {new Date().getFullYear()} PureScale. We build creative for anyone buying paid traffic: ecommerce, local service businesses, SaaS and info. If you run ads, we can make yours.
