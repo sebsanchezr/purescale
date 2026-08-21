@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { upsertContact } from '@/lib/ghl'
 import { SITE_URL } from '@/lib/offer'
 import { encryptSecret, encryptionReady } from '@/lib/crypto'
 
@@ -126,6 +127,22 @@ export async function POST(request: NextRequest) {
         }
       } catch (e) {
         console.error('Supabase client error:', e)
+      }
+    }
+
+    // Tag the GHL contact intake_submitted. This is the native intake form, the
+    // one buyers actually reach after Stripe, so without this the GHL W2 sequence
+    // keeps chasing an intake form that was already filled in. Failure here is
+    // logged, never fatal: the order row is already written and paid for.
+    if (email) {
+      try {
+        await upsertContact({
+          email,
+          tags: ['intake_submitted'],
+          source: 'PureScale intake submitted',
+        })
+      } catch (e) {
+        console.error('[order] GHL intake_submitted tag failed', e)
       }
     }
 

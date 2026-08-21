@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * Two-step checkout for the $97 offer.
+ * Two-step checkout for the Starter $97 / Pro $297 offer, plus the $77 rush bump.
  *
  * Step 1 captures name/email/phone into GHL before Stripe ever loads. That single
  * decision is what makes abandoned-checkout recovery possible, a one-click jump
@@ -14,6 +14,13 @@
 
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import {
+  BUMP_COPY,
+  BUMP_LABEL,
+  BUMP_PRICE_VALUE,
+  PRICE_VALUE,
+  PRO_PRICE_VALUE,
+} from '@/lib/offer'
 
 
 /** Read a first-party cookie (used for _fbp / _fbc match quality). */
@@ -59,11 +66,25 @@ function getAttribution(): Record<string, string> {
   }
 }
 
-export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function CheckoutModal({
+  open,
+  onClose,
+  tier = 'starter',
+}: {
+  open: boolean
+  onClose: () => void
+  /** Which card was clicked. Decides the price charged and the tag applied. */
+  tier?: 'starter' | 'pro'
+}) {
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
+  const [bump, setBump] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  const base = tier === 'pro' ? PRO_PRICE_VALUE : PRICE_VALUE
+  const contentName = tier === 'pro' ? '$297 Pro Pack' : '$97 10-Creative Pack'
+  const total = base + (bump ? BUMP_PRICE_VALUE : 0)
 
   // InitiateCheckout fires here and ONLY here. BuyButton used to fire its own
   // copy on click, which meant Meta counted two InitiateCheckouts for a single
@@ -71,11 +92,11 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
   useEffect(() => {
     if (!open) return
     window.fbq?.('track', 'InitiateCheckout', {
-      content_name: '$97 10-Creative Pack',
+      content_name: contentName,
       currency: 'USD',
-      value: 97,
+      value: base,
     })
-  }, [open])
+  }, [open, contentName, base])
 
   // Close on Escape, a trapped modal on a paid landing page is a refund request.
   useEffect(() => {
@@ -105,7 +126,7 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
     setError(null)
 
     const eventId = newEventId('lead')
-    window.fbq?.('track', 'Lead', { content_name: '$97 10-Creative Pack' }, { eventID: eventId })
+    window.fbq?.('track', 'Lead', { content_name: contentName }, { eventID: eventId })
 
     try {
       const res = await fetch('/api/checkout', {
@@ -114,6 +135,8 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
         body: JSON.stringify({
           firstName,
           email,
+          tier,
+          bump,
           eventId,
           fbp: getCookie('_fbp'),
           fbc: getCookie('_fbc'),
@@ -159,7 +182,7 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
           Where should we send your <span className="font-poppins-italic text-cyan-300">10 creatives</span>?
         </h2>
         <p className="mt-2 text-sm text-gray-400">
-          Next step is payment. $97 once, then a 2-minute form so we know what to build.
+          Next step is payment. {`$${base}`} once, then a 2-minute form so we know what to build.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -180,6 +203,21 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
             autoComplete="email"
             className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-gray-500 transition-all focus:border-cyan-400 focus:bg-white/15 focus:outline-none"
           />
+          <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-dashed border-cyan-400/40 bg-cyan-400/5 p-4 text-left">
+            <input
+              type="checkbox"
+              checked={bump}
+              onChange={(e) => setBump(e.target.checked)}
+              className="mt-1 h-4 w-4 shrink-0 accent-cyan-400"
+            />
+            <span className="text-sm text-gray-300">
+              <strong className="text-white">
+                Yes, add {BUMP_LABEL} for {`$${BUMP_PRICE_VALUE}`}.
+              </strong>{' '}
+              {BUMP_COPY}
+            </span>
+          </label>
+
           {error && <p className="text-sm text-red-400">{error}</p>}
 
           <button
@@ -187,7 +225,7 @@ export function CheckoutModal({ open, onClose }: { open: boolean; onClose: () =>
             disabled={!valid || submitting}
             className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 px-10 py-4 text-lg font-bold text-white shadow-lg transition-all duration-200 hover:from-blue-500 hover:to-cyan-400 hover:shadow-blue-500/50 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {submitting ? 'Taking you to checkout…' : 'Continue to payment. $97 →'}
+            {submitting ? 'Taking you to checkout…' : `Continue to payment. $${total} →`}
           </button>
         </form>
 

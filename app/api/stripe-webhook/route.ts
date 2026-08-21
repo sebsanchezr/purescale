@@ -4,10 +4,11 @@
  *
  * On checkout.session.completed:
  *   1. Meta CAPI Purchase (event_id = session id, so a retry can never double-count)
- *   2. GHL: tag purchase_97, drop checkout_started (stops the abandoned sequence),
- *      create the pipeline opportunity.
+ *   2. GHL: tag purchase_97 or purchase_297 (plus bump_rush when the $77 rush was
+ *      taken), drop checkout_started (stops the abandoned sequence), create the
+ *      pipeline opportunity.
  *
- * The purchase_97 tag is what fires GHL workflow W1 (receipt + intake request), so
+ * The purchase tag is what fires GHL workflow W1 (receipt + intake request), so
  * this route is the hinge between payment and fulfilment. It must stay idempotent:
  * Stripe retries on any non-2xx, and we always return 200 once the signature is valid.
  *
@@ -101,7 +102,16 @@ export async function POST(request: NextRequest) {
   const email = session.customer_details?.email ?? session.customer_email ?? undefined
   const phone = meta.phone || session.customer_details?.phone || undefined
   const firstName = meta.firstName || session.customer_details?.name?.split(' ')[0] || undefined
-  const value = (session.amount_total ?? 9700) / 100
+  // Tier and bump come from checkout metadata, never from amount_total: VAT is
+  // added on top, so a UK Starter buyer's total is 116.40 and any arithmetic on
+  // it would read as Pro-ish nonsense.
+  const tier = meta.tier === 'pro' ? 'pro' : 'starter'
+  const bumpAmount = Number(meta.bumpAmount ?? 0)
+  const basePrice = tier === 'pro' ? 297 : 97
+  const value = basePrice + (bumpAmount > 0 ? bumpAmount : 0)
+  const contentName = tier === 'pro' ? '$297 Pro Pack' : '$97 10-Creative Pack'
+  const purchaseTag = tier === 'pro' ? 'purchase_297' : 'purchase_97'
+  const tags = bumpAmount > 0 ? [purchaseTag, 'bump_rush'] : [purchaseTag]
 
   // Beyond this point every failure is logged and swallowed: Stripe already has the
   // money, and a retry storm would re-fire the customer's welcome sequence.
@@ -120,7 +130,7 @@ export async function POST(request: NextRequest) {
       customData: {
         currency: (session.currency ?? 'usd').toUpperCase(),
         value,
-        content_name: '$97 10-Creative Pack',
+        content_name: contentName,
       },
     })
   } catch (err) {
@@ -135,18 +145,18 @@ export async function POST(request: NextRequest) {
         email,
         phone,
         firstName,
-        tags: ['purchase_97'],
-        source: 'PureScale $97 offer, purchase',
+        tags,
+        source: `PureScale ${tier === 'pro' ? '$297' : '$97'} offer, purchase`,
       })
     } else if (contactId) {
-      await addTags(contactId, ['purchase_97'])
+      await addTags(contactId, tags)
       await removeTags(contactId, ['checkout_started'])
     }
 
     if (contactId) {
       await createOpportunity({
         contactId,
-        name: `$97 Creative Pack. ${firstName ?? email ?? 'New buyer'}`,
+        name: `${contentName}${bumpAmount > 0 ? ' + rush' : ''}. ${firstName ?? email ?? 'New buyer'}`,
         monetaryValue: value,
       })
     }
@@ -155,7 +165,8 @@ export async function POST(request: NextRequest) {
   }
 
   await notifyDiscord(
-    `🟢 **New $97 order**. ${firstName ?? 'Unknown'} (${email ?? 'no email'})\n` +
+    `🟢 **New ${contentName} order**${bumpAmount > 0 ? ' + 12h rush' : ''}. ` +
+      `${firstName ?? 'Unknown'} (${email ?? 'no email'}) · $${value}\n` +
       `Waiting on their intake form. SLA starts when it lands.`
   )
 

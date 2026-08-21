@@ -1,5 +1,5 @@
 /**
- * Step 1 of the $97 checkout.
+ * Step 1 of the checkout, Starter $97 / Pro $297, plus the optional $77 rush bump.
  *
  * Deliberately captures the lead BEFORE sending anyone to Stripe: the contact is
  * written to GHL tagged `checkout_started`, which is what makes the abandoned-
@@ -17,13 +17,22 @@ import { sendCapiEvent } from '@/lib/meta-capi'
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
-const OFFER_PRICE_USD = 97
+const STARTER_PRICE_USD = 97
+const PRO_PRICE_USD = 297
+const BUMP_PRICE_USD = 77
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const { firstName, email, phone, fbp, fbc, eventId, sourceUrl, attribution } = body ?? {}
     const utm: Record<string, string> = attribution ?? {}
+
+    // Tier and bump come from the card the buyer clicked. Never trust a price
+    // from the client, only the tier name, the amounts live here.
+    const tier: 'starter' | 'pro' = body?.tier === 'pro' ? 'pro' : 'starter'
+    const bump = body?.bump === true
+    const basePrice = tier === 'pro' ? PRO_PRICE_USD : STARTER_PRICE_USD
+    const contentName = tier === 'pro' ? '$297 Pro Pack' : '$97 10-Creative Pack'
 
     // Phone is no longer collected on the modal: the extra field cost more
     // conversions than the SMS channel was worth. It stays in the payload
@@ -50,7 +59,7 @@ export async function POST(request: NextRequest) {
         phone,
         firstName,
         tags: ['checkout_started'],
-        source: 'PureScale $97 offer, checkout started',
+        source: `PureScale ${tier === 'pro' ? '$297' : '$97'} offer, checkout started`,
         // Written on the contact so a retainer closed months later can still be
         // traced back to the ad that produced it.
         customFields: {
@@ -69,7 +78,7 @@ export async function POST(request: NextRequest) {
       eventId: eventId ?? `lead_${Date.now()}`,
       eventSourceUrl: sourceUrl ?? `${origin}/ads`,
       userData: { email, phone, firstName, fbp, fbc, clientIp, userAgent },
-      customData: { content_name: '$97 10-Creative Pack', currency: 'USD', value: OFFER_PRICE_USD },
+      customData: { content_name: contentName, currency: 'USD', value: basePrice },
     })
 
     // 3. Stripe Checkout.
@@ -90,6 +99,11 @@ export async function POST(request: NextRequest) {
       // Everything the webhook needs to attribute the sale without a second lookup.
       metadata: {
         firstName: firstName ?? '',
+        tier,
+        // The webhook reads these back to decide purchase_97 vs purchase_297 and
+        // whether bump_rush applies. Never re-derive them from amount_total, tax
+        // is added on top and would make that arithmetic lie.
+        bumpAmount: bump ? String(BUMP_PRICE_USD) : '0',
         phone,
         fbp: fbp ?? '',
         fbc: fbc ?? '',
@@ -100,23 +114,46 @@ export async function POST(request: NextRequest) {
         utm_content: utm.utm_content ?? '',
       },
       line_items: [
-        process.env.STRIPE_PRICE_ID
+        // STRIPE_PRICE_ID is a Starter-only saved price, so it is only used on the
+        // Starter tier. Pro always builds its price inline.
+        tier === 'starter' && process.env.STRIPE_PRICE_ID
           ? { price: process.env.STRIPE_PRICE_ID, quantity: 1 }
           : {
               quantity: 1,
               price_data: {
                 currency: 'usd',
-                unit_amount: OFFER_PRICE_USD * 100,
-                // Exclusive = VAT is added on top of $97 rather than carved out of it.
-                // Required whenever automatic_tax is on.
+                unit_amount: basePrice * 100,
+                // Exclusive = VAT is added on top of the price rather than carved
+                // out of it. Required whenever automatic_tax is on.
                 tax_behavior: 'exclusive',
                 product_data: {
-                  name: 'PureScale. 10 Ad Creatives in 24 Hours',
+                  name:
+                    tier === 'pro'
+                      ? 'PureScale Pro. 10 Ad Creatives, Statics and Video, in 24 Hours'
+                      : 'PureScale. 10 Ad Creatives in 24 Hours',
                   description:
-                    '10 custom ad creatives built on your brand and products. Yours to keep, forever.',
+                    tier === 'pro'
+                      ? '10 custom creatives rendered native per platform, hook variant pack, written testing plan, ad account audit. Yours to keep, forever.'
+                      : '10 custom ad creatives built on your brand and products. Yours to keep, forever.',
                 },
               },
             },
+        ...(bump
+          ? [
+              {
+                quantity: 1,
+                price_data: {
+                  currency: 'usd',
+                  unit_amount: BUMP_PRICE_USD * 100,
+                  tax_behavior: 'exclusive' as const,
+                  product_data: {
+                    name: 'PureScale. 12-hour rush delivery',
+                    description: 'Jump the queue. Your batch lands in 12 hours instead of 24.',
+                  },
+                },
+              },
+            ]
+          : []),
       ],
       // We are UK VAT registered, so a UK buyer must be charged 20% on top. Stripe Tax
       // works this out from the buyer's address: UK gets VAT, US gets nothing, EU

@@ -80,7 +80,7 @@ export function BuyButton({
         )}
       </button>
       {sub && <p className="mt-3 text-sm text-gray-400">{sub}</p>}
-      <CheckoutModal open={open} onClose={() => setOpen(false)} />
+      <CheckoutModal open={open} onClose={() => setOpen(false)} tier={tier} />
     </div>
   )
 }
