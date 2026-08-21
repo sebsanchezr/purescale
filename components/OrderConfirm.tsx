@@ -5,6 +5,22 @@ import { useRouter } from 'next/navigation'
 import { PRICE_VALUE } from '@/lib/offer'
 import { OrderTracker } from './OrderTracker'
 
+/**
+ * The UTMs CheckoutModal stored when the visitor first landed.
+ *
+ * Read again here because this form submits after Stripe, and without it a paid
+ * order cannot be traced back to the cold-email variant that produced it — the
+ * one number that decides which sequence survives.
+ */
+function readAttribution(): Record<string, string> {
+  if (typeof window === 'undefined') return {}
+  try {
+    return JSON.parse(sessionStorage.getItem('ps_attribution') || '{}')
+  } catch {
+    return {}
+  }
+}
+
 export function OrderConfirm() {
   const router = useRouter()
   const [busy, setBusy] = useState(false)
@@ -86,7 +102,7 @@ export function OrderConfirm() {
       const r = await fetch('/api/order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, attribution: readAttribution() }),
       })
       const j = await r.json()
       if (j?.id) {

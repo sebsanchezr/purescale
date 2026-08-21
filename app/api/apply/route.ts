@@ -26,6 +26,24 @@ async function sendCapiEvent(email: string, phone: string | undefined, eventId: 
   } catch {}
 }
 
+// Fire-and-forget alert into August OS, which owns Discord and Resend. Kept
+// out of the response path entirely: if the OS is down or slow, the form still
+// submits and the prospect still sees a success message.
+async function notifyOs(payload: Record<string, unknown>): Promise<void> {
+  const base = process.env.OS_WEBHOOK_URL || 'https://augustosv3.vercel.app'
+  const key = process.env.OS_WEBHOOK_KEY
+  if (!key) return
+  try {
+    await fetch(`${base}/api/webhooks/inbound-lead?key=${encodeURIComponent(key)}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...payload, source: 'purescale_apply' }),
+    })
+  } catch {
+    // never throws into the form response
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
@@ -77,6 +95,12 @@ export async function POST(request: NextRequest) {
     // Fire CAPI Lead event server-side for deduplication with browser pixel
     const eventId = `apply_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`
     sendCapiEvent(email, phone, eventId).catch(() => {})
+
+    // Tell someone. The row and the CAPI event both landed silently before
+    // this, so a lead who left a phone number sat in a table until somebody
+    // thought to look. Speed to lead decays in minutes.
+    notifyOs({ business, revenue, spend, timeline, firstName, lastName, email, phone })
+      .catch(() => {})
 
     return NextResponse.json(
       {

@@ -52,6 +52,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const { storeUrl, bestAdUrl, email, notes, auditRequested, auditAccountId, auditToken } = body
+    const utm: Record<string, string> = body?.attribution ?? {}
 
     // Encrypt the read-only token at rest. If no encryption key is configured we
     // refuse to persist it (fail safe) rather than store plaintext.
@@ -112,6 +113,13 @@ export async function POST(request: NextRequest) {
             best_ad_url: bestAdUrl || null,
             notes: notes || null,
             status: 'pending',
+            // utm_content carries the sequence variant code (k1a .. u3b) set by
+            // /ads/<code>. This is the join between money and the email that
+            // earned it; everything upstream of here is a proxy for it.
+            variant: utm.utm_content || null,
+            utm_source: utm.utm_source || null,
+            utm_campaign: utm.utm_campaign || null,
+            utm_content: utm.utm_content || null,
           })
         } catch (e) {
           console.error('offer_orders mirror failed:', e)
