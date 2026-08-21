@@ -20,7 +20,13 @@ import {
   BUMP_PRICE_VALUE,
   PRICE_VALUE,
   PRO_PRICE_VALUE,
+  PRO_VALUE_STACK,
 } from '@/lib/offer'
+
+// What the extra $200 buys, shown only on the Starter modal. The CEO-calls line
+// is dropped, both tiers already include it, so it is not part of the delta
+// actually being sold in this upsell.
+const UPGRADE_DELTA = PRO_VALUE_STACK.filter((row) => !row.item.includes('AI creative calls'))
 
 
 /** Read a first-party cookie (used for _fbp / _fbc match quality). */
@@ -73,17 +79,22 @@ export function CheckoutModal({
 }: {
   open: boolean
   onClose: () => void
-  /** Which card was clicked. Decides the price charged and the tag applied. */
+  /** Which card was clicked. Starter can still upgrade inside the modal; Pro cannot downgrade. */
   tier?: 'starter' | 'pro'
 }) {
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
+  const [upgrade, setUpgrade] = useState(false)
   const [bump, setBump] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const base = tier === 'pro' ? PRO_PRICE_VALUE : PRICE_VALUE
-  const contentName = tier === 'pro' ? '$297 Pro Pack' : '$97 10-Creative Pack'
+  // A Starter click can still leave as a Pro sale, every $97 CTA on the site
+  // (including the plain "Buy now" nav button) reaches this same modal, so this
+  // is the one place that can offer the $200 upgrade regardless of entry point.
+  const effectiveTier = tier === 'pro' || upgrade ? 'pro' : 'starter'
+  const base = effectiveTier === 'pro' ? PRO_PRICE_VALUE : PRICE_VALUE
+  const contentName = effectiveTier === 'pro' ? '$297 Pro Pack' : '$97 10-Creative Pack'
   const total = base + (bump ? BUMP_PRICE_VALUE : 0)
 
   // InitiateCheckout fires here and ONLY here. BuyButton used to fire its own
@@ -97,6 +108,12 @@ export function CheckoutModal({
       value: base,
     })
   }, [open, contentName, base])
+
+  // Each open is a fresh decision, a Starter click should never inherit an
+  // upgrade left checked from a previous visit to the modal.
+  useEffect(() => {
+    if (open) setUpgrade(false)
+  }, [open])
 
   // Close on Escape, a trapped modal on a paid landing page is a refund request.
   useEffect(() => {
@@ -135,7 +152,7 @@ export function CheckoutModal({
         body: JSON.stringify({
           firstName,
           email,
-          tier,
+          tier: effectiveTier,
           bump,
           eventId,
           fbp: getCookie('_fbp'),
@@ -203,6 +220,28 @@ export function CheckoutModal({
             autoComplete="email"
             className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-gray-500 transition-all focus:border-cyan-400 focus:bg-white/15 focus:outline-none"
           />
+          {tier === 'starter' && (
+            <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-dashed border-purple-400/40 bg-purple-400/5 p-4 text-left">
+              <input
+                type="checkbox"
+                checked={upgrade}
+                onChange={(e) => setUpgrade(e.target.checked)}
+                className="mt-1 h-4 w-4 shrink-0 accent-purple-400"
+              />
+              <span className="text-sm text-gray-300">
+                <strong className="text-white">
+                  Upgrade to Pro for {`+$${PRO_PRICE_VALUE - PRICE_VALUE}`} (${PRO_PRICE_VALUE} total).
+                </strong>{' '}
+                Get:
+                <ul className="mt-2 space-y-1 pl-4 text-xs text-gray-400 [&>li]:list-disc">
+                  {UPGRADE_DELTA.map((row) => (
+                    <li key={row.item}>{row.item}</li>
+                  ))}
+                </ul>
+              </span>
+            </label>
+          )}
+
           <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-dashed border-cyan-400/40 bg-cyan-400/5 p-4 text-left">
             <input
               type="checkbox"

@@ -25,7 +25,7 @@ export default function ThankYouPage() {
           </p>
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-400/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm font-semibold">
             <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
-            20-minute strategy call confirmed
+            40-minute strategy call confirmed
           </div>
         </div>
       </section>
@@ -190,7 +190,7 @@ export default function ThankYouPage() {
               { step: '1', text: 'You\'ll receive a calendar confirmation email with the call link.' },
               { step: '2', text: 'We\'ll send a reminder 24 hours before the call and again 1 hour before.' },
               { step: '3', text: 'We review your ad account and brand before the call so we already have context.' },
-              { step: '4', text: 'The call is 20 minutes. We\'ll be on time. Bring your numbers.' },
+              { step: '4', text: 'The call is 40 minutes. We\'ll be on time. Bring your numbers.' },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-4">
                 <div className="w-7 h-7 rounded-full bg-blue-600/30 border border-blue-400/40 flex items-center justify-center text-cyan-300 text-xs font-bold flex-shrink-0 mt-0.5">

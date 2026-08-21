@@ -62,7 +62,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-white mb-3">
               Book your <span className="font-poppins-italic text-cyan-300">free audit call</span>
             </h2>
-            <p className="text-gray-400">20 minutes. We come prepared. You leave with a roadmap and a free batch incoming.</p>
+            <p className="text-gray-400">40 minutes. We come prepared. You leave with a roadmap and a free batch incoming.</p>
           </div>
           <CalEmbed />
         </div>

@@ -68,7 +68,7 @@ export function ApplyForm() {
             <h1 className="text-3xl font-bold text-white mb-2">
               Pick a time that works for <span className="font-poppins-italic text-cyan-300">you</span>
             </h1>
-            <p className="text-gray-400">20 minutes. We&apos;ll come prepared with a roadmap for your account.</p>
+            <p className="text-gray-400">40 minutes. We&apos;ll come prepared with a roadmap for your account.</p>
           </div>
           <CalEmbed />
         </div>

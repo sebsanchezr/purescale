@@ -49,7 +49,7 @@ export function EmailOffer() {
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               { icon: '🎯', text: 'Your current best-performing ad, we\'ll build to beat it' },
-              { icon: '💬', text: '20 minutes on a call to understand your brand, your customer, and what\'s already working' },
+              { icon: '💬', text: '40 minutes on a call to understand your brand, your customer, and what\'s already working' },
               { icon: '✅', text: 'That\'s it. We handle everything else, briefs, production, revisions, delivery.' },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
@@ -67,7 +67,7 @@ export function EmailOffer() {
           >
             Book Your Free Audit Call →
           </a>
-          <p className="text-gray-500 text-sm mt-3">Free. 20 minutes. No commitment.</p>
+          <p className="text-gray-500 text-sm mt-3">Free. 40 minutes. No commitment.</p>
         </div>
 
         {/* $97 downsell */}

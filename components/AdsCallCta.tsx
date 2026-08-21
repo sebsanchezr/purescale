@@ -40,7 +40,9 @@ export function AdsCallCta() {
       }
     }
     const query = carried.toString()
-    const calLink = query ? `august-marketing-ceo/15min?${query}` : 'august-marketing-ceo/15min'
+    const calLink = query
+      ? `august-marketing-ceo/purescale-creative-strategy-call?${query}`
+      : 'august-marketing-ceo/purescale-creative-strategy-call'
 
     const script = document.createElement('script')
     script.type = 'text/javascript'
@@ -113,11 +115,11 @@ export function AdsCallCta() {
         <div className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-3 text-left sm:grid-cols-3">
           <div className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4">
             <p className="text-xl font-bold text-white">$600M+</p>
-            <p className="mt-1 text-xs text-gray-500">Managed in Meta ad spend</p>
+            <p className="mt-1 text-xs text-gray-500">Driven for DTC brands</p>
           </div>
           <div className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4">
             <p className="text-xl font-bold text-white">$9M → $26M</p>
-            <p className="mt-1 text-xs text-gray-500">Revenue growth we drove for Revice</p>
+            <p className="mt-1 text-xs text-gray-500">Revice Denim, → $42M on track this year</p>
           </div>
           <div className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4">
             <p className="text-xl font-bold text-white">9.3x ROAS</p>

@@ -31,12 +31,12 @@ export function CalFloatingButton() {
         };
       })(window, "https://app.cal.com/embed/embed.js", "init");
 
-      Cal("init", "15min", { origin: "https://app.cal.com" });
+      Cal("init", "purescale-creative-strategy-call", { origin: "https://app.cal.com" });
       Cal.config = Cal.config || {};
       Cal.config.forwardQueryParams = true;
 
-      Cal.ns["15min"]("floatingButton", {
-        calLink: "august-marketing-ceo/15min",
+      Cal.ns["purescale-creative-strategy-call"]("floatingButton", {
+        calLink: "august-marketing-ceo/purescale-creative-strategy-call",
         config: {
           layout: "month_view",
           useSlotsViewOnSmallScreen: "true"
@@ -44,7 +44,7 @@ export function CalFloatingButton() {
         buttonText: "Book a Free Call"
       });
 
-      Cal.ns["15min"]("ui", {
+      Cal.ns["purescale-creative-strategy-call"]("ui", {
         hideEventTypeDetails: false,
         layout: "month_view"
       });
