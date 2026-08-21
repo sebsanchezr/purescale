@@ -4,8 +4,8 @@ export function SocialProof() {
   const caseStudies = [
     {
       name: "Shai, Revice Denim",
-      metric: "$9M → $42M",
-      detail: "sustainable growth",
+      metric: "$9M → $26M",
+      detail: "→ $42M on track this year",
       duration: "2.5 years",
       description: "Started with 4-6 rotating creatives. Introduced systematic production - weekly rotation of 20+ variations. Ad spend scaled from $10k to $250k/month. The real win: ROAS stayed consistent while scaling, margins stayed protected. Shai's insight: 'It's not about growing faster, it's about growing profitably.'"
     },

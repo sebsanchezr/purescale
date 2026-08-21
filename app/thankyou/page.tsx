@@ -107,7 +107,7 @@ export default function ThankYouPage() {
             {[
               {
                 brand: 'Revice Denim',
-                result: '$9M → $42M revenue',
+                result: '$9M → $26M → $42M on track this year',
                 detail: 'Scaled ad spend from $10k to $250k/month. ROAS held consistent throughout. Creative fatigue was the ceiling, systematic production broke it.',
                 duration: '2.5 year partnership',
               },
