@@ -24,7 +24,20 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 // k = UK campaign, u = US campaign, then step number, then A/B variant.
+//
+// r and c (added 31 Aug) are the bulk-pool campaigns, role inboxes and
+// catch-all. Both were built by copying the UK sequence, so every one of their
+// steps still points at a k-code and their clicks land here labelled `uk`:
+// treat any UK click number from before 31 Aug as UK plus bulk, not UK alone.
+// Only the Q4 variant is separated so far.
+//
+// q is the Q4 gifting variant, a third step-1 variant added alongside the two
+// existing ones rather than replacing either. See 45_add_q4_variant.py.
 const CODES: Record<string, { campaign: string; step: number; ab: string }> = {
+  k1q: { campaign: 'uk', step: 1, ab: 'q' },
+  u1q: { campaign: 'us', step: 1, ab: 'q' },
+  r1q: { campaign: 'role', step: 1, ab: 'q' },
+  c1q: { campaign: 'catch_all', step: 1, ab: 'q' },
   k1a: { campaign: 'uk', step: 1, ab: 'a' },
   k1b: { campaign: 'uk', step: 1, ab: 'b' },
   k2a: { campaign: 'uk', step: 2, ab: 'a' },
