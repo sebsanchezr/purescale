@@ -213,7 +213,7 @@ export default function TrialPage() {
       </section>
 
       {/* PROOF WALL */}
-      <CreativeExamples />
+      <CreativeExamples variant="trial" />
 
       {/* WHAT YOU HOLD AT THE END */}
       <section className="relative border-t border-white/10 px-4 py-20">

@@ -88,33 +88,57 @@ function Row({ slugs, reverse = false }: { slugs: string[]; reverse?: boolean })
   )
 }
 
-function Heading() {
+function Heading({ variant }: { variant: Variant }) {
   return (
     <>
       <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
         This is the work
       </p>
-      <h2 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl">
-        Ten of these.
-        <br />
-        On <span className="font-poppins-italic text-cyan-300">your</span> brand.
-        <br />
-        By tomorrow.
-      </h2>
-      <p className="mt-4 max-w-md text-gray-400">
-        Different products, different markets, different angles, every one built by the
-        same engine you&apos;re about to put to work for $97.
-      </p>
+      {variant === 'trial' ? (
+        <>
+          <h2 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl">
+            Fifteen of these.
+            <br />
+            On <span className="font-poppins-italic text-cyan-300">your</span> account.
+            <br />
+            In fourteen days.
+          </h2>
+          <p className="mt-4 max-w-md text-gray-400">
+            Different products, different markets, different angles. The batch that turned
+            the account above around was built by the same engine, and so is yours.
+          </p>
+        </>
+      ) : (
+        <>
+          <h2 className="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl">
+            Ten of these.
+            <br />
+            On <span className="font-poppins-italic text-cyan-300">your</span> brand.
+            <br />
+            By tomorrow.
+          </h2>
+          <p className="mt-4 max-w-md text-gray-400">
+            Different products, different markets, different angles, every one built by the
+            same engine you&apos;re about to put to work for $97.
+          </p>
+        </>
+      )}
     </>
   )
 }
 
-export function CreativeExamples() {
+export type Variant = 'pack' | 'trial'
+
+// The proof strip is shared by the $97 pack pages and the trial page. Same
+// images, different promise: the pack sells ten creatives by tomorrow, the
+// trial sells fifteen over fourteen days. Passing the variant keeps one
+// component instead of forking the whole gallery for one paragraph.
+export function CreativeExamples({ variant = 'pack' }: { variant?: Variant } = {}) {
   return (
     <section className="relative overflow-hidden border-t border-white/10 py-20">
       {/* Mobile: heading sits above the rows, since there is no room beside them. */}
       <div className="mx-auto mb-10 max-w-2xl px-4 text-center lg:hidden">
-        <Heading />
+        <Heading variant={variant} />
       </div>
 
       <div className="creative-marquee space-y-4">
@@ -130,7 +154,7 @@ export function CreativeExamples() {
         className="pointer-events-none absolute inset-y-0 left-0 hidden w-[52%] bg-gradient-to-r from-stone-900 from-45% via-stone-900/85 to-transparent backdrop-blur-[2px] lg:block"
       />
       <div className="absolute inset-y-0 left-0 hidden w-[46%] flex-col justify-center px-10 xl:px-16 lg:flex">
-        <Heading />
+        <Heading variant={variant} />
       </div>
     </section>
   )
