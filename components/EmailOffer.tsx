@@ -82,6 +82,21 @@ export function EmailOffer() {
             Get My 10 Creatives. $97 →
           </a>
         </div>
+
+        {/* £15k+/month trial */}
+        <div className="mt-4 max-w-2xl mx-auto text-center bg-white/5 border border-white/10 rounded-xl p-6">
+          <p className="text-gray-300 text-sm mb-4">
+            Already spending <span className="text-white font-semibold">£15,000+/month on Meta</span>?
+            We&apos;ll build your next ten creatives and run them on your account. Beat your current
+            ROAS in 10 days or pay nothing.
+          </p>
+          <a
+            href="/trial"
+            className="inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-sm transition-all duration-200 shadow-xl shadow-blue-500/30"
+          >
+            Apply for the 10-Day Trial →
+          </a>
+        </div>
       </div>
     </section>
   )

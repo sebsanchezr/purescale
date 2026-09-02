@@ -51,6 +51,7 @@ export function LegalPage({
             <Link href="/privacy" className="hover:text-gray-300">Privacy</Link>
             <Link href="/refunds" className="hover:text-gray-300">Refunds</Link>
             <Link href="/ads" className="hover:text-gray-300">Back to the offer</Link>
+            <Link href="/trial" className="hover:text-gray-300">10-Day Trial</Link>
           </div>
         </div>
       </div>
