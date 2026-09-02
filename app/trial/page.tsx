@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Navbar } from '@/components/Navbar'
 import { AugustMarketingTrust } from '@/components/AugustMarketingTrust'
 import { CreativeExamples } from '@/components/CreativeExamples'
+import { YeuboCase } from '@/components/YeuboCase'
 import { Testimonials } from '@/components/Testimonials'
 import { TrialFAQ } from '@/components/TrialFAQ'
 import { LegalFooter } from '@/components/LegalFooter'
@@ -109,7 +110,9 @@ export default function TrialPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300">
             Keep your agency. Give us one ad set. We ship 15 creatives into it over 14 days and
-            beat your current return on ad spend, or you pay nothing and keep all 15 anyway.
+            beat your current return on ad spend, or you pay nothing and keep all 15 anyway. If it
+            works, that becomes a new batch every week, which is the only way an account scales
+            without the cost per sale climbing.
           </p>
 
           <div className="mt-10">
@@ -134,6 +137,82 @@ export default function TrialPage() {
             <span className="text-white font-semibold">You keep them either way</span>
             <span className="hidden sm:inline text-white/20">•</span>
             <span className="text-white font-semibold">Partner access to one ad set</span>
+          </div>
+        </div>
+      </section>
+
+      {/* WHO WE ARE */}
+      <section className="relative border-t border-white/10 bg-white/[0.02] px-4 py-16">
+        <div className="mx-auto max-w-5xl">
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-cyan-300">
+                Who is asking
+              </p>
+              <h2 className="mt-3 text-3xl font-bold leading-tight text-white sm:text-4xl">
+                August Marketing.{' '}
+                <span className="font-poppins-italic text-cyan-300">Eight years, one discipline.</span>
+              </h2>
+              <p className="mt-5 text-gray-300">
+                We are a small London team that makes the creative and buys the media, in that
+                order. Same people write the ad, build the ad and run the ad, so nothing gets lost
+                between a strategy deck and an editor who never saw the account.
+              </p>
+              <p className="mt-4 text-gray-400">
+                We run this trial because it is the fastest honest way to show you what that
+                changes, and because the brands we want to work with have all been burned by a
+                pitch deck before. You do not have to believe us for fourteen days. You just have
+                to look at the account afterwards.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { n: '$600M+', l: 'tracked revenue for DTC brands' },
+                { n: '8 years', l: 'running paid social, not a new agency' },
+                { n: '15+', l: 'new creatives per client, every month' },
+                { n: '1 team', l: 'creative and media buying, no handoff' },
+              ].map((c) => (
+                <div key={c.n} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <div className="font-poppins-italic bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-2xl font-extrabold text-transparent">
+                    {c.n}
+                  </div>
+                  <p className="mt-2 text-sm leading-snug text-gray-400">{c.l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden border-t border-white/10 px-4 py-20">
+        <Orbs />
+        <div className="relative mx-auto max-w-5xl">
+          <p className="text-center text-sm font-semibold uppercase tracking-wider text-cyan-300">
+            Receipts, not theory
+          </p>
+          <h2 className="mt-3 text-center text-3xl font-bold text-white sm:text-4xl">
+            The same engine that&apos;s driven{' '}
+            <span className="font-poppins-italic bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              $600M+
+            </span>{' '}
+            for DTC brands
+          </h2>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { n: '$297 → $29', l: 'Yeubo, one week to the next', s: 'same budget, same ad set' },
+              { n: '$9M → $26M', l: 'Revice Denim', s: '→ $42M on track this year' },
+              { n: '10×', l: 'Posh, in 90 days', s: 'from a standing start' },
+              { n: '9.3×', l: "L'alingi, GCC + US", s: 'no prior ad history' },
+            ].map((c, i) => (
+              <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
+                <div className="font-poppins-italic bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-2xl font-extrabold text-transparent">
+                  {c.n}
+                </div>
+                <p className="mt-3 font-semibold text-white">{c.l}</p>
+                <p className="mt-1 text-sm text-gray-500">{c.s}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -191,59 +270,7 @@ export default function TrialPage() {
         </div>
       </section>
 
-      {/* BEFORE AND AFTER */}
-      <section className="relative border-t border-white/10 px-4 py-20">
-        <div className="mx-auto max-w-4xl">
-          <p className="text-center text-sm font-semibold uppercase tracking-wider text-cyan-300">
-            One account, two weeks apart
-          </p>
-          <h2 className="mx-auto mt-3 max-w-2xl text-center text-3xl font-bold text-white sm:text-4xl">
-            The same budget.{' '}
-            <span className="font-poppins-italic text-cyan-300">The same ad set. The same audience.</span>
-          </h2>
-
-          <div className="mt-12 rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.05] p-8 sm:p-10">
-            <div className="grid gap-8 divide-y divide-white/10 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
-              <div>
-                <span className="inline-block rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-bold uppercase tracking-wide text-gray-400">
-                  Before
-                </span>
-                <p className="mt-4 text-sm text-gray-500">17 to 23 August</p>
-                <p className="mt-2 font-poppins-italic text-4xl font-extrabold text-gray-400">$297</p>
-                <p className="mt-1 text-sm text-gray-500">per purchase</p>
-                <ul className="mt-4 space-y-1 text-sm text-gray-500">
-                  <li>5 video ads</li>
-                  <li>1 purchase in 7 days</li>
-                </ul>
-              </div>
-              <div className="pt-8 sm:pl-8 sm:pt-0">
-                <span className="inline-block rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-cyan-300">
-                  After
-                </span>
-                <p className="mt-4 text-sm text-gray-400">24 to 31 August</p>
-                <p className="mt-2 font-poppins-italic text-4xl font-extrabold text-white">$29</p>
-                <p className="mt-1 text-sm text-gray-400">per purchase</p>
-                <ul className="mt-4 space-y-1 text-sm text-gray-300">
-                  <li>15 creatives, mostly long copy statics</li>
-                  <li>15 purchases in 8 days</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-8 border-t border-white/10 pt-8">
-              <p className="text-lg leading-relaxed text-gray-200">
-                Ten times cheaper per purchase. No budget change, no targeting change, no bid
-                change, no new ad set. The only thing that changed was which creatives were live.
-              </p>
-            </div>
-          </div>
-
-          <p className="mt-4 text-center text-sm text-gray-500">
-            Yeubo, a childrens supplement brand. Numbers taken from the account, not a case study
-            deck.
-          </p>
-        </div>
-      </section>
+      <YeuboCase />
 
       {/* WHAT HAPPENS, DAY BY DAY */}
       <section className="relative border-t border-white/10 px-4 py-20">
@@ -288,48 +315,57 @@ export default function TrialPage() {
         </div>
       </section>
 
-      {/* WHAT IT COSTS */}
+      {/* WHAT THIS IS THE START OF */}
       <section className="relative border-t border-white/10 px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-center text-3xl font-bold text-white sm:text-4xl">
-            What it costs,{' '}
-            <span className="font-poppins-italic text-cyan-300">stated plainly</span>
+          <p className="text-center text-sm font-semibold uppercase tracking-wider text-cyan-300">
+            After day 15
+          </p>
+          <h2 className="mx-auto mt-3 max-w-2xl text-center text-3xl font-bold text-white sm:text-4xl">
+            Fifteen creatives is not the product.{' '}
+            <span className="font-poppins-italic text-cyan-300">The weekly engine is.</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
-            Nobody books a call to find out the price. So here it is.
+          <p className="mx-auto mt-5 max-w-2xl text-center text-gray-400">
+            A batch wins for a while and then it fatigues. That is not a failure, it is what
+            creative does. The reason accounts stall is that nothing is queued behind the winner,
+            so the fortnight after a good fortnight is always worse. The trial exists to prove the
+            engine works on your account. What it produces after that is a batch every week,
+            forever, each one built from what the last one taught us.
           </p>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-3">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-7">
-              <p className="text-xs font-bold uppercase tracking-wider text-gray-500">If we miss</p>
-              <p className="mt-3 font-poppins-italic text-4xl font-extrabold text-white">$0</p>
-              <p className="mt-3 text-sm leading-relaxed text-gray-400">
-                You keep the 15 creatives and the write up. There is no invoice, no clawback and
-                nothing to cancel.
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-7">
+              <p className="font-poppins-italic text-3xl font-extrabold text-cyan-300">Every week</p>
+              <p className="mt-3 font-semibold text-white">A new batch, not a quarterly refresh</p>
+              <p className="mt-2 text-sm leading-relaxed text-gray-400">
+                Three to five creatives, shipped on a fixed day, built from last week&apos;s
+                winners rather than from a brand deck. Your account never runs out of things to
+                test.
               </p>
             </div>
-            <div className="rounded-2xl border-2 border-cyan-400/40 bg-cyan-400/[0.06] p-7">
-              <p className="text-xs font-bold uppercase tracking-wider text-cyan-300">If we beat it</p>
-              <p className="mt-3 font-poppins-italic text-4xl font-extrabold text-white">$3,000</p>
-              <p className="mt-1 text-sm text-cyan-300">a month, month to month</p>
-              <p className="mt-3 text-sm leading-relaxed text-gray-200">
-                Creative and media buying together, 15 or more new creatives a month, and the same
-                three rules that produced the result. Cancel with 30 days notice.
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-7">
+              <p className="font-poppins-italic text-3xl font-extrabold text-cyan-300">Every winner</p>
+              <p className="mt-3 font-semibold text-white">Gets taken apart and rebuilt</p>
+              <p className="mt-2 text-sm leading-relaxed text-gray-400">
+                When something works we find out which part worked, the hook, the angle or the
+                format, and the next batch is variations of that one variable. This is how a good
+                week becomes a good quarter.
               </p>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-7">
-              <p className="text-xs font-bold uppercase tracking-wider text-gray-500">Either way</p>
-              <p className="mt-3 font-poppins-italic text-4xl font-extrabold text-white">15</p>
-              <p className="mt-1 text-sm text-gray-400">creatives, yours to keep</p>
-              <p className="mt-3 text-sm leading-relaxed text-gray-400">
-                Run them with your current team, your current agency, or nobody. They are your
-                files from the day they are made.
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-7">
+              <p className="font-poppins-italic text-3xl font-extrabold text-cyan-300">Every month</p>
+              <p className="mt-3 font-semibold text-white">You can spend more without paying more per sale</p>
+              <p className="mt-2 text-sm leading-relaxed text-gray-400">
+                Scale is not a bigger budget on one ad. It is enough live creative that the
+                algorithm has somewhere to put the extra money. That is the whole reason to keep
+                the engine running.
               </p>
             </div>
           </div>
 
-          <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-gray-500">
-            No setup fee, no minimum term, no percentage of spend.
+          <p className="mx-auto mt-10 max-w-2xl text-center text-gray-300">
+            We talk about what that costs on the call, once we have both seen whether it works on
+            your account. Nothing is signed before day 15.
           </p>
         </div>
       </section>
@@ -450,38 +486,6 @@ export default function TrialPage() {
 
       {/* PROOF */}
       <Testimonials />
-
-      <section className="relative overflow-hidden border-t border-white/10 px-4 py-20">
-        <Orbs />
-        <div className="relative mx-auto max-w-5xl">
-          <p className="text-center text-sm font-semibold uppercase tracking-wider text-cyan-300">
-            Receipts, not theory
-          </p>
-          <h2 className="mt-3 text-center text-3xl font-bold text-white sm:text-4xl">
-            The same engine that&apos;s driven{' '}
-            <span className="font-poppins-italic bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              $600M+
-            </span>{' '}
-            for DTC brands
-          </h2>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { n: '$297 → $29', l: 'Yeubo, one week to the next', s: 'same budget, same ad set' },
-              { n: '$9M → $26M', l: 'Revice Denim', s: '→ $42M on track this year' },
-              { n: '10×', l: 'Posh, in 90 days', s: 'from a standing start' },
-              { n: '9.3×', l: "L'alingi, GCC + US", s: 'no prior ad history' },
-            ].map((c, i) => (
-              <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
-                <div className="font-poppins-italic bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-2xl font-extrabold text-transparent">
-                  {c.n}
-                </div>
-                <p className="mt-3 font-semibold text-white">{c.l}</p>
-                <p className="mt-1 text-sm text-gray-500">{c.s}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* FAQ */}
       <div className="border-t border-white/10">
