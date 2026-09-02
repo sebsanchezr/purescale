@@ -319,7 +319,7 @@ export default function TrialPage() {
           <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-gray-500">
             Under the floor?{' '}
             <a href="/ads" className="text-cyan-300 hover:underline">
-              Get 15 creatives for $97
+              Get 10 creatives for $97
             </a>{' '}
             instead, same production engine, no spend commitment.
           </p>

@@ -141,7 +141,7 @@ export function TrialApplyForm() {
               href="/ads"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-9 py-4 text-lg font-bold text-white shadow-lg shadow-cyan-500/20 transition-all hover:shadow-cyan-500/40"
             >
-              Get My 15 Creatives. $97 →
+              Get My 10 Creatives. $97 →
             </a>
             <p className="mt-3 text-sm text-gray-500">
               One time. No subscription. Keep everything.
