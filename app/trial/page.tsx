@@ -19,31 +19,58 @@ const Orbs = () => (
   </>
 )
 
-const MOMENT_CARDS = [
-  'Your best performing ad launched months ago and nothing since has come close.',
-  'One creative is taking the majority of the spend and there is nothing queued behind it.',
-  'A batch takes your editor nine days, so by the time it lands the winner has already fatigued.',
-  'Every new angle is a guess, because nobody has read the account log to see what actually moved.',
+// The objection that actually stops a $25k/month advertiser booking is not
+// "does it work", it is "I already have an agency and I am not blowing up my
+// account for a stranger". So the page answers that first, in its own section,
+// before it argues anything else.
+const KEEP = [
+  'Your agency, your team, your in-house editor. Nobody gets replaced.',
+  'Your campaign structure. We do not rebuild anything.',
+  'Your budget. Not a pound more than you spend today.',
+  'Your reporting and your meetings. We do not show up in them.',
 ]
 
-const RULES = [
+const WE_TOUCH = [
+  'One ad set that you choose. Nothing else in the account.',
+  'The creatives that run inside it, made by us, 15 of them in 14 days.',
+  'A written read on why your current creative stalled.',
+  'That is the entire footprint. Partner access, one ad set, 14 days.',
+]
+
+// What a buyer actually wants to know before a call: what happens, when, and
+// what it costs them in time. A timeline reads faster than three feature cards
+// and answers the question the cards did not.
+const TIMELINE = [
   {
-    t: 'We never touch the structure',
-    body: 'One ad set, broad, one fixed daily budget. In the turnaround above there was not a single budget change, targeting change or new ad set. Every change was a creative going live or getting paused. If your account is being rebuilt every fortnight, that is the problem.',
+    when: 'Day 0',
+    what: 'One 40 minute call',
+    body: 'We agree in writing which ad set we run in and what number we have to beat. You grant Partner access. That is the last meeting you are in.',
   },
   {
-    t: 'Volume is the only lever we pull',
-    body: '15 creatives in 14 days, shipped in batches of three to five, not one hero ad and a hope. Meta will find the winner if you give it something to find. Most accounts starve it.',
+    when: 'Days 1 to 3',
+    what: 'First five creatives live',
+    body: 'Built from your account log, not from a mood board. We read what already worked and what already died before we write a single hook.',
   },
   {
-    t: 'We kill fast and build more of what works',
-    body: 'Anything burning real spend with nothing to show gets paused inside three to five days. Click through rate tells us which angle has legs about three days before cost per purchase confirms it, so the next batch is already variations of the winner.',
+    when: 'Days 4 to 7',
+    what: 'We kill and we double down',
+    body: 'Anything burning spend with nothing to show is paused. Click through rate shows which angle has legs about three days before cost per purchase confirms it, so batch two is already variations of the leader.',
+  },
+  {
+    when: 'Days 8 to 14',
+    what: 'Ten more, weighted to the winner',
+    body: 'Volume is the only lever we pull. No budget change, no targeting change, no new ad set. Meta finds the winner when you give it something to find.',
+  },
+  {
+    when: 'Day 15',
+    what: 'The number, and your decision',
+    body: 'We beat the control or we did not. Either way you keep all 15 creatives, the angle that worked, and the data showing why.',
   },
 ]
 
 const HOLD = [
-  '15 production ready creatives. Yours, from the day they are made, win or lose.',
-  'The angle that worked and the data showing why it worked.',
+  '15 production ready creatives. Yours from the day they are made, win or lose.',
+  'The angle that worked, and the data showing why it worked.',
   'A written read on why your existing creative stalled.',
   'If we did not beat the control, an invoice for nothing.',
 ]
@@ -81,8 +108,8 @@ export default function TrialPage() {
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300">
-            We ship 15 creatives into your account over 14 days and beat your current return on
-            ad spend. If we miss, you pay nothing and you keep all 15.
+            Keep your agency. Give us one ad set. We ship 15 creatives into it over 14 days and
+            beat your current return on ad spend, or you pay nothing and keep all 15 anyway.
           </p>
 
           <div className="mt-10">
@@ -111,27 +138,55 @@ export default function TrialPage() {
         </div>
       </section>
 
-      {/* THE MOMENT */}
+      {/* YOU ARE NOT SWITCHING AGENCIES */}
       <section className="relative border-t border-white/10 px-4 py-20">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="text-center text-3xl font-bold text-white sm:text-4xl">
-            You are not short of budget.{' '}
-            <span className="font-poppins-italic text-cyan-300">You are short of bench.</span>
+        <div className="mx-auto max-w-5xl">
+          <p className="text-center text-sm font-semibold uppercase tracking-wider text-cyan-300">
+            Before anything else
+          </p>
+          <h2 className="mx-auto mt-3 max-w-3xl text-center text-3xl font-bold text-white sm:text-4xl">
+            You are not firing anyone.{' '}
+            <span className="font-poppins-italic text-cyan-300">You are borrowing a creative team for a fortnight.</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-center text-gray-400">
-            Every account we open looks the same way by the time someone calls us.
+          <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
+            This is not a pitch to replace your agency. It is one ad set, 14 days, and 15 creatives
+            you keep whatever happens. If it works you have a decision to make. If it does not, you
+            have lost nothing but the 40 minutes.
           </p>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2">
-            {MOMENT_CARDS.map((c, i) => (
-              <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <p className="text-sm leading-relaxed text-gray-200">{c}</p>
+          <div className="mt-12 overflow-hidden rounded-2xl border border-white/10">
+            <div className="grid sm:grid-cols-2">
+              <div className="bg-white/[0.02] p-8">
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-500">
+                  Stays exactly as it is
+                </p>
+                <ul className="mt-5 space-y-3">
+                  {KEEP.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-gray-400">
+                      <span aria-hidden="true" className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-600" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            ))}
+              <div className="border-t border-white/10 bg-cyan-400/[0.06] p-8 sm:border-l sm:border-t-0">
+                <p className="text-xs font-bold uppercase tracking-wider text-cyan-300">
+                  All we touch
+                </p>
+                <ul className="mt-5 space-y-3">
+                  {WE_TOUCH.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-gray-200">
+                      <span aria-hidden="true" className="mt-0.5 text-cyan-300">→</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
-          <p className="mx-auto mt-8 max-w-xl text-center text-lg font-semibold text-white">
-            None of that is a targeting problem. Changing the audience will not fix it.
+          <p className="mx-auto mt-8 max-w-2xl text-center text-lg font-semibold text-white">
+            The risk you are being asked to take is Partner access to one ad set.
           </p>
         </div>
       </section>
@@ -190,25 +245,92 @@ export default function TrialPage() {
         </div>
       </section>
 
-      {/* MECHANISM */}
+      {/* WHAT HAPPENS, DAY BY DAY */}
       <section className="relative border-t border-white/10 px-4 py-20">
         <div className="mx-auto max-w-4xl">
           <p className="text-center text-sm font-semibold uppercase tracking-wider text-cyan-300">
-            How
+            The whole engagement
           </p>
           <h2 className="mx-auto mt-3 max-w-2xl text-center text-3xl font-bold text-white sm:text-4xl">
-            Three rules.{' '}
-            <span className="font-poppins-italic text-cyan-300">That is the whole method.</span>
+            One call, then{' '}
+            <span className="font-poppins-italic text-cyan-300">you go back to your day</span>
           </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
+            Total time this costs you: 40 minutes on day zero, and reading one message a week.
+          </p>
+
+          <ol className="mt-12 space-y-0">
+            {TIMELINE.map((step, i) => (
+              <li key={step.when} className="relative grid gap-4 pl-8 sm:grid-cols-[130px_1fr] sm:gap-8 sm:pl-10">
+                {/* the rail */}
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-[5px] top-3 w-px bg-white/10 ${i === TIMELINE.length - 1 ? 'h-0' : 'h-full'}`}
+                />
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-0 top-2 h-[11px] w-[11px] rounded-full border-2 ${
+                    i === TIMELINE.length - 1
+                      ? 'border-cyan-300 bg-cyan-300'
+                      : 'border-cyan-400/50 bg-stone-900'
+                  }`}
+                />
+                <div className="pb-10">
+                  <p className="text-sm font-bold uppercase tracking-wider text-cyan-300">{step.when}</p>
+                </div>
+                <div className="-mt-[26px] pb-10 sm:mt-0">
+                  <p className="font-semibold text-white">{step.what}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-gray-400">{step.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* WHAT IT COSTS */}
+      <section className="relative border-t border-white/10 px-4 py-20">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="text-center text-3xl font-bold text-white sm:text-4xl">
+            What it costs,{' '}
+            <span className="font-poppins-italic text-cyan-300">stated plainly</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
+            Nobody books a call to find out the price. So here it is.
+          </p>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-3">
-            {RULES.map((r, i) => (
-              <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <p className="text-sm font-semibold text-cyan-300">{r.t}</p>
-                <p className="mt-2 text-sm leading-relaxed text-gray-400">{r.body}</p>
-              </div>
-            ))}
+            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-7">
+              <p className="text-xs font-bold uppercase tracking-wider text-gray-500">If we miss</p>
+              <p className="mt-3 font-poppins-italic text-4xl font-extrabold text-white">$0</p>
+              <p className="mt-3 text-sm leading-relaxed text-gray-400">
+                You keep the 15 creatives and the write up. There is no invoice, no clawback and
+                nothing to cancel.
+              </p>
+            </div>
+            <div className="rounded-2xl border-2 border-cyan-400/40 bg-cyan-400/[0.06] p-7">
+              <p className="text-xs font-bold uppercase tracking-wider text-cyan-300">If we beat it</p>
+              <p className="mt-3 font-poppins-italic text-4xl font-extrabold text-white">$3,000</p>
+              <p className="mt-1 text-sm text-cyan-300">a month, month to month</p>
+              <p className="mt-3 text-sm leading-relaxed text-gray-200">
+                Creative and media buying together, 15 or more new creatives a month, and the same
+                three rules that produced the result. Cancel with 30 days notice.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-7">
+              <p className="text-xs font-bold uppercase tracking-wider text-gray-500">Either way</p>
+              <p className="mt-3 font-poppins-italic text-4xl font-extrabold text-white">15</p>
+              <p className="mt-1 text-sm text-gray-400">creatives, yours to keep</p>
+              <p className="mt-3 text-sm leading-relaxed text-gray-400">
+                Run them with your current team, your current agency, or nobody. They are your
+                files from the day they are made.
+              </p>
+            </div>
           </div>
+
+          <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-gray-500">
+            No setup fee, no minimum term, no percentage of spend.
+          </p>
         </div>
       </section>
 
@@ -376,8 +498,10 @@ export default function TrialPage() {
             <span className="font-poppins-italic text-cyan-300">in 14 days, or pay nothing.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
-            Apply, then a 40 minute call to agree the control and the ad set. Three accounts a
-            month, and we take them in the order they qualify.
+            Apply, then one 40 minute call. On that call we read your account back to you: which
+            creative is carrying your spend, what has fatigued, and what we would ship first. You
+            get that read whether or not you take the trial. Three accounts a month, taken in the
+            order they qualify.
           </p>
           <div className="mt-10">
             <a
