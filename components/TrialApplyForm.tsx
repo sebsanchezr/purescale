@@ -17,16 +17,11 @@
 import { useState } from 'react'
 import { CalEmbed } from './CalEmbed'
 
-const SPEND_OPTIONS = [
-  { value: 'under_25k', label: 'Under $25,000/month' },
-  { value: '25k_50k', label: '$25,000 - $50,000/month' },
-  { value: '50k_100k', label: '$50,000 - $100,000/month' },
-  { value: '100k_plus', label: '$100,000+/month' },
-] as const
+import { SPEND_BRACKETS, isQualifiedSpend } from '@/lib/trial-qualification'
 
-// The trial floor. Anything below this bracket never spends enough over 14
-// days for the Yeubo-style kill-and-scale method to reach a fair read.
-const QUALIFYING_SPEND = new Set(['25k_50k', '50k_100k', '100k_plus'])
+// Brackets and the floor rule both live in lib/trial-qualification so the
+// screen the applicant sees and the record the server writes cannot drift.
+const SPEND_OPTIONS = SPEND_BRACKETS
 
 const REVENUE_OPTIONS = [
   { value: 'under_100k', label: 'Under $100,000/month' },
@@ -92,7 +87,7 @@ export function TrialApplyForm() {
     setSubmitting(true)
     setError(null)
 
-    const qualified = QUALIFYING_SPEND.has(formData.monthlySpend)
+    const qualified = isQualifiedSpend(formData.monthlySpend)
     const eventId = newEventId('trial_lead')
 
     try {

@@ -16,6 +16,8 @@ import { sendCapiEvent } from '@/lib/meta-capi'
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
+import { isQualifiedSpend } from '@/lib/trial-qualification'
+
 const OS_WEBHOOK_URL = 'https://augustosv3.vercel.app/api/webhooks/funnel-application'
 
 interface TrialApplyBody {
@@ -36,15 +38,18 @@ interface TrialApplyBody {
 async function notifyOs(payload: Record<string, unknown>): Promise<void> {
   const secret = process.env.FUNNEL_WEBHOOK_SECRET
   if (!secret) {
-    console.warn('[trial-apply] FUNNEL_WEBHOOK_SECRET not set, OS not notified', payload)
-    return
+    // Deliberately still send. The OS webhook accepts unauthenticated posts
+    // while its own secret is unset, so posting anyway means a real applicant
+    // lands in the pipeline today. Refusing to send lost the lead entirely and
+    // left it in a log nobody reads.
+    console.warn('[trial-apply] FUNNEL_WEBHOOK_SECRET not set, posting to OS unsigned')
   }
   try {
     const res = await fetch(OS_WEBHOOK_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-funnel-secret': secret,
+        ...(secret ? { 'x-funnel-secret': secret } : {}),
       },
       body: JSON.stringify(payload),
     })
@@ -81,6 +86,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // The browser sends `qualified`, but the floor is a commercial rule, not a
+    // client-side opinion. Recompute it here from the bracket.
+    const qualifiedSpend = isQualifiedSpend(monthlySpend)
+
     console.log('[trial-apply] submission received', {
       timestamp: new Date().toISOString(),
       name,
@@ -91,7 +100,8 @@ export async function POST(request: NextRequest) {
       monthlySpend,
       revenue,
       problem,
-      qualified: !!qualified,
+      qualified: qualifiedSpend,
+      qualified_claimed_by_client: !!qualified,
     })
 
     const clientIp = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
@@ -100,7 +110,7 @@ export async function POST(request: NextRequest) {
     // Lead event only fires for applications that clear the $25k/month floor.
     // Firing it for every submission would tell Meta's optimiser that
     // under-floor traffic is what a "qualified" lead looks like.
-    if (qualified) {
+    if (qualifiedSpend) {
       const id = eventId ?? `trial_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`
       void sendCapiEvent({
         eventName: 'Lead',
