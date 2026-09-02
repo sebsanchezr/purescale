@@ -22,6 +22,7 @@ interface TrialApplyBody {
   name?: string
   email?: string
   company?: string
+  vertical?: string
   website?: string
   monthlySpend?: string
   revenue?: string
@@ -62,6 +63,7 @@ export async function POST(request: NextRequest) {
       name,
       email,
       company,
+      vertical,
       website,
       monthlySpend,
       revenue,
@@ -84,6 +86,7 @@ export async function POST(request: NextRequest) {
       name,
       email,
       company,
+      vertical,
       website,
       monthlySpend,
       revenue,
@@ -94,7 +97,7 @@ export async function POST(request: NextRequest) {
     const clientIp = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
     const userAgent = request.headers.get('user-agent') ?? undefined
 
-    // Lead event only fires for applications that clear the £15k/month floor.
+    // Lead event only fires for applications that clear the $25k/month floor.
     // Firing it for every submission would tell Meta's optimiser that
     // under-floor traffic is what a "qualified" lead looks like.
     if (qualified) {
@@ -104,7 +107,7 @@ export async function POST(request: NextRequest) {
         eventId: id,
         eventSourceUrl: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://purescale.co'}/trial/apply`,
         userData: { email, firstName: name, fbp, fbc, clientIp, userAgent },
-        customData: { content_name: '10-Day Creative Trial', monthly_spend: monthlySpend },
+        customData: { content_name: '14-Day Creative Trial', monthly_spend: monthlySpend },
       })
     }
 
@@ -113,6 +116,7 @@ export async function POST(request: NextRequest) {
       name,
       email,
       company,
+      vertical,
       website,
       monthly_meta_spend: monthlySpend,
       revenue_bracket: revenue,

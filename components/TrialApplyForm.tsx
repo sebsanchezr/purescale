@@ -1,14 +1,14 @@
 'use client'
 
 /**
- * Application form for the risk-reversed 10-day creative trial.
+ * Application form for the risk-reversed 14-day creative trial.
  *
  * Single step, not the multi-screen wizard /apply uses: a trial applicant has
  * already read the spend floor on /trial and self-selected, so the job here is
  * capturing the account fast, not qualifying them again one question at a time.
  *
  * Qualification is decided client-side from the spend bracket the instant the
- * form is submitted: under the £15k/month floor routes to the $97 downsell,
+ * form is submitted: under the $25k/month floor routes to the $97 downsell,
  * at or above it shows the booking step. The POST to /api/trial-apply always
  * fires regardless of bracket, every application is a lead worth having on
  * record even when it downsells.
@@ -18,21 +18,30 @@ import { useState } from 'react'
 import { CalEmbed } from './CalEmbed'
 
 const SPEND_OPTIONS = [
-  { value: 'under_5k', label: 'Under £5,000/month' },
-  { value: '5k_15k', label: '£5,000 - £15,000/month' },
-  { value: '15k_50k', label: '£15,000 - £50,000/month' },
-  { value: '50k_plus', label: '£50,000+/month' },
+  { value: 'under_25k', label: 'Under $25,000/month' },
+  { value: '25k_50k', label: '$25,000 - $50,000/month' },
+  { value: '50k_100k', label: '$50,000 - $100,000/month' },
+  { value: '100k_plus', label: '$100,000+/month' },
 ] as const
 
-// The trial floor. Anything below this bracket never spends enough over 10
+// The trial floor. Anything below this bracket never spends enough over 14
 // days for the Yeubo-style kill-and-scale method to reach a fair read.
-const QUALIFYING_SPEND = new Set(['15k_50k', '50k_plus'])
+const QUALIFYING_SPEND = new Set(['25k_50k', '50k_100k', '100k_plus'])
 
 const REVENUE_OPTIONS = [
-  { value: 'under_50k', label: 'Under £50,000/month' },
-  { value: '50k_200k', label: '£50,000 - £200,000/month' },
-  { value: '200k_1m', label: '£200,000 - £1,000,000/month' },
-  { value: '1m_plus', label: '£1,000,000+/month' },
+  { value: 'under_100k', label: 'Under $100,000/month' },
+  { value: '100k_500k', label: '$100,000 - $500,000/month' },
+  { value: '500k_2m', label: '$500,000 - $2,000,000/month' },
+  { value: '2m_plus', label: '$2,000,000+/month' },
+] as const
+
+const VERTICAL_OPTIONS = [
+  { value: 'ecommerce', label: 'Ecommerce' },
+  { value: 'info_product', label: 'Information product or course' },
+  { value: 'coaching', label: 'Coaching or consulting' },
+  { value: 'app', label: 'App or subscription' },
+  { value: 'lead_gen', label: 'Lead generation' },
+  { value: 'other', label: 'Other' },
 ] as const
 
 type Stage = 'form' | 'downsell' | 'booked'
@@ -56,6 +65,7 @@ export function TrialApplyForm() {
     name: '',
     email: '',
     company: '',
+    vertical: '',
     website: '',
     monthlySpend: '',
     revenue: '',
@@ -70,6 +80,7 @@ export function TrialApplyForm() {
     formData.name.trim() &&
     formData.email.includes('@') &&
     formData.company.trim() &&
+    formData.vertical &&
     formData.website.trim() &&
     formData.monthlySpend &&
     formData.revenue
@@ -102,7 +113,7 @@ export function TrialApplyForm() {
     }
 
     if (qualified) {
-      window.fbq?.('track', 'Lead', { content_name: '10-Day Creative Trial' }, { eventID: eventId })
+      window.fbq?.('track', 'Lead', { content_name: '14-Day Creative Trial' }, { eventID: eventId })
     }
 
     setSubmitting(false)
@@ -118,21 +129,19 @@ export function TrialApplyForm() {
             Not quite the trial floor
           </span>
           <h1 className="mt-6 text-3xl font-bold text-white sm:text-4xl">
-            The trial is built for £15,000+/month spenders.{' '}
-            <span className="font-poppins-italic text-cyan-300">This is built for you.</span>
+            You are under the trial floor,{' '}
+            <span className="font-poppins-italic text-cyan-300">and that is fine.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-lg text-gray-300">
-            Below the trial floor, 10 days is not enough spend for a fair read on fifteen
-            creatives. The same production engine is available with no spend commitment and no
-            call required: ten ad creatives, built on your brand, delivered fast, for $97. You
-            own every one of them.
+            Below $25,000 a month there is not enough volume in 14 days to prove anything
+            honestly. The $97 pack gets you the same production engine with no spend commitment.
           </p>
           <div className="mt-10">
             <a
               href="/ads"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-9 py-4 text-lg font-bold text-white shadow-lg shadow-cyan-500/20 transition-all hover:shadow-cyan-500/40"
             >
-              Get My 10 Creatives. $97 →
+              Get My 15 Creatives. $97 →
             </a>
             <p className="mt-3 text-sm text-gray-500">
               One time. No subscription. Keep everything.
@@ -156,7 +165,7 @@ export function TrialApplyForm() {
               Book your <span className="font-poppins-italic text-cyan-300">40-minute call</span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-gray-400">
-              We confirm the account, the control creative, and the exact 10-day start date on this
+              We confirm the account, the control creative, and the exact 14-day start date on this
               call. Come with access to grant on your Meta Business Manager and your
               current best-performing ad ready to share.
             </p>
@@ -174,7 +183,7 @@ export function TrialApplyForm() {
       <div className="mx-auto max-w-2xl">
         <div className="mb-10 text-center">
           <span className="inline-block rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-300">
-            Apply for the 10-day trial
+            Apply for the 14-day trial
           </span>
           <h1 className="mt-6 text-3xl font-bold text-white sm:text-4xl">
             Tell us about your <span className="font-poppins-italic">account</span>
@@ -235,19 +244,41 @@ export function TrialApplyForm() {
               />
             </div>
             <div>
-              <label className="mb-1.5 block text-sm font-semibold text-gray-300" htmlFor="website">
-                Website / store link
+              <label className="mb-1.5 block text-sm font-semibold text-gray-300" htmlFor="vertical">
+                Vertical
               </label>
-              <input
-                id="website"
-                type="text"
+              <select
+                id="vertical"
                 required
-                value={formData.website}
-                onChange={(e) => update('website', e.target.value)}
-                className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-gray-500 transition-all focus:border-blue-400 focus:bg-white/15 focus:outline-none"
-                placeholder="brand.com"
-              />
+                value={formData.vertical}
+                onChange={(e) => update('vertical', e.target.value)}
+                className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white transition-all focus:border-blue-400 focus:bg-white/15 focus:outline-none"
+              >
+                <option value="" disabled className="bg-stone-900 text-gray-500">
+                  Select...
+                </option>
+                {VERTICAL_OPTIONS.map((opt) => (
+                  <option key={opt.value} value={opt.value} className="bg-stone-900 text-white">
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
             </div>
+          </div>
+
+          <div>
+            <label className="mb-1.5 block text-sm font-semibold text-gray-300" htmlFor="website">
+              Website / store link
+            </label>
+            <input
+              id="website"
+              type="text"
+              required
+              value={formData.website}
+              onChange={(e) => update('website', e.target.value)}
+              className="w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-gray-500 transition-all focus:border-blue-400 focus:bg-white/15 focus:outline-none"
+              placeholder="brand.com"
+            />
           </div>
 
           <div>
@@ -319,10 +350,10 @@ export function TrialApplyForm() {
             disabled={!valid || submitting}
             className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 px-10 py-4 text-lg font-bold text-white shadow-lg transition-all duration-200 hover:from-blue-500 hover:to-cyan-400 hover:shadow-blue-500/50 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {submitting ? 'Submitting...' : 'Apply for the Trial →'}
+            {submitting ? 'Submitting...' : 'Apply for the trial'}
           </button>
           <p className="text-center text-xs text-gray-500">
-            Under the £15,000/month floor? You will be shown the $97 pack instead, no call
+            Under the $25,000/month floor? You will be shown the $97 pack instead, no call
             required.
           </p>
         </form>

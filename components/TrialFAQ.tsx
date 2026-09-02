@@ -3,36 +3,28 @@ import { useState } from 'react'
 
 const FAQS = [
   {
-    q: 'What if you don’t beat our current ROAS?',
-    a: 'You pay nothing. That is the entire structure of the trial, not a footnote to it. We build and run the ten creatives against your current best ad set for 10 days; if the blended ROAS on that spend does not beat what you were already getting, there is no invoice. You keep every creative either way.',
+    q: 'What happens if you do not beat the control?',
+    a: 'You pay us nothing and you keep all 15 creatives. That is the entire downside for you, and it is the reason we are careful about who we take.',
   },
   {
     q: 'Who owns the creatives?',
-    a: 'You do, outright, from day one. Whether the trial beats your ROAS or not, the ten creatives are yours to run on any platform, forever. Nothing is licensed back to us and nothing is pulled down if you walk away.',
+    a: 'You do, from the moment they are made, whether we win or lose. There is no licence and nothing reverts to us.',
   },
   {
-    q: 'What access do you need to our ad account?',
-    a: 'Partner access on your Meta Business Manager, Advertiser role, so we can launch and manage the ten creatives inside your existing campaign structure. We never touch your billing, your other campaigns, or anything outside the ad set we agree on. Access is revocable by you in one click at any point.',
+    q: 'Why only three accounts a month?',
+    a: 'Because 15 creatives in 14 days is real production work and a real buyer watching the account daily. Three is what we can do at the standard the numbers above came from. When we say the month is full, it is full.',
   },
   {
-    q: 'Why the £15,000 a month floor?',
-    a: 'Below that, ten days is not enough spend for the algorithm to reach a reliable read on fifteen creatives, and the trial stops being a fair test of the method. If you are under the floor, the $97 pack is the right door: same production engine, no spend commitment, no call required.',
+    q: 'What access do you need?',
+    a: 'Partner access on your Meta Business Manager and one ad set to run in. Not your whole account, not your page passwords, not your Shopify.',
   },
   {
-    q: 'Why only three spots a month?',
-    a: 'Because a real trial means us actually running your account for 10 days, not queuing a template. Three at a time is the number our production and media buying can genuinely hold to the same standard as the account this method was proven on.',
+    q: 'What is the catch?',
+    a: 'We expect to win and we expect you to keep us on afterwards. That is the entire business model. If we lose we have spent two weeks and a production batch finding that out, which is why the floor and the qualifying call exist.',
   },
   {
-    q: 'Do you touch our targeting or budget?',
-    a: 'No. The Yeubo result was built on one ad set, one budget, zero structural changes, for the whole 10 days. We only add and kill creatives. If your account needs a targeting or budget fix, we will tell you on the call, but that is not what the trial tests.',
-  },
-  {
-    q: 'What happens after the 10 days?',
-    a: 'If we beat your ROAS, we walk you into the retainer: paid ads plus a weekly creative batch, same engine, ongoing. If we do not, you owe nothing and keep the creatives. Either way there is no auto-renewal and no card held on file.',
-  },
-  {
-    q: 'What do you need from us to start?',
-    a: 'Partner access to the ad account, your current top-performing creative as the control, and a short call to confirm the angle. That is the whole intake. We handle briefing, production and launch from there.',
+    q: 'Does this work outside ecommerce?',
+    a: 'Yes. The method is about creative volume against a fixed structure, which holds anywhere the conversion event fires often enough. Our published numbers happen to come from an ecommerce account because that is the one we have permission to show.',
   },
 ]
 
