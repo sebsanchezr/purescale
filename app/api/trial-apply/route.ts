@@ -128,15 +128,19 @@ export async function POST(request: NextRequest) {
       company,
       vertical,
       website,
-      monthly_meta_spend: monthlySpend,
+      // Field name must match what the OS webhook reads. It was
+      // `monthly_meta_spend` here and `monthly_spend_bracket` there, so every
+      // application arrived with no bracket, scored zero and was filed
+      // unqualified. Found by posting a real application end to end.
+      monthly_spend_bracket: monthlySpend,
       revenue_bracket: revenue,
       biggest_problem: problem,
-      qualified: !!qualified,
+      qualified: qualifiedSpend,
       submitted_at: new Date().toISOString(),
     })
 
     return NextResponse.json(
-      { success: true, qualified: !!qualified },
+      { success: true, qualified: qualifiedSpend },
       { status: 200 }
     )
   } catch (error) {
