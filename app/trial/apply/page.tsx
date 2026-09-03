@@ -5,7 +5,7 @@ import { LegalFooter } from '@/components/LegalFooter'
 export const metadata: Metadata = {
   title: 'Apply for the 14-Day Trial - PureScale',
   description:
-    'Apply for the risk-reversed 14-day creative trial. For advertisers spending $25,000+/month on Meta. Beat your current return on ad spend in 14 days or pay nothing.',
+    'Apply for the risk-reversed creative trial. First creatives live within 24 hours, 15 in total, and we beat your current return on ad spend inside 14 days or you pay nothing. For advertisers spending $25,000+/month on Meta.',
   robots: 'noindex',
 }
 

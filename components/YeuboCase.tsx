@@ -45,12 +45,21 @@ export function YeuboCase() {
       <div className="mx-auto max-w-5xl">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700">
-              One account, fifteen days
-            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="rounded-full border border-blue-700/30 bg-blue-700/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-blue-800">
+                Case study
+              </span>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700">
+                Yeubo, one account, fifteen days
+              </p>
+            </div>
             <h2 className="mt-3 max-w-xl text-3xl font-extrabold leading-tight sm:text-4xl">
               Nothing changed except which creatives were live.
             </h2>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-stone-600">
+              One real client account, 17 August to 1 September 2026. Every number below is read
+              from that ad account, not a projection of what yours would do.
+            </p>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-stone-500">
             Yeubo, a childrens supplement brand. Numbers straight from the ad account, the same

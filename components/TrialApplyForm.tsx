@@ -17,6 +17,22 @@
 import { useState } from 'react'
 import { CalEmbed } from './CalEmbed'
 
+/**
+ * utm_source / utm_campaign / utm_content off the current URL. Meta appends
+ * them to the landing URL, and /trial links through to /trial/apply with the
+ * query string intact, so they survive the hop.
+ */
+function readUtms(): Record<string, string> {
+  if (typeof window === 'undefined') return {}
+  const params = new URLSearchParams(window.location.search)
+  const out: Record<string, string> = {}
+  for (const key of ['utm_source', 'utm_campaign', 'utm_content'] as const) {
+    const value = params.get(key)
+    if (value) out[key] = value
+  }
+  return out
+}
+
 import { SPEND_BRACKETS, isQualifiedSpend } from '@/lib/trial-qualification'
 
 // Brackets and the floor rule both live in lib/trial-qualification so the
@@ -100,6 +116,10 @@ export function TrialApplyForm() {
           eventId,
           fbp: getCookie('_fbp'),
           fbc: getCookie('_fbc'),
+          // Which ad produced this application. Without it the OS can count
+          // applications but cannot tell which of the three creatives paid
+          // for them, which is the only question the test is asking.
+          ...readUtms(),
         }),
       })
     } catch {

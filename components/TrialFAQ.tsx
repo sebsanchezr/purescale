@@ -7,12 +7,16 @@ const FAQS = [
     a: 'You pay us nothing and you keep all 15 creatives. That is the entire downside for you, and it is the reason we are careful about who we take.',
   },
   {
+    q: 'Do I have to wait 14 days for the creatives?',
+    a: 'No. Your first five are live in the ad set within 24 hours of access. The 14 days is the test window, the time the ads need to spend to give an honest read against your control. The rest of the batch lands across that fortnight, weighted towards whatever is already winning.',
+  },
+  {
     q: 'Who owns the creatives?',
     a: 'You do, from the moment they are made, whether we win or lose. There is no licence and nothing reverts to us.',
   },
   {
     q: 'Why only three accounts a month?',
-    a: 'Because 15 creatives in 14 days is real production work and a real buyer watching the account daily. Three is what we can do at the standard the numbers above came from. When we say the month is full, it is full.',
+    a: 'Because 15 creatives, with the first five live inside 24 hours, is real production work and a real buyer watching the account daily. Three is what we can do at the standard the numbers above came from. When we say the month is full, it is full.',
   },
   {
     q: 'What access do you need?',

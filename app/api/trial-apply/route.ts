@@ -33,6 +33,9 @@ interface TrialApplyBody {
   eventId?: string
   fbp?: string
   fbc?: string
+  utm_source?: string
+  utm_campaign?: string
+  utm_content?: string
 }
 
 async function notifyOs(payload: Record<string, unknown>): Promise<void> {
@@ -134,7 +137,13 @@ export async function POST(request: NextRequest) {
       // unqualified. Found by posting a real application end to end.
       monthly_spend_bracket: monthlySpend,
       revenue_bracket: revenue,
+      // The OS webhook stores free text as `notes`; sending it as
+      // `biggest_problem` meant the one thing the applicant wrote in their own
+      // words was dropped on the floor.
+      notes: problem,
       biggest_problem: problem,
+      utm_campaign: body.utm_campaign,
+      utm_content: body.utm_content,
       qualified: qualifiedSpend,
       submitted_at: new Date().toISOString(),
     })

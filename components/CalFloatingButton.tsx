@@ -41,7 +41,7 @@ export function CalFloatingButton() {
           layout: "month_view",
           useSlotsViewOnSmallScreen: "true"
         },
-        buttonText: "Book a Free Call"
+        buttonText: "Book a call"
       });
 
       Cal.ns["purescale-creative-strategy-call"]("ui", {

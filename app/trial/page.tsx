@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Navbar } from '@/components/Navbar'
+import { CalFloatingButton } from '@/components/CalFloatingButton'
 import { AugustMarketingTrust } from '@/components/AugustMarketingTrust'
 import { CreativeExamples } from '@/components/CreativeExamples'
 import { YeuboCase } from '@/components/YeuboCase'
@@ -10,7 +11,7 @@ import { LegalFooter } from '@/components/LegalFooter'
 export const metadata: Metadata = {
   title: '14-Day Creative Trial for $25k+/month Advertisers - PureScale',
   description:
-    'We ship 15 creatives into your account and beat your current return on ad spend in 14 days, or you pay nothing. For advertisers spending $25,000+/month on Meta.',
+    'First creatives live in your account within 24 hours. 15 in total, and we beat your current return on ad spend inside 14 days or you pay nothing. For advertisers spending $25,000+/month on Meta.',
 }
 
 const Orbs = () => (
@@ -33,9 +34,9 @@ const KEEP = [
 
 const WE_TOUCH = [
   'One ad set that you choose. Nothing else in the account.',
-  'The creatives that run inside it, made by us, 15 of them in 14 days.',
+  'The creatives that run inside it, made by us. First five live within 24 hours, 15 in total.',
   'A written read on why your current creative stalled.',
-  'That is the entire footprint. Partner access, one ad set, 14 days.',
+  'That is the entire footprint. Partner access, one ad set, one fortnight of testing.',
 ]
 
 // What a buyer actually wants to know before a call: what happens, when, and
@@ -48,12 +49,12 @@ const TIMELINE = [
     body: 'We agree in writing which ad set we run in and what number we have to beat. You grant Partner access. That is the last meeting you are in.',
   },
   {
-    when: 'Days 1 to 3',
+    when: 'Within 24 hours',
     what: 'First five creatives live',
-    body: 'Built from your account log, not from a mood board. We read what already worked and what already died before we write a single hook.',
+    body: 'Not a fortnight of waiting. Built overnight from your account log, not from a mood board, because we read what already worked and what already died before we write a single hook. They are running in your ad set the next day.',
   },
   {
-    when: 'Days 4 to 7',
+    when: 'Days 2 to 7',
     what: 'We kill and we double down',
     body: 'Anything burning spend with nothing to show is paused. Click through rate shows which angle has legs about three days before cost per purchase confirms it, so batch two is already variations of the leader.',
   },
@@ -95,6 +96,9 @@ export default function TrialPage() {
     <main className="bg-stone-900">
       <Navbar ctaHref="/trial/apply" ctaLabel="Apply for the trial" />
 
+      {/* Persistent bottom-right "Book a call" launcher, on every scroll position. */}
+      <CalFloatingButton />
+
       {/* HERO */}
       <section className="relative overflow-hidden px-4 pb-16 pt-32">
         <Orbs />
@@ -109,10 +113,11 @@ export default function TrialPage() {
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300">
-            Keep your agency. Give us one ad set. We ship 15 creatives into it over 14 days and
-            beat your current return on ad spend, or you pay nothing and keep all 15 anyway. If it
-            works, that becomes a new batch every week, which is the only way an account scales
-            without the cost per sale climbing.
+            Keep your agency. Give us one ad set. Your first creatives are live in it{' '}
+            <span className="font-semibold text-white">within 24 hours</span>, 15 in total, and we
+            beat your current return on ad spend inside 14 days or you pay nothing and keep all 15
+            anyway. If it works, that becomes a new batch every week, which is the only way an
+            account scales without the cost per sale climbing.
           </p>
 
           <div className="mt-10">
@@ -132,7 +137,7 @@ export default function TrialPage() {
           </div>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-gray-400">
-            <span className="text-white font-semibold">15 creatives in 14 days</span>
+            <span className="text-white font-semibold">First creatives live in 24 hours</span>
             <span className="hidden sm:inline text-white/20">•</span>
             <span className="text-white font-semibold">You keep them either way</span>
             <span className="hidden sm:inline text-white/20">•</span>
@@ -140,6 +145,97 @@ export default function TrialPage() {
           </div>
         </div>
       </section>
+
+      {/* YOU ARE NOT SWITCHING AGENCIES */}
+      <section className="relative border-t border-white/10 px-4 py-20">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-center text-sm font-semibold uppercase tracking-wider text-cyan-300">
+            Before anything else
+          </p>
+          <h2 className="mx-auto mt-3 max-w-3xl text-center text-3xl font-bold text-white sm:text-4xl">
+            You are not firing anyone.{' '}
+            <span className="font-poppins-italic text-cyan-300">You are borrowing a creative team for a fortnight.</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
+            This is not a pitch to replace your agency. It is one ad set and 15 creatives you keep
+            whatever happens. The 14 days is how long the ads need to run to give an honest read,
+            not how long you wait for the work. If it works you have a decision to make. If it does
+            not, you have lost nothing but the 40 minutes.
+          </p>
+
+          <div className="mt-12 overflow-hidden rounded-2xl border border-white/10">
+            <div className="grid sm:grid-cols-2">
+              <div className="bg-white/[0.02] p-8">
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-500">
+                  Stays exactly as it is
+                </p>
+                <ul className="mt-5 space-y-3">
+                  {KEEP.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-gray-400">
+                      <span aria-hidden="true" className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-600" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="border-t border-white/10 bg-cyan-400/[0.06] p-8 sm:border-l sm:border-t-0">
+                <p className="text-xs font-bold uppercase tracking-wider text-cyan-300">
+                  All we touch
+                </p>
+                <ul className="mt-5 space-y-3">
+                  {WE_TOUCH.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-gray-200">
+                      <span aria-hidden="true" className="mt-0.5 text-cyan-300">→</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <p className="mx-auto mt-8 max-w-2xl text-center text-lg font-semibold text-white">
+            The risk you are being asked to take is Partner access to one ad set.
+          </p>
+        </div>
+      </section>
+
+      {/* PROOF WALL */}
+      <CreativeExamples variant="trial" />
+
+      <section className="relative overflow-hidden border-t border-white/10 px-4 py-20">
+        <Orbs />
+        <div className="relative mx-auto max-w-5xl">
+          <p className="text-center text-sm font-semibold uppercase tracking-wider text-cyan-300">
+            Receipts, not theory
+          </p>
+          <h2 className="mt-3 text-center text-3xl font-bold text-white sm:text-4xl">
+            The same engine that&apos;s driven{' '}
+            <span className="font-poppins-italic bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              $600M+
+            </span>{' '}
+            for DTC brands
+          </h2>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { n: '$297 → $29', l: 'Yeubo, one week to the next', s: 'same budget, same ad set' },
+              { n: '$9M → $26M', l: 'Revice Denim', s: '→ $42M on track this year' },
+              { n: '10×', l: 'Posh, in 90 days', s: 'from a standing start' },
+              { n: '9.3×', l: "L'alingi, GCC + US", s: 'no prior ad history' },
+            ].map((c, i) => (
+              <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
+                <div className="font-poppins-italic bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-2xl font-extrabold text-transparent">
+                  {c.n}
+                </div>
+                <p className="mt-3 font-semibold text-white">{c.l}</p>
+                <p className="mt-1 text-sm text-gray-500">{c.s}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <YeuboCase />
 
       {/* WHO WE ARE */}
       <section className="relative border-t border-white/10 bg-white/[0.02] px-4 py-16">
@@ -184,93 +280,6 @@ export default function TrialPage() {
           </div>
         </div>
       </section>
-
-      <section className="relative overflow-hidden border-t border-white/10 px-4 py-20">
-        <Orbs />
-        <div className="relative mx-auto max-w-5xl">
-          <p className="text-center text-sm font-semibold uppercase tracking-wider text-cyan-300">
-            Receipts, not theory
-          </p>
-          <h2 className="mt-3 text-center text-3xl font-bold text-white sm:text-4xl">
-            The same engine that&apos;s driven{' '}
-            <span className="font-poppins-italic bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              $600M+
-            </span>{' '}
-            for DTC brands
-          </h2>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { n: '$297 → $29', l: 'Yeubo, one week to the next', s: 'same budget, same ad set' },
-              { n: '$9M → $26M', l: 'Revice Denim', s: '→ $42M on track this year' },
-              { n: '10×', l: 'Posh, in 90 days', s: 'from a standing start' },
-              { n: '9.3×', l: "L'alingi, GCC + US", s: 'no prior ad history' },
-            ].map((c, i) => (
-              <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
-                <div className="font-poppins-italic bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-2xl font-extrabold text-transparent">
-                  {c.n}
-                </div>
-                <p className="mt-3 font-semibold text-white">{c.l}</p>
-                <p className="mt-1 text-sm text-gray-500">{c.s}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* YOU ARE NOT SWITCHING AGENCIES */}
-      <section className="relative border-t border-white/10 px-4 py-20">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-center text-sm font-semibold uppercase tracking-wider text-cyan-300">
-            Before anything else
-          </p>
-          <h2 className="mx-auto mt-3 max-w-3xl text-center text-3xl font-bold text-white sm:text-4xl">
-            You are not firing anyone.{' '}
-            <span className="font-poppins-italic text-cyan-300">You are borrowing a creative team for a fortnight.</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
-            This is not a pitch to replace your agency. It is one ad set, 14 days, and 15 creatives
-            you keep whatever happens. If it works you have a decision to make. If it does not, you
-            have lost nothing but the 40 minutes.
-          </p>
-
-          <div className="mt-12 overflow-hidden rounded-2xl border border-white/10">
-            <div className="grid sm:grid-cols-2">
-              <div className="bg-white/[0.02] p-8">
-                <p className="text-xs font-bold uppercase tracking-wider text-gray-500">
-                  Stays exactly as it is
-                </p>
-                <ul className="mt-5 space-y-3">
-                  {KEEP.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-gray-400">
-                      <span aria-hidden="true" className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-600" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="border-t border-white/10 bg-cyan-400/[0.06] p-8 sm:border-l sm:border-t-0">
-                <p className="text-xs font-bold uppercase tracking-wider text-cyan-300">
-                  All we touch
-                </p>
-                <ul className="mt-5 space-y-3">
-                  {WE_TOUCH.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-gray-200">
-                      <span aria-hidden="true" className="mt-0.5 text-cyan-300">→</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <p className="mx-auto mt-8 max-w-2xl text-center text-lg font-semibold text-white">
-            The risk you are being asked to take is Partner access to one ad set.
-          </p>
-        </div>
-      </section>
-
-      <YeuboCase />
 
       {/* WHAT HAPPENS, DAY BY DAY */}
       <section className="relative border-t border-white/10 px-4 py-20">
@@ -369,9 +378,6 @@ export default function TrialPage() {
           </p>
         </div>
       </section>
-
-      {/* PROOF WALL */}
-      <CreativeExamples variant="trial" />
 
       {/* WHAT YOU HOLD AT THE END */}
       <section className="relative border-t border-white/10 px-4 py-20">
