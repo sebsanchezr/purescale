@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Navbar } from '@/components/Navbar'
 import { CalFloatingButton } from '@/components/CalFloatingButton'
+import { TrialBookCall } from '@/components/TrialBookCall'
 import { AugustMarketingTrust } from '@/components/AugustMarketingTrust'
 import { CreativeExamples } from '@/components/CreativeExamples'
 import { YeuboCase } from '@/components/YeuboCase'
@@ -133,6 +134,12 @@ export default function TrialPage() {
             </a>
             <p className="mt-3 text-sm text-gray-500">
               Free to apply. No card. Three accounts a month.
+            </p>
+            <p className="mt-2 text-sm text-gray-500">
+              Already know you qualify?{' '}
+              <a href="#book" className="font-semibold text-cyan-300 hover:underline">
+                Skip the form and book the call
+              </a>
             </p>
           </div>
 
@@ -321,6 +328,21 @@ export default function TrialPage() {
               </li>
             ))}
           </ol>
+
+          <div className="mt-4 rounded-2xl border border-cyan-400/30 bg-cyan-400/[0.05] p-6 text-center sm:flex sm:items-center sm:justify-between sm:text-left">
+            <div>
+              <p className="font-semibold text-white">Day 0 is one 40 minute call. It can be this week.</p>
+              <p className="mt-1 text-sm text-gray-400">
+                Pick a slot, grant Partner access on the call, first creatives live the next day.
+              </p>
+            </div>
+            <a
+              href="#book"
+              className="mt-4 inline-flex shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-cyan-500/20 transition-all hover:shadow-cyan-500/40 sm:mt-0 sm:ml-6"
+            >
+              Book the call
+            </a>
+          </div>
         </div>
       </section>
 
@@ -498,8 +520,8 @@ export default function TrialPage() {
         <TrialFAQ />
       </div>
 
-      {/* CLOSING CTA */}
-      <section className="relative overflow-hidden border-t border-white/10 px-4 py-24">
+      {/* CLOSING CTA + BOOKING */}
+      <section id="book" className="relative overflow-hidden border-t border-white/10 px-4 py-24 scroll-mt-20">
         <Orbs />
         <div className="relative mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold text-white sm:text-5xl">
@@ -508,19 +530,21 @@ export default function TrialPage() {
             <span className="font-poppins-italic text-cyan-300">in 14 days, or pay nothing.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
-            Apply, then one 40 minute call. On that call we read your account back to you: which
-            creative is carrying your spend, what has fatigued, and what we would ship first. You
-            get that read whether or not you take the trial. Three accounts a month, taken in the
-            order they qualify.
+            Book the 40 minute call below. On it we read your account back to you: which creative
+            is carrying your spend, what has fatigued, and what we would ship first. You get that
+            read whether or not you take the trial. Three accounts a month, taken in the order
+            they qualify.
           </p>
-          <div className="mt-10">
-            <a
-              href="/trial/apply"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-9 py-4 text-lg font-bold text-white shadow-lg shadow-cyan-500/20 transition-all hover:shadow-cyan-500/40"
-            >
-              Apply for the trial
-            </a>
-          </div>
+          <p className="mx-auto mt-4 max-w-xl text-sm text-gray-500">
+            For advertisers spending $25,000+ a month on Meta. Under that,{' '}
+            <a href="/ads" className="text-cyan-300 hover:underline">
+              the $97 pack
+            </a>{' '}
+            is the better door.
+          </p>
+        </div>
+        <div className="relative">
+          <TrialBookCall />
         </div>
       </section>
 
