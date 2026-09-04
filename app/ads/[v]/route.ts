@@ -33,7 +33,17 @@ export const dynamic = 'force-dynamic'
 //
 // q is the Q4 gifting variant, a third step-1 variant added alongside the two
 // existing ones rather than replacing either. See 45_add_q4_variant.py.
-const CODES: Record<string, { campaign: string; step: number; ab: string }> = {
+//
+// e (added 4 Sep) is the enterprise / brand-tier campaign. Those leads were
+// parked because a $97 offer does not fit a $25k a month advertiser, so their
+// sequence sells the 14-day creative trial instead and lands on /trial, not
+// /ads. `to` carries the destination; every other code keeps the default.
+// See 46_launch_trial_campaign.py.
+const CODES: Record<string, { campaign: string; step: number; ab: string; to?: string }> = {
+  e1a: { campaign: 'enterprise', step: 1, ab: 'a', to: '/trial' },
+  e1b: { campaign: 'enterprise', step: 1, ab: 'b', to: '/trial' },
+  e2a: { campaign: 'enterprise', step: 2, ab: 'a', to: '/trial' },
+  e3a: { campaign: 'enterprise', step: 3, ab: 'a', to: '/trial' },
   k1q: { campaign: 'uk', step: 1, ab: 'q' },
   u1q: { campaign: 'us', step: 1, ab: 'q' },
   r1q: { campaign: 'role', step: 1, ab: 'q' },
@@ -93,7 +103,7 @@ export async function GET(
     is_bot: isBot,
   }).catch(() => {})
 
-  const target = new URL('/ads', origin)
+  const target = new URL(meta.to ?? '/ads', origin)
   target.searchParams.set('utm_source', 'cold_email')
   target.searchParams.set('utm_medium', 'email')
   target.searchParams.set('utm_campaign', meta.campaign)
