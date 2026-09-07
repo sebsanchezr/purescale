@@ -10,6 +10,7 @@ import { PurchasePixel } from '@/components/PurchasePixel'
 import { Testimonials } from '@/components/Testimonials'
 import { AugustMarketingTrust } from '@/components/AugustMarketingTrust'
 import { AdsCallCta } from '@/components/AdsCallCta'
+import { VisitBeacon } from '@/components/VisitBeacon'
 import {
   VALUE_STACK,
   TOTAL_VALUE,
@@ -38,6 +39,8 @@ const Orbs = () => (
 
 export default function AdsPage() {
   return (
+    <>
+    <VisitBeacon />
     <main className="bg-stone-900">
       <Suspense fallback={null}>
         <PurchasePixel />
@@ -352,5 +355,6 @@ export default function AdsPage() {
         © {new Date().getFullYear()} PureScale. We build creative for anyone buying paid traffic: ecommerce, local service businesses, SaaS and info. If you run ads, we can make yours.
       </footer>
     </main>
+    </>
   )
 }
