@@ -27,9 +27,10 @@ export const dynamic = 'force-dynamic'
 //
 // r and c (added 31 Aug) are the bulk-pool campaigns, role inboxes and
 // catch-all. Both were built by copying the UK sequence, so every one of their
-// steps still points at a k-code and their clicks land here labelled `uk`:
-// treat any UK click number from before 31 Aug as UK plus bulk, not UK alone.
-// Only the Q4 variant is separated so far.
+// steps pointed at a k-code and their clicks landed here labelled `uk`. Only
+// the Q4 variant was separated at the time, which left six of seven variants
+// in each campaign still misattributed: treat any UK click number from before
+// 7 Sep as UK plus bulk, not UK alone. The full r/c sets below close that gap.
 //
 // q is the Q4 gifting variant, a third step-1 variant added alongside the two
 // existing ones rather than replacing either. See 45_add_q4_variant.py.
@@ -48,6 +49,18 @@ const CODES: Record<string, { campaign: string; step: number; ab: string; to?: s
   u1q: { campaign: 'us', step: 1, ab: 'q' },
   r1q: { campaign: 'role', step: 1, ab: 'q' },
   c1q: { campaign: 'catch_all', step: 1, ab: 'q' },
+  r1a: { campaign: 'role', step: 1, ab: 'a' },
+  r1b: { campaign: 'role', step: 1, ab: 'b' },
+  r2a: { campaign: 'role', step: 2, ab: 'a' },
+  r2b: { campaign: 'role', step: 2, ab: 'b' },
+  r3a: { campaign: 'role', step: 3, ab: 'a' },
+  r3b: { campaign: 'role', step: 3, ab: 'b' },
+  c1a: { campaign: 'catch_all', step: 1, ab: 'a' },
+  c1b: { campaign: 'catch_all', step: 1, ab: 'b' },
+  c2a: { campaign: 'catch_all', step: 2, ab: 'a' },
+  c2b: { campaign: 'catch_all', step: 2, ab: 'b' },
+  c3a: { campaign: 'catch_all', step: 3, ab: 'a' },
+  c3b: { campaign: 'catch_all', step: 3, ab: 'b' },
   k1a: { campaign: 'uk', step: 1, ab: 'a' },
   k1b: { campaign: 'uk', step: 1, ab: 'b' },
   k2a: { campaign: 'uk', step: 2, ab: 'a' },
