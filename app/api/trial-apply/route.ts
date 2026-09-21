@@ -18,7 +18,7 @@ export const dynamic = 'force-dynamic'
 
 import { isQualifiedSpend } from '@/lib/trial-qualification'
 
-const OS_WEBHOOK_URL = 'https://augustosv3.vercel.app/api/webhooks/funnel-application'
+const OS_WEBHOOK_URL = 'https://augustmarketing.vercel.app/api/webhooks/funnel-application'
 
 interface TrialApplyBody {
   name?: string

@@ -30,7 +30,7 @@ async function sendCapiEvent(email: string, phone: string | undefined, eventId: 
 // out of the response path entirely: if the OS is down or slow, the form still
 // submits and the prospect still sees a success message.
 async function notifyOs(payload: Record<string, unknown>): Promise<void> {
-  const base = process.env.OS_WEBHOOK_URL || 'https://augustosv3.vercel.app'
+  const base = process.env.OS_WEBHOOK_URL || 'https://augustmarketing.vercel.app'
   const key = process.env.OS_WEBHOOK_KEY
   if (!key) return
   try {

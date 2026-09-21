@@ -22,7 +22,7 @@ const REPLY_TO = 'seb@purescale.co'
 // Paste a Loom or YouTube URL to turn the section into a video; until then the
 // same argument runs in writing rather than a "coming soon" box.
 const VIDEO_URL = process.env.NEXT_PUBLIC_BOOKED_VIDEO_URL ?? ''
-const OS_URL = process.env.NEXT_PUBLIC_OS_URL ?? 'https://augustosv3.vercel.app'
+const OS_URL = process.env.NEXT_PUBLIC_OS_URL ?? 'https://augustmarketing.vercel.app'
 
 type BookedView = {
   firstName: string | null
