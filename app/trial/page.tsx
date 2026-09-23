@@ -46,7 +46,7 @@ const WE_TOUCH = [
 const TIMELINE = [
   {
     when: 'Day 0',
-    what: 'One 40 minute call',
+    what: 'One 20 minute call',
     body: 'We agree in writing which ad set we run in and what number we have to beat. You grant Partner access. That is the last meeting you are in.',
   },
   {
@@ -167,7 +167,7 @@ export default function TrialPage() {
             This is not a pitch to replace your agency. It is one ad set and 15 creatives you keep
             whatever happens. The 14 days is how long the ads need to run to give an honest read,
             not how long you wait for the work. If it works you have a decision to make. If it does
-            not, you have lost nothing but the 40 minutes.
+            not, you have lost nothing but the 20 minutes.
           </p>
 
           <div className="mt-12 overflow-hidden rounded-2xl border border-white/10">
@@ -299,7 +299,7 @@ export default function TrialPage() {
             <span className="font-poppins-italic text-cyan-300">you go back to your day</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
-            Total time this costs you: 40 minutes on day zero, and reading one message a week.
+            Total time this costs you: 20 minutes on day zero, and reading one message a week.
           </p>
 
           <ol className="mt-12 space-y-0">
@@ -331,7 +331,7 @@ export default function TrialPage() {
 
           <div className="mt-4 rounded-2xl border border-cyan-400/30 bg-cyan-400/[0.05] p-6 text-center sm:flex sm:items-center sm:justify-between sm:text-left">
             <div>
-              <p className="font-semibold text-white">Day 0 is one 40 minute call. It can be this week.</p>
+              <p className="font-semibold text-white">Day 0 is one 20 minute call. It can be this week.</p>
               <p className="mt-1 text-sm text-gray-400">
                 Pick a slot, grant Partner access on the call, first creatives live the next day.
               </p>
@@ -530,7 +530,7 @@ export default function TrialPage() {
             <span className="font-poppins-italic text-cyan-300">in 14 days, or pay nothing.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
-            Book the 40 minute call below. On it we read your account back to you: which creative
+            Book the 20 minute call below. On it we read your account back to you: which creative
             is carrying your spend, what has fatigued, and what we would ship first. You get that
             read whether or not you take the trial. Three accounts a month, taken in the order
             they qualify.

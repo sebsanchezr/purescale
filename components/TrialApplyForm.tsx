@@ -177,7 +177,7 @@ export function TrialApplyForm() {
               Application received
             </span>
             <h1 className="mt-6 text-3xl font-bold text-white sm:text-4xl">
-              Book your <span className="font-poppins-italic text-cyan-300">40-minute call</span>
+              Book your <span className="font-poppins-italic text-cyan-300">20-minute call</span>
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-gray-400">
               We confirm the account, the control creative, and the exact 14-day start date on this
@@ -204,7 +204,7 @@ export function TrialApplyForm() {
             Tell us about your <span className="font-poppins-italic">account</span>
           </h1>
           <p className="mt-3 text-gray-400">
-            Two minutes. Qualified applications move straight to a 40-minute call.
+            Two minutes. Qualified applications move straight to a 20-minute call.
           </p>
         </div>
 

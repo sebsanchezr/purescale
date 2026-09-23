@@ -108,7 +108,7 @@ export function AdsCallCta() {
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-gray-400">
           The $97 batch is a sample. If it lands, some brands want more than ten creatives —
-          they want us running point on their whole creative pipeline. Book fifteen minutes
+          they want us running point on their whole creative pipeline. Book twenty minutes
           and we&apos;ll talk through what that looks like for you.
         </p>
 
