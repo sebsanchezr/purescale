@@ -11,7 +11,7 @@ export function EmailOffer() {
             Here&apos;s what we&apos;re <span className="font-poppins-italic">offering you</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            No agency pitch. No proposal. Just a free look at what your account could be doing.
+            No agency pitch. No proposal. This is what ongoing production does for your business.
           </p>
         </div>
 
@@ -19,18 +19,18 @@ export function EmailOffer() {
           {[
             {
               step: '01',
-              title: 'We audit your ad account',
-              body: 'On the call we go through your current creative, identify exactly where fatigue is costing you CPA, and map out what a proper testing architecture looks like for your brand. Prefer it in writing? Add us as an Analyst on your ad account and we send a full audit within 24 hours, no call needed.',
+              title: 'Where fatigue is costing you',
+              body: 'On the call we go through your current creative, identify exactly where fatigue is costing you CPA, and map out what a proper testing architecture looks like for your brand.',
             },
             {
               step: '02',
-              title: 'We build your sample in 24 hours',
-              body: 'We produce a creative tailored to your brand. UGC, static, or video, built specifically to test against your current control ad. Yours to keep and run immediately, at no cost.',
+              title: 'Fresh creative in your account every single week, not every 6',
+              body: 'The pipeline never stops. While your current winners are running, next week\'s challengers are already in production. You stop reacting to fatigue and start staying ahead of it. Your ad account is always fed. Your CPA stays flat. Your competitors wonder why they can\'t catch you.',
             },
             {
               step: '03',
-              title: 'You run them and see',
-              body: 'Take the creatives, run them in your account, and measure against what you were running before. You keep them regardless of what you decide next.',
+              title: 'We produce. You approve and scale.',
+              body: 'You keep control of budget, audiences, and what goes live. We handle creative strategy, production, and performance analysis. Your media buyer (or ours) has a constant supply of battle-tested creative to work with. No more "we\'re waiting on creative" as an excuse for why spend can\'t scale.',
             },
           ].map((item) => (
             <div key={item.step} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-7 hover:border-blue-400/30 transition-all duration-300">
@@ -48,9 +48,9 @@ export function EmailOffer() {
           </h3>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              { icon: '🎯', text: 'Your current best-performing ad, we\'ll build to beat it' },
+              { icon: '🎯', text: 'Your current best-performing ad' },
               { icon: '💬', text: '20 minutes on a call to understand your brand, your customer, and what\'s already working' },
-              { icon: '✅', text: 'That\'s it. We handle everything else, briefs, production, revisions, delivery.' },
+              { icon: '✅', text: 'That\'s it.' },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <span className="text-xl flex-shrink-0 mt-0.5">{item.icon}</span>
@@ -65,9 +65,9 @@ export function EmailOffer() {
             href="#book"
             className="inline-block px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-2xl shadow-blue-500/50"
           >
-            Book Your Free Audit Call →
+            Book a call →
           </a>
-          <p className="text-gray-500 text-sm mt-3">Free. 20 minutes. No commitment.</p>
+          <p className="text-gray-500 text-sm mt-3">20 minutes. We come prepared.</p>
         </div>
 
         {/* $97 downsell */}

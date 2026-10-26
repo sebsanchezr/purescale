@@ -16,14 +16,14 @@ export function EmailFinalCTA() {
         </p>
 
         <p className="text-lg text-gray-400 mb-12 max-w-xl mx-auto italic">
-          Book the call. We&apos;ll audit your account and build you a free sample creative in 24 hours, tested against your current ads, yours to keep either way.
+          Book the call. 20 minutes. We come prepared.
         </p>
 
         <a
           href="#book"
           className="inline-block px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-2xl shadow-blue-500/50 hover:shadow-blue-400/70 mb-6"
         >
-          Book Your Free Audit Call →
+          Book a call →
         </a>
 
         <p className="text-gray-500 text-sm">

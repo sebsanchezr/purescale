@@ -23,7 +23,7 @@ export function EmailGuarantee() {
           </p>
 
           <p className="text-sm text-gray-400 italic">
-            The free batch shows you what we can produce. The guarantee covers what we deliver when we&apos;re fully embedded in your account.
+            The guarantee covers what we deliver when we&apos;re fully embedded in your account.
           </p>
 
           <div className="pt-10 border-t border-white/10">

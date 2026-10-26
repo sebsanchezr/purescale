@@ -58,7 +58,7 @@ export function EmailPainPoints() {
             href="#book"
             className="inline-block px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-2xl shadow-blue-500/50"
           >
-            Book Your Free Audit Call →
+            Book a call →
           </a>
         </div>
       </div>
