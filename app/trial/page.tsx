@@ -12,7 +12,7 @@ import { LegalFooter } from '@/components/LegalFooter'
 export const metadata: Metadata = {
   title: '14-Day Creative Trial for $25k+/month Advertisers - PureScale',
   description:
-    'First creatives live in your account within 24 hours. 15 in total, and we beat your current return on ad spend inside 14 days or you pay nothing. For advertisers spending $25,000+/month on Meta.',
+    'First creatives live in your account within 24 hours. 15 in total. For advertisers spending $25,000+/month on Meta.',
 }
 
 const Orbs = () => (
@@ -115,9 +115,8 @@ export default function TrialPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300">
             Keep your agency. Give us one ad set. Your first creatives are live in it{' '}
-            <span className="font-semibold text-white">within 24 hours</span>, 15 in total, and we
-            beat your current return on ad spend inside 14 days or you pay nothing and keep all 15
-            anyway. If it works, that becomes a new batch every week, which is the only way an
+            <span className="font-semibold text-white">within 24 hours</span>, 15 in total, and you
+            keep all 15. If it works, that becomes a new batch every week, which is the only way an
             account scales without the cost per sale climbing.
           </p>
 
@@ -433,7 +432,7 @@ export default function TrialPage() {
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-gray-200">
               Before day zero we agree the control in writing: your trailing 30 day blended
               return on ad spend on the ad set we are running in. We beat that number across the
-              14 days or you pay nothing. It is signed before we touch anything, so there is
+              14 days. It is signed before we touch anything, so there is
               nothing to argue about on day 15.
             </p>
             <p className="mx-auto mt-6 max-w-xl text-sm font-semibold text-gray-400">
@@ -527,7 +526,7 @@ export default function TrialPage() {
           <h2 className="text-3xl font-bold text-white sm:text-5xl">
             Beat your return on ad spend
             <br />
-            <span className="font-poppins-italic text-cyan-300">in 14 days, or pay nothing.</span>
+            <span className="font-poppins-italic text-cyan-300">in 14 days.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-gray-300">
             Book the 20 minute call below. On it we read your account back to you: which creative
@@ -550,8 +549,7 @@ export default function TrialPage() {
 
       <footer className="border-t border-white/10 px-4 py-10 text-center text-sm text-gray-600">
         © {new Date().getFullYear()} PureScale. The 14-day trial is built for advertisers
-        spending $25,000+/month on Meta. Beat your return on ad spend in 14 days or pay nothing.
-        Under the floor? The $97 pack is built for you instead.
+        spending $25,000+/month on Meta. Under the floor? The $97 pack is built for you instead.
       </footer>
       <LegalFooter />
     </main>

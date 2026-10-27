@@ -15,7 +15,7 @@ export function FAQ() {
     },
     {
       q: 'When do we see improvement?',
-      a: 'Week 2-3 you\'ll see testing data; we\'ll identify what\'s working. Week 4-6, winners start scaling. By week 8, if ROAS hasn\'t improved measurably, the guarantee kicks in and you don\'t pay. Most clients stay because the improvement is real.',
+      a: 'Week 2-3 you\'ll see testing data; we\'ll identify what\'s working. Week 4-6, winners start scaling. Most clients stay because the improvement is real.',
     },
     {
       q: 'Do you manage my ad accounts or just build creatives?',

@@ -87,8 +87,7 @@ export function EmailOffer() {
         <div className="mt-4 max-w-2xl mx-auto text-center bg-white/5 border border-white/10 rounded-xl p-6">
           <p className="text-gray-300 text-sm mb-4">
             Already spending <span className="text-white font-semibold">$25,000+/month on Meta</span>?
-            We&apos;ll build your next 15 creatives and run them on your account. Beat your current
-            return on ad spend in 14 days or pay nothing.
+            We&apos;ll build your next 15 creatives and run them on your account.
           </p>
           <a
             href="/trial"

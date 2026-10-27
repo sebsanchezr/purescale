@@ -32,10 +32,6 @@ const FAQS = [
     a: 'Brands spending $20k+/month on paid ads whose cost per acquisition is creeping up because the creative has gone stale. Most of our work is ecommerce, but the same engine builds for local service businesses, SaaS and info offers. If you\'re running the same 3 or 4 ads week after week, this is built for you.',
   },
   {
-    q: 'What is the free ad account audit?',
-    a: "It's an optional bonus. You add us as a partner on your Meta ad account with Analyst access, the standard read-only role, and we send back a teardown: where your spend is leaking, which creatives are fatigued, what to fix first. No tokens, no passwords, no logins, and it takes about a minute in Business Settings. Analyst means we can only look, never spend, edit, pause or post. It's genuinely optional; skip it and you still get all 10 creatives. You revoke access in one click once we deliver.",
-  },
-  {
     q: 'What happens after?',
     a: 'If the batch performs and you want fresh winners every week plus full creative management, we\'ll show you the retainer. Same engine that\'s driven $600M+ for DTC brands. Totally optional, the 10 creatives are yours either way.',
   },

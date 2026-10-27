@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
                       : 'PureScale. 10 Ad Creatives in 24 Hours',
                   description:
                     tier === 'pro'
-                      ? '10 custom creatives rendered native per platform, hook variant pack, written testing plan, ad account audit. Yours to keep, forever.'
+                      ? '10 custom creatives rendered native per platform, hook variant pack, written testing plan.'
                       : '10 custom ad creatives built on your brand and products. Yours to keep, forever.',
                 },
               },

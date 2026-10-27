@@ -10,10 +10,6 @@ export function EmailFAQ() {
       a: 'We work with brands spending £20k+/month on ads, because below that threshold there isn\'t enough testing velocity to show meaningful results quickly.',
     },
     {
-      q: 'What if ROAS has not improved by week 8?',
-      a: 'If ROAS hasn\'t improved measurably by week 8, you pay nothing. We\'ve built our business on this because we know the economics work.',
-    },
-    {
       q: 'What does the call cover?',
       a: 'On the call we go through your current creative, identify exactly where fatigue is costing you CPA, and map out what a proper testing architecture looks like for your brand.',
     },

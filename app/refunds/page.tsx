@@ -42,7 +42,7 @@ export default function RefundsPage() {
       <p>
         If we are unable to build your creatives, your store is unreachable, the brand
         falls into a category we cannot advertise safely, or we simply run out of capacity
-       , we refund you in full and tell you why. You keep nothing and pay nothing.
+       , we refund you in full and tell you why. You keep nothing.
       </p>
 
       <LegalH2>If you are not happy with what we deliver</LegalH2>
