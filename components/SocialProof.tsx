@@ -4,24 +4,17 @@ export function SocialProof() {
   const caseStudies = [
     {
       name: "Shai, Revice Denim",
-      metric: "$9M → $26M",
-      detail: "→ $42M on track this year",
+      metric: "$9M → $26M, projected $42M",
+      detail: "",
       duration: "2.5 years",
       description: "Started with 4-6 rotating creatives. Introduced systematic production - weekly rotation of 20+ variations. Ad spend scaled from $10k to $250k/month. The real win: ROAS stayed consistent while scaling, margins stayed protected. Shai's insight: 'It's not about growing faster, it's about growing profitably.'"
     },
     {
       name: "Alia, L'Alingi",
-      metric: "5x ROAS",
+      metric: "9.3x ROAS",
       detail: "across two markets",
       duration: "2+ years",
-      description: "Entered GCC + US simultaneously with zero prior ad history. We built market-specific creative frameworks, tested in parallel. The challenge wasn't budget - it was creative fatigue across culturally distinct audiences. Result: sustained 5x ROAS across both regions without margin compression."
-    },
-    {
-      name: "Katherine, Posh",
-      metric: "10x revenue",
-      detail: "90-day turnaround",
-      duration: "2 years",
-      description: "Katherine had strong organic growth but no paid system. Built full-funnel infrastructure: creative production, testing velocity, conversion optimization. Day 1 to day 90 proved the concept. The partnership evolved into systematic production that kept scaling without creative fatigue."
+      description: "Entered GCC + US simultaneously with zero prior ad history. We built market-specific creative frameworks, tested in parallel. The challenge wasn't budget - it was creative fatigue across culturally distinct audiences. Result: sustained 9.3x ROAS across both regions without margin compression."
     },
     {
       name: "Go Forth Goods",
@@ -69,7 +62,6 @@ export function SocialProof() {
             const images = [
               'https://sfycdn.speedsize.com/a251ae65-68d6-477c-b0b5-b876e0109cb9/www.revicedenim.com/cdn/shop/files/Revice-Vice-jeans-Blue-Crast_b65c7994-2f9b-4f2d-8a3f-b13a28a6af90.jpg?v=1749595464&width=1000',
               'https://www.lalingi.com/cdn/shop/files/1_e9033e87-cf1d-4f9f-b92f-aaf4a5446115.png',
-              'https://poshmia.com/cdn/shop/files/Desktop_2ae1ed79-d75b-4287-894f-e440adb3e800.jpg?v=1781932839&width=800',
               'https://www.goforthgoods.com/cdn/shop/files/avery-tote-medium-saddle-new-web.jpg'
             ]
             return (
@@ -97,7 +89,7 @@ export function SocialProof() {
                   </div>
                   <div className="mt-4 sm:mt-0 text-right">
                     <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">{study.metric}</div>
-                    <div className="text-gray-400 text-sm">{study.detail}</div>
+                    {study.detail ? <div className="text-gray-400 text-sm">{study.detail}</div> : null}
                     <div className="text-cyan-300 font-semibold text-xs mt-2 px-3 py-1 bg-cyan-400/10 border border-cyan-400/20 rounded-full inline-block">{study.duration}</div>
                   </div>
                 </div>

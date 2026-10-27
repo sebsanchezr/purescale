@@ -118,8 +118,8 @@ export function AdsCallCta() {
             <p className="mt-1 text-xs text-gray-500">Driven for DTC brands</p>
           </div>
           <div className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4">
-            <p className="text-xl font-bold text-white">$9M → $26M</p>
-            <p className="mt-1 text-xs text-gray-500">Revice Denim, → $42M on track this year</p>
+            <p className="text-xl font-bold text-white">$9M → $26M, projected $42M</p>
+            <p className="mt-1 text-xs text-gray-500">Revice Denim</p>
           </div>
           <div className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-4">
             <p className="text-xl font-bold text-white">9.3x ROAS</p>

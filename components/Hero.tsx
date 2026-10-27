@@ -24,10 +24,10 @@ export function Hero() {
         </h1>
 
         <p className="text-xl sm:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed font-light">
-          Creative fatigue is killing your ROAS. We systematize production, test at velocity, and scale what works. <span className="text-cyan-300 font-semibold italic">Within 60 days or we don&apos;t charge you.</span>
+          Creative fatigue is killing your ROAS. We systematize production, test at velocity, and scale what works.
         </p>
         
-        <div className="grid sm:grid-cols-3 gap-6 mb-14 py-8">
+        <div className="grid sm:grid-cols-2 gap-6 mb-14 py-8">
           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300">
             <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">3.8x</div>
             <div className="text-gray-400 text-sm mt-2 italic">avg. ROAS sustained</div>
@@ -35,10 +35,6 @@ export function Hero() {
           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300">
             <div className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">80+</div>
             <div className="text-gray-400 text-sm mt-2 italic">D2C brands trust us</div>
-          </div>
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300">
-            <div className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">60</div>
-            <div className="text-gray-400 text-sm mt-2 italic">day guarantee</div>
           </div>
         </div>
 

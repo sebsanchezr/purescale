@@ -6,7 +6,7 @@ import { ConsentBanner } from '@/components/ConsentBanner'
 
 export const metadata: Metadata = {
   title: 'Better ROAS in 45 Days - PureScale',
-  description: 'AI-powered ad creatives for paid ads. Guaranteed ROAS improvement in 60 days or you don\'t pay.',
+  description: 'AI-powered ad creatives for paid ads.',
   viewport: 'width=device-width, initial-scale=1',
 }
 

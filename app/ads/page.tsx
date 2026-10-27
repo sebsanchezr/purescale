@@ -270,11 +270,10 @@ export default function AdsPage() {
             </span>{' '}
             for DTC brands
           </h2>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { n: '$9M → $26M', l: 'Revice Denim', s: '→ $42M on track this year' },
+              { n: '$9M → $26M, projected $42M', l: 'Revice Denim', s: '' },
               { n: '$95k → $240k', l: 'Go Forth Goods', s: '▲ 152% monthly revenue' },
-              { n: '10×', l: 'Posh, in 90 days', s: 'from a standing start' },
               { n: '9.3×', l: 'L\'alingi, GCC + US', s: 'no prior ad history' },
             ].map((c, i) => (
               <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
@@ -282,7 +281,7 @@ export default function AdsPage() {
                   {c.n}
                 </div>
                 <p className="mt-3 font-semibold text-white">{c.l}</p>
-                <p className="mt-1 text-sm text-gray-500">{c.s}</p>
+                {c.s ? <p className="mt-1 text-sm text-gray-500">{c.s}</p> : null}
               </div>
             ))}
           </div>
