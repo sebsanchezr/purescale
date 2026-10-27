@@ -5,14 +5,16 @@ import { useRef, useState } from 'react'
 // Self-hosted VSL. No third-party player, no external script, no upgrade
 // race — just a native <video> tag served from our own CDN.
 //
-// Autoplays muted (browsers block unmuted autoplay). First click unmutes,
-// restarts from 0, and plays with sound.
+// Autoplays muted unless autoPlay is false (browsers block unmuted autoplay).
+// First click unmutes, restarts from 0, and plays with sound.
 export function VideoPlayer({
   src,
   poster,
+  autoPlay = true,
 }: {
   src: string
   poster: string
+  autoPlay?: boolean
 }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [unmuted, setUnmuted] = useState(false)
@@ -45,7 +47,7 @@ export function VideoPlayer({
           poster={poster}
           width={1280}
           height={720}
-          autoPlay
+          autoPlay={autoPlay}
           muted
           loop={!unmuted}
           playsInline

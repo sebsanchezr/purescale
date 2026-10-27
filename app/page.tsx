@@ -35,7 +35,7 @@ export default function Home() {
       {/* VSL */}
       <section className="px-4 pb-8 bg-stone-900">
         <div className="max-w-3xl mx-auto">
-          <VideoPlayer src="/vsl-email.mp4" poster="/vsl-email-poster.jpg" />
+          <VideoPlayer src="/vsl-email.mp4" poster="/vsl-email-poster.jpg" autoPlay={false} />
         </div>
       </section>
 
