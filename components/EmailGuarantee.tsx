@@ -19,11 +19,11 @@ export function EmailGuarantee() {
           </p>
 
           <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-            When brands move to our ongoing service, weekly creative production, systematic testing, and paid media management, we put it in writing. If ROAS hasn&apos;t improved measurably by week 8, you pay nothing. We&apos;ve built our business on this because we know the economics work.
+            When brands move to our ongoing service, weekly creative production, systematic testing, and paid media management, we put it in writing. We&apos;ve built our business on this because we know the economics work.
           </p>
 
           <p className="text-sm text-gray-400 italic">
-            The free batch shows you what we can produce. The guarantee covers what we deliver when we&apos;re fully embedded in your account.
+            The guarantee covers what we deliver when we&apos;re fully embedded in your account.
           </p>
 
           <div className="pt-10 border-t border-white/10">

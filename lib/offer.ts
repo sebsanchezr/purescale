@@ -34,8 +34,6 @@ export const CEO_CALL_URL = 'https://cal.com/august-marketing-ceo/purescale-crea
 export const CEO_CALLS_INCLUDED = 2
 
 // Value stack, anchors the $97 against real production value.
-// The audit lives in Pro only, one product should not double as both a $97
-// freebie and a $297 headline feature, that undersells the upgrade.
 export const VALUE_STACK = [
   { item: '10 custom ad creatives (UGC, static & hook angles)', value: '$1,500' },
   { item: 'Built on your brand, your products, never templates', value: '$300' },
@@ -65,11 +63,6 @@ export const PRO_VALUE_STACK = [
     item:
       '2 private 1-to-1 AI creative calls with our CEO, your account, your angles, live. Not a group call, not a replay.',
   },
-  {
-    item:
-      'A live ad account audit over Google Meet, where your spend is leaking and what to fix first, alongside a recording you keep',
-    bonus: true,
-  },
   { item: 'A Loom walkthrough of the batch, why each angle was built, what to test first', bonus: true },
 ] as const
 
@@ -81,10 +74,3 @@ export const BUMP_PRICE_VALUE = 77
 export const BUMP_LABEL = '12-hour rush delivery'
 export const BUMP_COPY =
   'Jump the queue. Your batch lands in 12 hours instead of 24.'
-
-// ── Free ad account audit (Pro only) ───────────────────────────────────
-// Customer adds PureScale as a Partner on their Meta Business Manager with
-// Analyst (read-only) access, no tokens, no passwords, nothing pasted into
-// a form. Analyst can view but never spend, edit, pause or post. Revocable
-// by them in one click once the audit is delivered.
-export const AUDIT_VALUE = '$500'

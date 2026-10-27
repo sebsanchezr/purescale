@@ -17,7 +17,7 @@ export function Guarantee() {
           </p>
 
           <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-            Our guarantee is simple: if your ROAS hasn&apos;t improved by week 8, you don&apos;t pay us anything. We&apos;ve built our business on results because we know the economics work. Most brands see movement by week 3, but we give you a full 60 days to judge the partnership fairly.
+            We&apos;ve built our business on results because we know the economics work. Most brands see movement by week 3, but we give you a full 60 days to judge the partnership fairly.
           </p>
 
           <p className="text-sm text-gray-400 italic">

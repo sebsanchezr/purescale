@@ -101,8 +101,8 @@ export default function AdsPage() {
             Pick your batch
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-center text-gray-400">
-            Both ship in 24 hours. Both include two private calls with our CEO. Pro adds video,
-            native platform cuts, and a live audit of your ad account.
+            Both ship in 24 hours. Both include two private calls with our CEO. Pro adds video
+            and native platform cuts.
           </p>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">

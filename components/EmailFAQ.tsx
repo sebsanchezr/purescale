@@ -6,16 +6,12 @@ export function EmailFAQ() {
 
   const faqs = [
     {
-      q: 'Is the free creative batch actually free?',
-      a: 'Yes. We produce a batch of creatives for your brand at no cost, no contract, no obligation. You keep them and run them regardless of what you decide next. We do this because we\'re confident that once you see systematic production in action, the conversation about ongoing work happens naturally.',
+      q: 'Who do you work with?',
+      a: 'We work with brands spending £20k+/month on ads, because below that threshold there isn\'t enough testing velocity to show meaningful results quickly.',
     },
     {
-      q: 'What\'s the catch?',
-      a: 'There isn\'t one. We\'re selective about who we offer this to, we work with brands spending £20k+/month on ads, because below that threshold there isn\'t enough testing velocity to show meaningful results quickly. If you\'re at that level, the free batch is a genuine no-risk way to see what we do.',
-    },
-    {
-      q: 'What happens after the free batch?',
-      a: 'Nothing automatically. We\'ll follow up to see how the creatives performed. If the results speak for themselves and you want us to keep producing at scale. 100+ creatives a week, full testing infrastructure, paid management, we\'ll talk about what that looks like. No pressure before then.',
+      q: 'What does the call cover?',
+      a: 'On the call we go through your current creative, identify exactly where fatigue is costing you CPA, and map out what a proper testing architecture looks like for your brand.',
     },
     {
       q: 'How is this different from what my current agency does?',

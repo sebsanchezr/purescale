@@ -40,7 +40,7 @@ export function EmailService() {
             What brands doing £100k+/month <span className="font-poppins-italic">actually need</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            The free batch proves we can produce. This is what ongoing production does for your business.
+            This is what ongoing production does for your business.
           </p>
         </div>
 
@@ -67,13 +67,13 @@ export function EmailService() {
             We work with brands spending <span className="font-poppins-italic text-cyan-300">£20k+/month on ads</span>
           </p>
           <p className="text-gray-400 max-w-xl mx-auto mb-6">
-            At that spend level, creative velocity isn&apos;t a nice-to-have, it&apos;s the difference between a brand that compounds and one that plateaus. The free batch is how you find out which side of that line you&apos;re currently on.
+            At that spend level, creative velocity isn&apos;t a nice-to-have, it&apos;s the difference between a brand that compounds and one that plateaus.
           </p>
           <a
             href="#book"
             className="inline-block px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-500 text-white rounded-lg hover:from-blue-500 hover:to-cyan-400 font-bold text-lg transition-all duration-200 shadow-xl shadow-blue-500/50"
           >
-            Book Your Free Audit Call →
+            Book a call →
           </a>
         </div>
       </div>

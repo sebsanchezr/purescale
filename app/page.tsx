@@ -18,14 +18,15 @@ import { LegalFooter } from '@/components/LegalFooter'
 // Promoted to the homepage 30 Jul 2026 (was /email). Old homepage archived at
 // /legacy-home.
 export const metadata: Metadata = {
-  title: 'Free Ad Creative Audit - PureScale',
-  description: 'Free sample creative in 24 hours, tested against your current ads. Yours to keep either way, no cost.',
+  title: 'Ad Creative for DTC Brands - PureScale',
+  description:
+    'Your targeting is fine. Your budget is fine. What\'s killing your CPA is running the same 4 creatives for 6 weeks while your competitors are testing 40.',
 }
 
 export default function Home() {
   return (
     <main className="bg-stone-900">
-      <Navbar ctaHref="#book" ctaLabel="Book Your Free Audit Call →" />
+      <Navbar ctaHref="#book" ctaLabel="Book a call →" />
 
       {/* Top: Identify the pain, make the offer */}
       <EmailHero />
@@ -60,9 +61,9 @@ export default function Home() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-4xl font-bold text-white mb-3">
-              Book your <span className="font-poppins-italic text-cyan-300">free audit call</span>
+              Book a <span className="font-poppins-italic text-cyan-300">call</span>
             </h2>
-            <p className="text-gray-400">20 minutes. We come prepared. You leave with a roadmap and a free batch incoming.</p>
+            <p className="text-gray-400">20 minutes. We come prepared.</p>
           </div>
           <CalEmbed />
         </div>
