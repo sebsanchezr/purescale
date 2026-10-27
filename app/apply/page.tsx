@@ -4,7 +4,7 @@ import { LegalFooter } from '@/components/LegalFooter'
 
 export const metadata: Metadata = {
   title: 'Apply - PureScale',
-  description: 'Apply for PureScale\'s AI ad creative service. Better ROAS guaranteed in 60 days.',
+  description: 'Apply for PureScale\'s AI ad creative service.',
 }
 
 export default function ApplyPage() {

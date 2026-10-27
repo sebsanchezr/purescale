@@ -3,10 +3,6 @@ import { useState } from 'react'
 
 const FAQS = [
   {
-    q: 'What happens if you do not beat the control?',
-    a: 'You pay us nothing and you keep all 15 creatives. That is the entire downside for you, and it is the reason we are careful about who we take.',
-  },
-  {
     q: 'Do I have to wait 14 days for the creatives?',
     a: 'No. Your first five are live in the ad set within 24 hours of access. The 14 days is the test window, the time the ads need to spend to give an honest read against your control. The rest of the batch lands across that fortnight, weighted towards whatever is already winning.',
   },

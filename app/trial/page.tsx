@@ -75,7 +75,6 @@ const HOLD = [
   '15 production ready creatives. Yours from the day they are made, win or lose.',
   'The angle that worked, and the data showing why it worked.',
   'A written read on why your existing creative stalled.',
-  'If we did not beat the control, an invoice for nothing.',
 ]
 
 const FIT_YES = [
@@ -165,8 +164,7 @@ export default function TrialPage() {
           <p className="mx-auto mt-4 max-w-2xl text-center text-gray-400">
             This is not a pitch to replace your agency. It is one ad set and 15 creatives you keep
             whatever happens. The 14 days is how long the ads need to run to give an honest read,
-            not how long you wait for the work. If it works you have a decision to make. If it does
-            not, you have lost nothing but the 20 minutes.
+            not how long you wait for the work. If it works you have a decision to make.
           </p>
 
           <div className="mt-12 overflow-hidden rounded-2xl border border-white/10">
@@ -222,11 +220,10 @@ export default function TrialPage() {
             </span>{' '}
             for DTC brands
           </h2>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { n: '$297 → $29', l: 'Yeubo, one week to the next', s: 'same budget, same ad set' },
-              { n: '$9M → $26M', l: 'Revice Denim', s: '→ $42M on track this year' },
-              { n: '10×', l: 'Posh, in 90 days', s: 'from a standing start' },
+              { n: '$9M → $26M, projected $42M', l: 'Revice Denim', s: '' },
               { n: '9.3×', l: "L'alingi, GCC + US", s: 'no prior ad history' },
             ].map((c, i) => (
               <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
@@ -234,7 +231,7 @@ export default function TrialPage() {
                   {c.n}
                 </div>
                 <p className="mt-3 font-semibold text-white">{c.l}</p>
-                <p className="mt-1 text-sm text-gray-500">{c.s}</p>
+                {c.s ? <p className="mt-1 text-sm text-gray-500">{c.s}</p> : null}
               </div>
             ))}
           </div>

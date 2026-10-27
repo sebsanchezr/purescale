@@ -6,12 +6,10 @@ import { EmailOffer } from '@/components/EmailOffer'
 import { SocialProof } from '@/components/SocialProof'
 import { Testimonials } from '@/components/Testimonials'
 import { EmailService } from '@/components/EmailService'
-import { EmailGuarantee } from '@/components/EmailGuarantee'
 import { EmailFAQ } from '@/components/EmailFAQ'
 import { EmailFinalCTA } from '@/components/EmailFinalCTA'
 import { CalEmbed } from '@/components/CalEmbed'
 import { CreativeExamples } from '@/components/CreativeExamples'
-import { VideoPlayer } from '@/components/VideoPlayer'
 import { AugustMarketingTrust } from '@/components/AugustMarketingTrust'
 import { LegalFooter } from '@/components/LegalFooter'
 
@@ -33,13 +31,6 @@ export default function Home() {
 
       <AugustMarketingTrust />
 
-      {/* VSL */}
-      <section className="px-4 pb-8 bg-stone-900">
-        <div className="max-w-3xl mx-auto">
-          <VideoPlayer src="/vsl-email.mp4" poster="/vsl-email-poster.jpg" autoPlay={false} />
-        </div>
-      </section>
-
       <EmailPainPoints />
       <EmailOffer />
       <CreativeExamples />
@@ -50,7 +41,6 @@ export default function Home() {
 
       {/* Transition: What this becomes long-term */}
       <EmailService />
-      <EmailGuarantee />
       <EmailFAQ />
 
       {/* Close */}

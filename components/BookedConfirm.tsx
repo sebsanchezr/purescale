@@ -553,7 +553,7 @@ function Agenda({ minutes, buyer }: { minutes: number; buyer: boolean }) {
 
 const RESULTS: [string, string, string][] = [
   ['Revice Denim', '$9M to $26M', '2.5 years'],
-  ["L'Alingi", '5x ROAS, two markets', '2+ years'],
+  ["L'Alingi", '9.3x ROAS, two markets', '2+ years'],
   ['Go Forth Goods', '£95k to £240k months', '3 years'],
   ['Posh MIA', '0.7x to 3.2x ROAS', '3 months'],
 ]

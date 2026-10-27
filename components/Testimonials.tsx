@@ -66,14 +66,7 @@ export function Testimonials() {
       color: "bg-purple-500",
       name: "Alia",
       role: "Founder, L'Alingi",
-      review: "Two international markets, different audiences, different cultural sensitivities. Most agencies freeze when there's complexity. These guys built distinct creative frameworks for each market. 5x ROAS across both. The kicker: no margin compression. That's intentional work.",
-    },
-    {
-      initials: "KT",
-      color: "bg-pink-500",
-      name: "Katherine",
-      role: "Founder, Posh",
-      review: "Growing organically to a ceiling is the classic problem. Paid media felt chaotic - too many guesses, not enough data. They diagnosed creative fatigue within week one. Built a systematic testing framework. By day 90, we'd 10x'ed revenue. Stayed for 2 years because the model works.",
+      review: "Two international markets, different audiences, different cultural sensitivities. Most agencies freeze when there's complexity. These guys built distinct creative frameworks for each market. 9.3x ROAS across both. The kicker: no margin compression. That's intentional work.",
     },
     {
       initials: "MI",

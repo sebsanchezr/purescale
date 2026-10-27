@@ -68,8 +68,7 @@ export default function AdsThankYouPage() {
 
           <div className="mt-6 space-y-4 text-left">
             {[
-              { m: '$9M → $26M → $42M on track', b: 'Revice Denim', d: 'Same creative engine you just bought into. Now their best year yet.' },
-              { m: '10× revenue in 90 days', b: 'Posh', d: 'From a standing start. Fresh creative tested faster than fatigue could catch up.' },
+              { m: '$9M → $26M, projected $42M', b: 'Revice Denim', d: 'Same creative engine you just bought into. Now their best year yet.' },
               { m: '$95k → $240k / month', b: 'Go Forth Goods', d: 'Broke a revenue plateau by feeding the algorithm new winners every week.' },
             ].map((c, i) => (
               <div

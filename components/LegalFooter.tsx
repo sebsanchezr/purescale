@@ -20,8 +20,7 @@ export function LegalFooter() {
           PureScale is a trading name of August Marketing Ltd · 5 Castle Court, London
           SE26 4HT, United Kingdom · Registered in England &amp; Wales No. 11508146
           <br />
-          Results shown are those achieved by specific clients and are not a guarantee of
-          your results.
+          Results shown are those achieved by specific clients.
         </p>
       </div>
     </footer>

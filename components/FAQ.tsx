@@ -7,7 +7,7 @@ export function FAQ() {
   const faqs = [
     {
       q: 'What\'s the difference between this and freelancers or hiring in-house?',
-      a: 'Freelancers produce one-off creatives; you manage the chaos. In-house teams cost $60-100k+ per year plus benefits, and they\'re locked into one way of thinking. We\'re systematized production with accountability to your ROAS. You don\'t manage the details, we do. And if it doesn\'t work, you don\'t pay.',
+      a: 'Freelancers produce one-off creatives; you manage the chaos. In-house teams cost $60-100k+ per year plus benefits, and they\'re locked into one way of thinking. We\'re systematized production with accountability to your ROAS. You don\'t manage the details, we do.',
     },
     {
       q: 'How is this not just another agency?',
